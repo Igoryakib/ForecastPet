@@ -1,0 +1,63 @@
+@import "../../scss/variables.scss";
+
+.header {
+    width: 1315px;
+    padding: 45px 0 0 0;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile {
+    width: 422px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profileAvatar {
+    width: 92px;
+    height: 92px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.avatar {
+    z-index: 2;
+}
+
+.ellipse {
+    position: absolute;
+    bottom: 0;
+    left: -4px;
+    z-index: 1;
+}
+
+.profileText {
+    width: 332px;
+    text-align: left;
+    margin: 17px 0 0 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: $montserrat;
+    color: $footerTextColor;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: $montserrat;
+    color: $footerTextColor;
+}
