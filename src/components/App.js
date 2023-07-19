@@ -1,15 +1,23 @@
 import React from "react";
 
-import Footer from "./Footer/Footer";
-import WeatherCard from "./WeatherCard/WeatherCard";
+import HomePage from '../pages/HomePage.jsx'
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import AuthPage from "../pages/authentication/AuthPage";
+import Options from "../pages/Options";
+import NotFoundPage from "../pages/NotFoundPage";
 
 
 const  App = () => {
   return (
     <>
-      <h1 className="App">Happy hacking ! :)</h1>
-      <WeatherCard />
-      <Footer />
+    <BrowserRouter>
+        <Routes>
+          <Route index element={<HomePage />} />
+          <Route path='authentication' element={<AuthPage />} />
+          <Route path='options' element={<Options />} />
+          <Route path='*' element={<NotFoundPage />} />
+        </Routes>
+        </BrowserRouter>
     </>
   );
 }

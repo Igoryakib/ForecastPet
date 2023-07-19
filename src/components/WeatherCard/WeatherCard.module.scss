@@ -1,31 +1,31 @@
 @import '../../scss/variables.scss';
 
 .card {
-    width: 77px;
-    height: 125px;
-    border-radius: 24px;
-    background-color: $cardColor;
-    padding: 4px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin: 0 auto;
+  width: 77px;
+  height: 125px;
+  border-radius: 24px;
+  background-color: $cardColor;
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .cardText {
-    font-size: 14px;
-    font-family: $monda;
-    color: $cardTextColor;
-    font-weight: 400;
-    text-align: center;
+  font-size: 14px;
+  font-family: $monda;
+  color: $cardTextColor;
+  font-weight: 400;
+  text-align: center;
 }
 
 .cardTemperature {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 .cardImg {
-    margin: 10px 0 10px 0;
+  margin: 10px 0 10px 0;
 }
