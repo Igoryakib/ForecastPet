@@ -1,0 +1,29 @@
+@import "../../scss/variables.scss";
+
+.window {
+  font-family: $montserrat;
+
+  display: block;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 2rem;
+
+  width: 104rem;
+  height: 64rem;
+  background-color: #fff;
+  z-index: 999;
+
+  grid-template-columns: 3fr 5fr;
+}
+
+
+
+.overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(85, 85, 85, 0.75);
+  z-index: 100;
+}

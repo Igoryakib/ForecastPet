@@ -1,0 +1,63 @@
+@import 'src/scss/variables.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.6rem
+}
+
+.container div {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem
+}
+
+.label {
+  color: #999;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.input {
+  border-radius: 8px;
+  border: 0.4px solid #777;
+  background: #FFF;
+  height: 5.2rem;
+  width: 80%;
+  padding: 1.6rem;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+
+.buttonBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row !important;
+
+  margin-top: 1rem;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row !important;
+}
+
+.checkbox input {
+  display: inline;
+}
+
+.checkbox input:checked {
+  background-color: $mainColor;
+}
+
+.checkbox p {
+  font-weight: 500;
+  color: #999;
+  font-size: 1.6rem;
+}

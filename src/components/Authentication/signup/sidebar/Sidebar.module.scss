@@ -1,0 +1,30 @@
+@import "src/scss/variables.scss";
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3.2rem 3.2rem 1.6rem 3.2rem;
+  margin: 1.6rem;
+  border-radius: 2rem;
+  text-align: left;
+
+  background-color: #D2EBEE;
+}
+
+.sidebar span {
+  font-size: 1.4rem;
+  letter-spacing: 0.56px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem
+}
+
+.subheading {
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.64px;
+}

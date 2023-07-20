@@ -1,0 +1,47 @@
+@import 'src/scss/variables.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.clientButton {
+  font-size: 1.4rem;
+  font-weight: 700;
+  border-radius: 999rem;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  
+  display: flex;
+  align-items: center;
+
+  position: relative;
+  z-index: 7;
+}
+
+.clientButton span {
+  padding: 0.8rem 1.6rem;
+  z-index: 9;
+
+}
+
+.subheading {
+  display: flex;
+  align-items: center;
+  gap: 2rem
+}
+
+.subheading p {
+  font-size: 1.8rem;
+}
+
+.active {
+  border-radius: 999rem;
+  height: 2.6rem;
+  background: #D8D8D8;
+  box-shadow: 0px 0px 2px 0px #555;
+
+  position: absolute;
+  transition: 0.3s ease all, right 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15)
+}

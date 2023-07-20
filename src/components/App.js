@@ -1,25 +1,24 @@
 import React from "react";
 
-import HomePage from '../pages/HomePage.jsx'
+import HomePage from "../pages/HomePage.jsx";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import AuthPage from "../pages/authentication/AuthPage";
+import AuthPage from "../pages/AuthPage.jsx";
 import Options from "../pages/Options";
 import NotFoundPage from "../pages/NotFoundPage";
 
-
-const  App = () => {
+const App = () => {
   return (
     <>
-    <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route index element={<HomePage />} />
-          <Route path='authentication' element={<AuthPage />} />
-          <Route path='options' element={<Options />} />
-          <Route path='*' element={<NotFoundPage />} />
+          <Route path="authentication" element={<AuthPage />} />
+          <Route path="options" element={<Options />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
-        </BrowserRouter>
+      </BrowserRouter>
     </>
   );
-}
+};
 
 export default App;
