@@ -1,0 +1,75 @@
+@import "../../scss/variables.scss";
+
+.labelSwitcher {
+    width: 143px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: $whiteColor;
+    border-radius: 100px;
+    border: $border-shadow;
+    box-shadow: $box-shadow;
+    cursor: pointer;
+}
+
+.inputSwitcher {
+    display: none;
+    &:checked + .wrapperTemp {
+        &::before {
+            left: calc(100% - 3px);
+            transform: translateX(-100%);
+        }
+    }
+    &:checked + .wrapperTemp > .tempColorD {
+        color: $whiteColor;
+    }
+
+    &:checked + .wrapperTemp > .tempColorW {
+        color: $footerTextColor;
+    }
+}
+
+.wrapperTemp {
+    width: 83px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+    transition: left 0.2s;
+    &::before {
+        display: block;
+        content: "";
+        position: absolute;
+        width: 73px;
+        height: 34px;
+        border-radius: 100px;
+        background-color: $orangeColor;
+        box-shadow: 0px 0px 4px 0px $orangeColor;
+        z-index: -1;
+        top: 3px;
+        left: 3px;
+        transition: 0.2s;
+    }
+    &:active::before {
+        width: 48px;
+    }
+}
+
+.tempText {
+    color: $footerTextColor;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: $monda;
+    transition: 0.2s;
+}
+
+.tempColorW {
+    color: $whiteColor;
+}
+
+.tempColorD {
+    color: $footerTextColor;
+}
