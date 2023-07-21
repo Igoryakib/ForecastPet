@@ -1,0 +1,67 @@
+@import "src/scss/variables.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.64rem;
+
+  box-shadow: $shadow--smallElements;
+  background-color: #fff;
+
+  position: absolute;
+  left: 7rem;
+  top: 20rem;
+  border-radius: 2rem;
+  z-index: 9999;
+}
+
+.button {
+  stroke: #fff;
+  padding: 2rem 1.6rem;
+  position: relative;
+
+  cursor: pointer;
+}
+
+// .active {
+//   position: relative;
+// }
+
+.active {             // TODO
+  z-index: 9;
+}
+
+.active::before {       // TODO
+  content: '';
+  height: 2rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $mainColor;
+}
+
+.activeIndicator {
+  z-index: 1;
+  position: absolute;
+  left: -0.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5.6rem;
+  height: 4rem;
+  background-image: linear-gradient(to right, rgba(233, 132, 64, 0.5), #ffffff00);
+
+  animation: after 0.3s;
+}
+
+@keyframes after {
+  0% {
+    width: 0
+  }
+  100% {
+    width: 4rem;
+  }
+}
+

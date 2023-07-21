@@ -1,15 +1,15 @@
-@import 'src/scss/variables.scss';
+@import "src/scss/variables.scss";
 
 .container {
   display: flex;
   flex-direction: column;
-  gap: 2.6rem
+  gap: 2.6rem;
 }
 
 .container div {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem
+  gap: 1.2rem;
 }
 
 .label {
@@ -23,7 +23,7 @@
 .input {
   border-radius: 8px;
   border: 0.4px solid #777;
-  background: #FFF;
+  background: #fff;
   height: 5.2rem;
   width: 80%;
   padding: 1.6rem;
@@ -39,6 +39,7 @@
   flex-direction: row !important;
 
   margin-top: 1rem;
+  gap: 3rem !important;
 }
 
 .checkbox {
@@ -48,12 +49,39 @@
   flex-direction: row !important;
 }
 
-.checkbox input {
-  display: inline;
+.checkbox input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: #fff;
+  /* Not removed via appearance */
+  margin: 0;
+  width: 3.4rem;
+  height: 2.4rem;
+  border: 0.15rem solid #555;
+  border-radius: 0.64rem;
+
+  cursor: pointer;
 }
 
-.checkbox input:checked {
-  background-color: $mainColor;
+.checkbox input[type="checkbox"]::before {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1rem 1rem $mainColor;
+  border-radius: 0.32rem;
+}
+
+.checkbox input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+.checkbox input[type="checkbox"] {
+  /* ...existing styles */
+  display: grid;
+  place-content: center;
 }
 
 .checkbox p {

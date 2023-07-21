@@ -1,4 +1,4 @@
-@import 'src/scss/variables.scss';
+@import "src/scss/variables.scss";
 
 .container {
   display: flex;
@@ -12,7 +12,7 @@
   border-radius: 999rem;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
   cursor: pointer;
-  
+
   display: flex;
   align-items: center;
 
@@ -23,13 +23,12 @@
 .clientButton span {
   padding: 0.8rem 1.6rem;
   z-index: 9;
-
 }
 
 .subheading {
   display: flex;
   align-items: center;
-  gap: 2rem
+  gap: 2rem;
 }
 
 .subheading p {
@@ -39,9 +38,9 @@
 .active {
   border-radius: 999rem;
   height: 2.6rem;
-  background: #D8D8D8;
+  background: #d8d8d8;
   box-shadow: 0px 0px 2px 0px #555;
 
   position: absolute;
-  transition: 0.3s ease all, right 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15)
+  transition: 0.3s ease all, right 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
 }

@@ -16,14 +16,25 @@
   z-index: 999;
 
   grid-template-columns: 3fr 5fr;
+
+  // transition: all trans 0.2s infinite;
+  animation: trans 0.5s;
 }
 
-
+@keyframes trans {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 .overlay {
   position: absolute;
   height: 100%;
   width: 100%;
   background-color: rgba(85, 85, 85, 0.75);
-  z-index: 100;
+  z-index: 998;
+  animation: trans 0.5s;
 }

@@ -1,0 +1,75 @@
+@import "src/scss/variables.scss";
+
+.labelSwitcher {
+  width: 9rem;
+  height: 3.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #fff;
+  border-radius: 100px;
+  border: $border-shadow;
+  box-shadow: $box-shadow;
+  cursor: pointer;
+}
+
+.inputSwitcher {
+  display: none;
+  &:checked + .wrapperTemp {
+    &::before {
+      left: calc(100% - 3px);
+      transform: translateX(-100%);
+    }
+  }
+  &:checked + .wrapperTemp > .tempColorD {
+    color: #555;
+  }
+
+  &:checked + .wrapperTemp > .tempColorW {
+    color: $footerTextColor;
+  }
+}
+
+.wrapperTemp {
+  width: 6.4rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  transition: left 0.2s;
+  &::before {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 4.2rem;
+    height: 2.2rem;
+    border-radius: 100px;
+    background-color: #d8d8d8;
+    box-shadow: 0px 0px 4px 0px #555;
+    z-index: -1;
+    top: 0.5rem;
+    left: 0.5rem;
+    transition: 0.3s;
+  }
+  &:active::before {
+    width: 3.6rem;
+  }
+}
+
+.tempText {
+  color: #555;
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-family: $monda;
+  transition: 0.2s;
+}
+
+.tempColorW {
+  color: #555;
+}
+
+.tempColorD {
+  color: #555;
+}
