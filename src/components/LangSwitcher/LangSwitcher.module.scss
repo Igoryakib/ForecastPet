@@ -1,0 +1,89 @@
+@import "../../scss/variables.scss";
+
+.changeLangContainer {
+    width: 105px;
+    height: 40px;
+    border-radius: 100px;
+    box-shadow: $box-shadow;
+    border: $border-shadow;
+    background-color: $whiteColor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: height 0.2s;
+}
+
+.selectOption {
+    color: $footerTextColor;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: $monda;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.vector {
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.wrapperLangUk {
+    width: 105px;
+    transition: border 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.ukLang {
+    margin-right: 13px;
+}
+
+.langEn {
+    width: 105px;
+    position: absolute;
+    top: 50px;
+    left: -15px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.1s;
+}
+
+.heightContainer {
+    align-items: flex-start;
+    height: 80px;
+    border-radius: 26px;
+}
+
+.borderUkLang {
+    border-bottom: 1px solid $cardTextColor;
+    padding-bottom: 11px;
+    margin: 11px auto;
+}
+
+.opacityEn {
+    pointer-events: initial;
+    opacity: 1;
+}
+
+.vectorOpacity {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.vectorEllipse {
+    position: absolute;
+    right: -9px;
+    bottom: -7px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s;
+    cursor: pointer;
+}
+
+.vectorEllipseOpacity {
+    opacity: 1;
+    pointer-events: initial;
+}

@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Header.module.scss";
 import classnames from "classnames";
 import Avatar from "../../static/avatar_26.svg";
 import Ellipse from "../../static/ellipse.svg";
-import TemperatureSwitcher from "../TemperatureSwitcher/TemperatureSwitcher";
+import Switcher from "../Switcher/Switcher";
+import LangSwitcher from "../LangSwitcher/LangSwitcher";
+import SearchForm from "../SearchForm/SearchForm";
 
 const Header = () => {
   const [temperature, setTemperature] = useState(false);
-  const [lang, setLang] = useState('uk');
+  const [lang, setLang] = useState("укр");
+  const [searchValue, setSearchValue] = useState('');
+  const onSubmitFn = (event) => {
+    event.preventDefault();
+    const data = {
+      value: searchValue
+    };
+    console.log(data)
+  };
   return (
     <header className={styles.header}>
       <div className={styles.profile}>
@@ -21,17 +31,13 @@ const Header = () => {
         </div>
       </div>
       <div className={styles.headerControls}>
-        <label className={styles.changeLangContainer}>
-          <select onChange={(event) => setLang(event.target.value)} className={classnames(styles.selectLang, styles.selectOption)}>
-            <option className={styles.selectOption} value="uk">
-              укр
-            </option>
-            <option className={styles.selectOption} value="en">
-              eng
-            </option>
-          </select>
-        </label>
-        <TemperatureSwitcher value={temperature} setValue={setTemperature} />
+        <SearchForm
+          onSubmit={onSubmitFn}
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
+        <LangSwitcher setLang={setLang} />
+        <Switcher value={temperature} setValue={setTemperature} />
       </div>
     </header>
   );

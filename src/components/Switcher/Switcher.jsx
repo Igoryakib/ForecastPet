@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "./TemperatureSwitcher.module.scss";
+import styles from "./Switcher.module.scss";
 import classnames from "classnames";
 
-const TemperatureSwitcher = ({value, setValue}) => {
+const Switcher = ({value, setValue}) => {
     return (
       <label className={styles.labelSwitcher}>
         <input
@@ -23,4 +23,4 @@ const TemperatureSwitcher = ({value, setValue}) => {
     );
 };
 
-export default TemperatureSwitcher;
+export default Switcher;
