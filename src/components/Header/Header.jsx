@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Header.module.scss";
-import classnames from "classnames";
 import Avatar from "../../static/avatar_26.svg";
 import Ellipse from "../../static/ellipse.svg";
 import Switcher from "../Switcher/Switcher";
