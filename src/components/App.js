@@ -16,7 +16,6 @@ import Options from "../pages/Options";
 import NotFoundPage from "../pages/NotFoundPage";
 import Nav from "./Nav/Nav.jsx";
 
-
 const App = () => {
   return (
     <>
@@ -25,9 +24,9 @@ const App = () => {
         <Routes>
           <Route index element={<HomePage />} />
           <Route path="auth" element={<AuthPage />}>
-            <Route index element={<Navigate to='login' />}  />
-            <Route path='login' element={<LoginContent />}  />
-            <Route path='signup' element={<SignupContent />}  />
+            <Route index element={<Navigate to="login" />} />
+            <Route path="login" element={<LoginContent />} />
+            <Route path="signup" element={<SignupContent />} />
           </Route>
           <Route path="options" element={<Options />} />
           <Route path="*" element={<NotFoundPage />} />

@@ -3,25 +3,28 @@ import styles from "./Switcher.module.scss";
 import classnames from "classnames";
 import { useState } from "react";
 
-const Switcher = function ( { textArray} ) {
-  const location = useLocation()
-  const authPath = location.pathname.split('/')[2]
-  const navigate = useNavigate()
+const Switcher = function ({ textArray }) {
+  const location = useLocation();
+  const authPath = location.pathname.split("/")[2];
+  const navigate = useNavigate();
 
   const [value, setValue] = useState(() => {
-    return(authPath === 'login' ? false : authPath === 'signup' ? true : '')
-    })
+    return authPath === "login" ? false : authPath === "signup" ? true : "";
+  });
   // let value, setValue;
 
-  console.log(value)
+  console.log(value);
 
   return (
     <label className={styles.labelSwitcher}>
       <input
         className={styles.inputSwitcher}
         onChange={(event) => {
-          setTimeout(() => navigate(authPath === 'login' ? '../signup' : '../login'), 260)
-          return setValue(event.target.checked)
+          setTimeout(
+            () => navigate(authPath === "login" ? "../signup" : "../login"),
+            260
+          );
+          return setValue(event.target.checked);
         }}
         type="checkbox"
         checked={value}

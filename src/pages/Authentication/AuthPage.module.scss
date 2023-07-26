@@ -1,4 +1,4 @@
-@import 'src/scss/variables.scss';
+@import "src/scss/variables.scss";
 
 .overlay {
   position: absolute;
@@ -11,20 +11,20 @@
 
 .window {
   font-family: $montserrat;
-  
+
   position: absolute;
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 2rem;
-  
+
   width: 104rem;
   height: 64rem;
   background-color: #fff;
   z-index: 999;
-  
+
   grid-template-columns: 3fr 5fr;
-  
+
   // transition: all 2s;
   animstion: trans 0.5s;
 }

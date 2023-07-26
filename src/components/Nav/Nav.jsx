@@ -4,7 +4,7 @@ import styles from "./Nav.module.scss";
 const Nav = function () {
   const navigate = useNavigate();
   const location = useLocation();
-  const isAuth = location.pathname.split('/')[1]
+  const isAuth = location.pathname.split("/")[1];
 
   return (
     <div className={`${styles.container}`}>
@@ -15,7 +15,7 @@ const Nav = function () {
           height="30"
           viewBox="0 0 22 30"
           fill="none"
-          className={`${styles.icon} ${isAuth === 'auth' ? styles.active : ''}`}
+          className={`${styles.icon} ${isAuth === "auth" ? styles.active : ""}`}
           // className={`${styles.icon} ${location.pathname === '/authentication' ? styles.active : ''}`}
         >
           <path
@@ -37,10 +37,10 @@ const Nav = function () {
             strokeLinejoin="round"
           />
         </svg>
-        {isAuth === 'auth' && (
+        {isAuth === "auth" && (
           <>
-          <div className={styles.activeIndicatorBorder}></div>
-          <div className={styles.activeIndicatorOverlay}></div>
+            <div className={styles.activeIndicatorBorder}></div>
+            <div className={styles.activeIndicatorOverlay}></div>
           </>
         )}
       </div>
@@ -51,7 +51,9 @@ const Nav = function () {
           height="28"
           viewBox="0 0 28 28"
           fill="none"
-          className={`${styles.icon} ${location.pathname === '/' ? styles.active : ''}`}
+          className={`${styles.icon} ${
+            location.pathname === "/" ? styles.active : ""
+          }`}
           // className={`${styles.icon} ${location.pathname === '/' ? styles.active : ''}`}
         >
           <path
@@ -93,8 +95,8 @@ const Nav = function () {
         </svg>
         {location.pathname === "/" && (
           <>
-          <div className={styles.activeIndicatorBorder}></div>
-          <div className={styles.activeIndicatorOverlay}></div>
+            <div className={styles.activeIndicatorBorder}></div>
+            <div className={styles.activeIndicatorOverlay}></div>
           </>
         )}
       </div>
@@ -105,7 +107,9 @@ const Nav = function () {
           height="25"
           viewBox="0 0 28 25"
           fill="none"
-          className={`${styles.icon} ${location.pathname === '/options' ? styles.active : ''}`}
+          className={`${styles.icon} ${
+            location.pathname === "/options" ? styles.active : ""
+          }`}
         >
           <path
             d="M11.5332 19.7133H1.00067"
@@ -142,8 +146,8 @@ const Nav = function () {
         </svg>
         {location.pathname === "/options" && (
           <>
-          <div className={styles.activeIndicatorBorder}></div>
-          <div className={styles.activeIndicatorOverlay}></div>
+            <div className={styles.activeIndicatorBorder}></div>
+            <div className={styles.activeIndicatorOverlay}></div>
           </>
         )}
       </div>

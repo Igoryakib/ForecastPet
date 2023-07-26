@@ -4,7 +4,7 @@ import styles from "./Form.module.scss";
 import FormHeader from "./FormHeader";
 import Inputs from "./Inputs";
 
-const Form = function ({setSection, type}) {
+const Form = function ({ setSection, type }) {
   const navigate = useNavigate();
 
   return (
