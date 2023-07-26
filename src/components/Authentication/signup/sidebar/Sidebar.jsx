@@ -3,9 +3,13 @@ import Human1 from "../../../../static/feedback/human1.png";
 import Human3 from "../../../../static/feedback/human3.png";
 import Human2 from "../../../../static/feedback/human2.png";
 import Feedback from "./Feedback";
+import Spinner from '../../../Spinner/Spinner'
 
 import styles from "./Sidebar.module.scss";
 import Heading from "../small components/Heading";
+import { useEffect, useState } from "react";
+
+import Photo from '../../../../static/photos/1';
 
 const clients = [
   {
@@ -28,19 +32,45 @@ const clients = [
   },
 ];
 
-const Sidebar = function ({ activeFeedback, setActiveFeedback }) {
-  console.log(activeFeedback);
+
+const Sidebar = function ({ activeFeedback, setActiveFeedback, type }) {
+
+  const [advice, setAdvice] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    const fetcher = async function(){
+      setIsLoading(true)
+      try { 
+      const res = await fetch('https://api.adviceslip.com/advice');
+      const data = await res.json();
+      setAdvice(data.slip.advice)
+       } catch {
+        console.error('some error happaned during advice API fetching')
+      } finally {
+        setIsLoading(false)
+      }
+       
+    }
+
+    fetcher()
+  }, [])
+
+
   return (
     <div className={styles.sidebar}>
       <span>найкраща погода</span>
       <div className={styles.header}>
-        <Heading>Почни свою подорож у світ точних прогнозів!</Heading>
+        <Heading>{type === 'signup' ? 'Почни свою подорож у світ точних прогнозів!' : 'Дякуємо за довіру!'}</Heading>
+        {isLoading ? <Spinner /> : <>
         <p className={styles.subheading}>
-          Розкрий світ прогнозів погоди, які ніколи не брешуть та доєднайся до
-          ком’юніті однодумців
-        </p>
+          {type === 'signup' ? "Розкрий світ прогнозів погоди, які ніколи не брешуть та доєднайся до ком’юніті однодумців" : 'Порада дня:'} </p>
+        {type === 'login' ?  <p className={styles.advice}>{advice}</p> : ''}
+        </>
+        }
       </div>
-      <div>
+        
+        {type === 'signup' ? <div>
         {clients.map((client, i) =>
           i + 1 === activeFeedback ? (
             <Feedback key={i} client={clients[activeFeedback - 1]} />
@@ -54,7 +84,8 @@ const Sidebar = function ({ activeFeedback, setActiveFeedback }) {
           activeFeedback={activeFeedback}
         />
       </div>
-    </div>
+     : <Photo />}
+      </div>
   );
 };
 

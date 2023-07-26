@@ -4,7 +4,7 @@ import styles from "./Form.module.scss";
 import FormHeader from "./FormHeader";
 import Inputs from "./Inputs";
 
-const Form = function () {
+const Form = function ({setSection, type}) {
   const navigate = useNavigate();
 
   return (
@@ -12,8 +12,8 @@ const Form = function () {
       <button className={styles.closeButton} onClick={() => navigate("/")}>
         &times;
       </button>
-      <FormHeader />
-      <Inputs />
+      <FormHeader type={type} setSection={setSection} />
+      <Inputs type={type} />
     </div>
   );
 };

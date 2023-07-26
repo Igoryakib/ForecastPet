@@ -1,14 +1,18 @@
+import { useState } from "react";
 import CtaButton from "../small components/CtaButton";
 import styles from "./Inputs.module.scss";
 
-const Inputs = function () {
+const Inputs = function ({type}) {
+  const [isAgree, setIsAgree] = useState(false)
+
   return (
-    <div>
       <form className={styles.container}>
+        {type === 'signup' ? 
         <div>
           <label className={styles.label}>Ім'я</label>
           <input className={styles.input} type="text"></input>
-        </div>
+        </div> : ''
+      }
         <div>
           <label className={styles.label}>Email</label>
           <input className={styles.input} type="Email"></input>
@@ -22,16 +26,16 @@ const Inputs = function () {
             onClick={(e) => {
               e.preventDefault();
             }}
+            isDisabled={!isAgree}
           >
-            Зареєструватися
+            {type === 'signup' ? 'Зареєструватися' : 'Увійти'}
           </CtaButton>
           <div className={styles.checkbox}>
-            <input type="checkbox" />
+            <input type="checkbox"  onChange={() => setIsAgree(is => !is)} />
             <p>даю згоду на обробку персональних даних</p>
           </div>
         </div>
       </form>
-    </div>
   );
 };
 

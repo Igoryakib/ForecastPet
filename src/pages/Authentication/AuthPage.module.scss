@@ -1,34 +1,4 @@
-@import "../../scss/variables.scss";
-
-.window {
-  font-family: $montserrat;
-
-  display: block;
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 2rem;
-
-  width: 104rem;
-  height: 64rem;
-  background-color: #fff;
-  z-index: 999;
-
-  grid-template-columns: 3fr 5fr;
-
-  // transition: all trans 0.2s infinite;
-  animation: trans 0.5s;
-}
-
-@keyframes trans {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+@import 'src/scss/variables.scss';
 
 .overlay {
   position: absolute;
@@ -37,4 +7,33 @@
   background-color: rgba(85, 85, 85, 0.75);
   z-index: 998;
   animation: trans 0.5s;
+}
+
+.window {
+  font-family: $montserrat;
+  
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 2rem;
+  
+  width: 104rem;
+  height: 64rem;
+  background-color: #fff;
+  z-index: 999;
+  
+  grid-template-columns: 3fr 5fr;
+  
+  // transition: all 2s;
+  animstion: trans 0.5s;
+}
+
+@keyframes trans {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

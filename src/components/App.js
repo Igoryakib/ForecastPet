@@ -1,11 +1,21 @@
 import React from "react";
 
+// home page
 import HomePage from "../pages/Homepage/HomePage.jsx";
+
+// routes
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import AuthPage from "../pages/AuthPage.jsx";
+
+// auth pages
+import AuthPage from "../pages/Authentication/AuthPage.jsx";
+import LoginContent from "../pages/Authentication/LoginContent.jsx";
+import SignupContent from "../pages/Authentication/SignupContent.jsx";
+
+// other pages/components
 import Options from "../pages/Options";
 import NotFoundPage from "../pages/NotFoundPage";
 import Nav from "./Nav/Nav.jsx";
+
 
 const App = () => {
   return (
@@ -14,7 +24,11 @@ const App = () => {
         <Nav />
         <Routes>
           <Route index element={<HomePage />} />
-          <Route path="authentication" element={<AuthPage />} />
+          <Route path="auth" element={<AuthPage />}>
+            <Route index element={<Navigate to='login' />}  />
+            <Route path='login' element={<LoginContent />}  />
+            <Route path='signup' element={<SignupContent />}  />
+          </Route>
           <Route path="options" element={<Options />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

@@ -4,17 +4,18 @@ import styles from "./Nav.module.scss";
 const Nav = function () {
   const navigate = useNavigate();
   const location = useLocation();
+  const isAuth = location.pathname.split('/')[1]
 
   return (
-    <div className={styles.container}>
-      <div className={styles.button} onClick={() => navigate("authentication")}>
+    <div className={`${styles.container}`}>
+      <div className={styles.button} onClick={() => navigate("auth/login")}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="22"
           height="30"
           viewBox="0 0 22 30"
           fill="none"
-          className={`${styles.icon} ${location.pathname === '/authentication' ? styles.active : ''}`}
+          className={`${styles.icon} ${isAuth === 'auth' ? styles.active : ''}`}
           // className={`${styles.icon} ${location.pathname === '/authentication' ? styles.active : ''}`}
         >
           <path
@@ -36,8 +37,11 @@ const Nav = function () {
             strokeLinejoin="round"
           />
         </svg>
-        {location.pathname === "/authentication" && (
-          <div className={styles.activeIndicator}></div>
+        {isAuth === 'auth' && (
+          <>
+          <div className={styles.activeIndicatorBorder}></div>
+          <div className={styles.activeIndicatorOverlay}></div>
+          </>
         )}
       </div>
       <div className={styles.button} onClick={() => navigate("/")}>
@@ -88,7 +92,10 @@ const Nav = function () {
           />
         </svg>
         {location.pathname === "/" && (
-          <div className={styles.activeIndicator}></div>
+          <>
+          <div className={styles.activeIndicatorBorder}></div>
+          <div className={styles.activeIndicatorOverlay}></div>
+          </>
         )}
       </div>
       <div className={styles.button} onClick={() => navigate("options")}>
@@ -99,7 +106,6 @@ const Nav = function () {
           viewBox="0 0 28 25"
           fill="none"
           className={`${styles.icon} ${location.pathname === '/options' ? styles.active : ''}`}
-          // className={`${styles.icon} ${location.pathname === '/options' ? styles.active : ''}`}
         >
           <path
             d="M11.5332 19.7133H1.00067"
@@ -135,7 +141,10 @@ const Nav = function () {
           />
         </svg>
         {location.pathname === "/options" && (
-          <div className={styles.activeIndicator}></div>
+          <>
+          <div className={styles.activeIndicatorBorder}></div>
+          <div className={styles.activeIndicatorOverlay}></div>
+          </>
         )}
       </div>
     </div>
