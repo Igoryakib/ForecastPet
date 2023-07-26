@@ -1,0 +1,61 @@
+@import "src/scss/variables.scss";
+
+.btn {
+  color: #fff;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+
+  padding: 1.6rem 3.2rem;
+  background-color: $mainColor;
+  border-radius: 1.2rem;
+  width: 24rem;
+  transition: all 0.2s;
+
+  position: relative;
+}
+
+.btn:hover {
+  background-color: $mainColorDarker;
+}
+
+
+.btn:disabled {
+  background-color: #d8d8d8;
+  cursor: no-drop;
+  // color: #555;
+}
+
+.lockIcon {
+  position: absolute;
+  top: -0.6rem;
+  right: -0.6rem;
+  transform: rotate(15deg);
+  stroke: #e3e3e3;
+
+  transition: all 0.3s;
+}
+
+.lockIcon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 2rem;
+  width: 2rem;
+  background-color: #777;
+
+  display: block;
+  border-radius: 999rem;
+}
+
+.btn .lockIcon {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+}
+.btn:disabled .lockIcon {
+  visibility: visible;
+  opacity: 1;
+}
