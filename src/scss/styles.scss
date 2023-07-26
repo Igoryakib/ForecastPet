@@ -16,6 +16,21 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
+.flex-justify-left {
+  display: flex;
+  justify-content: flex-start;
+}
+.flex-justify-right {
+  display: flex;
+  justify-content: flex-end;
+}
+.flex-justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+
+
 * {
   color: #555;
 }

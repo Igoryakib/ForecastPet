@@ -23,19 +23,22 @@ const Inputs = function ({ type }) {
         <label className={styles.label}>Пароль</label>
         <input className={styles.input} type="password"></input>
       </div>
-      <div className={styles.buttonBox}>
+      <div className={`flex-justify-left ${styles.buttonBox}`}>
         <CtaButton
           onClick={(e) => {
             e.preventDefault();
           }}
           isDisabled={!isAgree}
+          type={type}
         >
           {type === "signup" ? "Зареєструватися" : "Увійти"}
         </CtaButton>
+        {type === 'signup' ?
         <div className={styles.checkbox}>
           <input type="checkbox" onChange={() => setIsAgree((is) => !is)} />
           <p>даю згоду на обробку персональних даних</p>
-        </div>
+        </div> : ''
+}
       </div>
     </form>
   );
