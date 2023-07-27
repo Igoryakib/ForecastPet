@@ -100,7 +100,7 @@ const Nav = function () {
           </>
         )}
       </div>
-      <div className={styles.button} onClick={() => navigate("options")}>
+      <div className={styles.button} onClick={() => navigate("/settings")}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="28"
@@ -108,7 +108,7 @@ const Nav = function () {
           viewBox="0 0 28 25"
           fill="none"
           className={`${styles.icon} ${
-            location.pathname === "/options" ? styles.active : ""
+            location.pathname === "/settings" ? styles.active : ""
           }`}
         >
           <path
@@ -144,7 +144,7 @@ const Nav = function () {
             strokeLinejoin="round"
           />
         </svg>
-        {location.pathname === "/options" && (
+        {location.pathname === "/settings" && (
           <>
             <div className={styles.activeIndicatorBorder}></div>
             <div className={styles.activeIndicatorOverlay}></div>

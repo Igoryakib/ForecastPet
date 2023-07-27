@@ -1,15 +1,15 @@
 import FeedbackNav from "./FeedbackNav";
-import Human1 from "../../../../static/feedback/human1.png";
-import Human3 from "../../../../static/feedback/human3.png";
-import Human2 from "../../../../static/feedback/human2.png";
+import Human1 from "../../../static/feedback/human1.png";
+import Human3 from "../../../static/feedback/human3.png";
+import Human2 from "../../../static/feedback/human2.png";
 import Feedback from "./Feedback";
-import Spinner from "../../../Spinner/Spinner";
+import Spinner from "../../Spinner/Spinner";
 
 import styles from "./Sidebar.module.scss";
-import Heading from "../../../small components/Heading/Heading";
+import Heading from "../../small components/Heading/Heading";
 import { useEffect, useState } from "react";
 
-import Photo from "../../../../static/photos/1";
+import Photo from "../../../static/photos/1";
 
 const clients = [
   {
@@ -38,7 +38,7 @@ const Sidebar = function ({ activeFeedback, setActiveFeedback, type }) {
   console.log(isLoading);
 
   useEffect(() => {
-    if (type === 'login'){
+    if (type === "login") {
       const fetcher = async function () {
         setIsLoading(true);
         try {
@@ -53,7 +53,6 @@ const Sidebar = function ({ activeFeedback, setActiveFeedback, type }) {
       };
       fetcher();
     }
-
   }, []);
 
   return (

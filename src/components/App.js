@@ -12,7 +12,7 @@ import LoginContent from "../pages/Authentication/LoginContent.jsx";
 import SignupContent from "../pages/Authentication/SignupContent.jsx";
 
 // other pages/components
-import Options from "../pages/Options";
+import Settings from "../pages/Settings/Settings.jsx";
 import NotFoundPage from "../pages/NotFoundPage";
 import Nav from "./Nav/Nav.jsx";
 
@@ -28,7 +28,7 @@ const App = () => {
             <Route path="login" element={<LoginContent />} />
             <Route path="signup" element={<SignupContent />} />
           </Route>
-          <Route path="options" element={<Options />} />
+          <Route path="settings" element={<Settings />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

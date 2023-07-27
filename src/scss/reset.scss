@@ -20,29 +20,8 @@ main {
   scroll-behavior: smooth;
   box-sizing: border-box;
 }
-a,
-article,
-aside,
-body,
-button,
-footer,
-form,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-header,
-img,
-input,
-li,
-p,
-main,
-select,
-span,
-textarea,
-ul {
+
+* {
   padding: 0;
   margin: 0;
   border: 0;

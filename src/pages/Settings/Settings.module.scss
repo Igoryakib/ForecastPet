@@ -2,21 +2,22 @@
 
 .window {
   font-family: $montserrat;
+  padding: 4rem;
+  // box-sizing: border-box;
 
   position: absolute;
-  top: 45%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 2rem;
 
-  width: 104rem;
-  height: 64rem;
+  width: 63rem;
+  height: fit-content;
   background-color: #fff;
   z-index: 999;
 
   grid-template-columns: 3fr 5fr;
 
-  // transition: all 2s;
   animation: trans 0.5s;
 }
 

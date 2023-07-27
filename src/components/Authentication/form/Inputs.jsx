@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CtaButton from "../../../small components/CtaButton/CtaButton";
+import CtaButton from "../../small components/CtaButton/CtaButton";
 import styles from "./Inputs.module.scss";
 
 const Inputs = function ({ type }) {
@@ -33,12 +33,14 @@ const Inputs = function ({ type }) {
         >
           {type === "signup" ? "Зареєструватися" : "Увійти"}
         </CtaButton>
-        {type === 'signup' ?
-        <div className={styles.checkbox}>
-          <input type="checkbox" onChange={() => setIsAgree((is) => !is)} />
-          <p>даю згоду на обробку персональних даних</p>
-        </div> : ''
-}
+        {type === "signup" ? (
+          <div className={styles.checkbox}>
+            <input type="checkbox" onChange={() => setIsAgree((is) => !is)} />
+            <p>даю згоду на обробку персональних даних</p>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </form>
   );

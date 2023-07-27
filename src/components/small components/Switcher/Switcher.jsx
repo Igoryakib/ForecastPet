@@ -11,9 +11,6 @@ const Switcher = function ({ textArray }) {
   const [value, setValue] = useState(() => {
     return authPath === "login" ? false : authPath === "signup" ? true : "";
   });
-  // let value, setValue;
-
-  console.log(value);
 
   return (
     <label className={styles.labelSwitcher}>

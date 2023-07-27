@@ -2,7 +2,11 @@ import styles from "./CtaButton.module.scss";
 
 const CtaButton = function ({ children, onClick, isDisabled = false, type }) {
   return (
-    <button onClick={onClick} className={styles.btn} disabled={type === 'signup' ? isDisabled : false}>
+    <button
+      onClick={onClick}
+      className={styles.btn}
+      disabled={type === "signup" ? isDisabled : false}
+    >
       {children}
 
       <svg

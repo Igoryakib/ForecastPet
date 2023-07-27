@@ -1,7 +1,6 @@
 import { useState } from "react";
-import Form from "../../components/Authentication/signup/form/Form";
-import Sidebar from "../../components/Authentication/signup/sidebar/Sidebar";
-import styles from "./SignupPage.module.scss";
+import Form from "../../components/Authentication/form/Form";
+import Sidebar from "../../components/Authentication/sidebar/Sidebar";
 
 const SignupPage = function ({ setSection }) {
   const [activeFeedback, setActiveFeedback] = useState(1);

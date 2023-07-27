@@ -1,0 +1,10 @@
+@import "src/scss/variables.scss";
+
+.overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(85, 85, 85, 0.75);
+  z-index: 998;
+  animation: trans 0.5s;
+}
