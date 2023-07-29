@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./WeatherSection.module.scss";
 import classnames from "classnames";
 import partlyCloudly from "../../static/partlyCloudly.svg";
 import WeatherCard from "../WeatherCard/WeatherCard";
 
 const WeatherSection = () => {
+  useEffect(() => {
+    const mouseWheel = document.querySelector(`.${styles.timeWeather}`);
+
+    mouseWheel.addEventListener("wheel", function (e) {
+      const race = 15; // How many pixels to scroll
+
+      if (e.deltaY > 0)
+        // Scroll right
+        mouseWheel.scrollLeft += race;
+      // Scroll left
+      else mouseWheel.scrollLeft -= race;
+      e.preventDefault();
+    });
+  }, []);
   return (
     <section className={styles.weatherSection}>
       <div className={styles.weatherInfo}>

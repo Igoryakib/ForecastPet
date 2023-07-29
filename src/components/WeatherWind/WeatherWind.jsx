@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./WeatherWind.module.scss";
 import Wind from "../../static/Wind.svg";
 import classNames from "classnames";
+import { useEffect } from "react";
 
 const WeatherWind = ({ AQiIndex }) => {
   const activeClassnamesAQi = (AQiIndex) =>
@@ -14,6 +15,16 @@ const WeatherWind = ({ AQiIndex }) => {
       [styles.aqi_color20]: AQiIndex >= 151 && AQiIndex <= 200,
       [styles.aqi_color10]: AQiIndex >= 201,
     });
+    const activeClassnamesSliderAQi = (AQiIndex) =>
+      classNames(styles.sliderStick, {
+        [styles.aqi_slider100]: AQiIndex >= 0 && AQiIndex <= 20,
+        [styles.aqi_slider90]: AQiIndex > 20 && AQiIndex <= 35,
+        [styles.aqi_slider70]: AQiIndex > 35 && AQiIndex <= 50,
+        [styles.aqi_slider50]: AQiIndex >= 51 && AQiIndex <= 100,
+        [styles.aqi_slider40]: AQiIndex >= 101 && AQiIndex <= 150,
+        [styles.aqi_slider20]: AQiIndex >= 151 && AQiIndex <= 200,
+        [styles.aqi_slider10]: AQiIndex >= 201,
+      });
   return (
     <section className={styles.weatherWindSection}>
       <div className={styles.weatherWindContent}>
@@ -29,8 +40,7 @@ const WeatherWind = ({ AQiIndex }) => {
             </div>
             <div className={styles.AqiSlider}>
               <span
-                style={{ left: `${AQiIndex > 95 ? 95 : AQiIndex}px` }}
-                className={styles.sliderStick}
+                className={activeClassnamesSliderAQi(AQiIndex)}
               ></span>
             </div>
           </div>
