@@ -1,0 +1,44 @@
+.container {
+  background-color: rgba(233, 132, 64, 0.65);
+  padding: 1.4rem;
+  border-radius: 1.6rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  gap: 1.6rem;
+  text-align: left;
+
+  transition: all 0.2s;
+}
+
+.container p,
+.container h3 {
+  color: #fff;
+}
+
+@keyframes feedback {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.feedbackText {
+  letter-spacing: 0.64px;
+}
+
+.feedbackAuthor {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.feedbackAuthor h3 {
+  font-weight: 500;
+}

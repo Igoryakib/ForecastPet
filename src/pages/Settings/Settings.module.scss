@@ -1,0 +1,31 @@
+@import "src/scss/variables.scss";
+
+.window {
+  font-family: $montserrat;
+  padding: 4rem;
+  // box-sizing: border-box;
+
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 2rem;
+
+  width: 63rem;
+  height: fit-content;
+  background-color: #fff;
+  z-index: 999;
+
+  grid-template-columns: 3fr 5fr;
+
+  animation: trans 0.5s;
+}
+
+@keyframes trans {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

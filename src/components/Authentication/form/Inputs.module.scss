@@ -1,0 +1,78 @@
+@import "src/scss/variables.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.6rem;
+}
+
+.container div {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+
+  position: relative;
+}
+
+
+
+.buttonBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row !important;
+
+  margin-top: 1rem;
+  gap: 3rem !important;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row !important;
+
+  cursor: pointer;
+}
+
+.checkbox input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: #fff;
+  /* Not removed via appearance */
+  margin: 0;
+  width: 3.4rem;
+  height: 2.4rem;
+  border: 0.15rem solid #555;
+  border-radius: 0.64rem;
+
+  cursor: pointer;
+}
+
+.checkbox input[type="checkbox"]::before {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1rem 1rem $mainColor;
+  border-radius: 0.32rem;
+}
+
+.checkbox input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+.checkbox input[type="checkbox"] {
+  /* ...existing styles */
+  display: grid;
+  place-content: center;
+}
+
+.checkbox p {
+  font-weight: 500;
+  color: #999;
+  font-size: 1.6rem;
+  pointer-events: none;
+}

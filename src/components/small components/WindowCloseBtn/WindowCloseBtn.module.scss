@@ -1,0 +1,21 @@
+@import "src/scss/variables.scss";
+
+.closeButton {
+  position: absolute;
+  top: -2rem;
+  right: -2rem;
+
+  background-color: #fff;
+  box-shadow: $shadow--smallElements;
+
+  width: 6.4rem;
+  height: 6.4rem;
+  font-size: 3.2rem;
+  border-radius: 99rem;
+  transition: all 0.2s;
+}
+
+.closeButton:hover {
+  box-shadow: $shadow--smallElements-hover;
+  background-color: #efefef;
+}

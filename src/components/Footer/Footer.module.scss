@@ -1,0 +1,24 @@
+@import "../../scss/variables.scss";
+
+.footer {
+  width: 100vw;
+  margin: 0 auto;
+  text-align: center;
+  border-top: 1px solid rgba(85, 85, 85, 0.25);
+  padding: 56px 0 56px 0;
+}
+
+.footerContent {
+  width: 1255px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footerTitle {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: $montserrat;
+  color: $footerTextColor;
+}

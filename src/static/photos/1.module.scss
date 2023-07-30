@@ -1,0 +1,13 @@
+@import "src/scss/variables.scss";
+
+.svg {
+  align-self: center;
+  background: var(
+    --morning-clear,
+    linear-gradient(180deg, #a5f1ff 0%, #d0fff9 100%)
+  );
+  border-radius: 1.6rem;
+
+  width: 28rem;
+  height: auto;
+}

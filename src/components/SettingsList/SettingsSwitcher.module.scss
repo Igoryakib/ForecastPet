@@ -1,0 +1,93 @@
+@import "src/scss/variables.scss";
+
+$wrapper-padding: 0.32rem;
+$switcher-width: 13.2rem;
+
+.labelSwitcher {
+  width: $switcher-width;
+  height: 100%;
+  position: relative;
+  background-color: #fff;
+  border-radius: 100px;
+  border: $border-shadow;
+  box-shadow: $box-shadow;
+  cursor: pointer;
+}
+
+
+.wrapperTemp {
+  height: 100%;
+  display: flex;
+  padding: $wrapper-padding;
+  position: relative;
+  z-index: 2;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inputSwitcher {
+  display: none;
+  &:checked + &::before {
+      content: '';
+      position: absolute;
+      left: calc(100% - 0.4rem);
+      transform: translateX(-100%);
+      background-color: $mainColor;
+
+      width: 4.4rem;
+      height: 4.4rem;
+      border-radius: 99rem;
+      filter: blur(1rem);
+  }
+}
+
+
+.active {
+  position: absolute;
+  display: block;
+
+  height: 4.4rem;
+  width: 4.4rem;
+  background-color: $mainColor;
+  border-radius: 99rem;
+  top: $wrapper-padding;
+  z-index: 1;
+
+  filter: blur(1.2rem);
+  transition: all 0.2s;
+}
+
+.active.left {
+  // transform: translateX(calc(-$switcher-width+$wrapper-padding));
+  left: $wrapper-padding;
+  animation: toLeft 0.5s forwards;
+}
+.active.right {
+  // transform: translateX(calc($switcher-width-$wrapper-padding));
+  right: $wrapper-padding;
+  animation: toRight 0.5s forwards;
+}
+
+@keyframes toLeft {
+  from {
+    left: 0;
+    transform: scale(0.5);
+    // right: $wrapper-padding;
+  }
+  to {
+    transform: scale(1);
+    // left: $wrapper-padding;
+  }
+}
+@keyframes toRight {
+  from {
+    left: 0;
+    transform: scale(0.5);
+    // left: $wrapper-padding;
+  }
+  to {
+    transform: scale(1);
+    // right: $wrapper-padding;
+  }
+}

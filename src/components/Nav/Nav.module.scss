@@ -1,0 +1,150 @@
+@import "src/scss/variables.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+
+  box-shadow: $shadow--smallElements;
+  background-color: #fff;
+
+  position: absolute;
+  left: 7rem;
+  top: 20rem;
+  border-radius: 2rem;
+  z-index: 9999;
+
+  width: 6.4rem;
+}
+
+.button {
+  stroke: #fff;
+  padding: 2.4rem 0;
+  position: relative;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+// .active {
+//   position: relative;
+// }
+
+// .active {             // TODO
+//   z-index: 9;
+// }
+
+// .active::before {       // TODO
+//   content: '';
+//   height: 2rem;
+//   position: absolute;
+//   left: 50%;
+//   top: 50%;
+//   transform: translate(-50%, -50%);
+//   background-color: $mainColor;
+// }
+
+.icon {
+  z-index: 9;
+  height: 100%;
+  transition: all 0.2s;
+}
+
+.active {
+  transform: scale(0.75);
+}
+
+.icon path {
+  transition: all 0.2s;
+}
+
+.active path {
+  stroke: #fff;
+  position: relative;
+  stroke-width: 1.6;
+}
+
+$borderWidth: 0.36rem;
+
+.activeIndicatorBorder {
+  border-left: solid $mainColor $borderWidth;
+  border-top-left-radius: 0.32rem;
+  border-bottom-left-radius: 0.32rem;
+
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 5rem;
+  background-image: linear-gradient(
+    to right,
+    rgba(233, 132, 64, 0.5),
+    #ffffff00
+  );
+
+  animation: border 0.3s;
+}
+
+// .activeIndicatorBorder::before{
+//   content: '';
+//   display: inline;
+//   height: 3.6rem;
+//   width: 3.6rem;
+//   top: 50%;
+//   left: 50%;
+
+//   border-radius: 0.8rem;
+
+//   position: absolute;
+//   transform: translate(-50%, -50%) translateX(-$borderWidth);
+//   background-color: $mainColor;
+// }
+
+@keyframes border {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.activeIndicatorOverlay {
+  // height: 3.2rem;
+  // width: 3.2rem;
+
+  // height: 3.6rem;
+  // width: 3.6rem;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+  border-radius: 0.8rem;
+
+  position: absolute;
+  background-color: $mainColor;
+
+  animation: overlay 0.2s 0.075s ease-out forwards;
+}
+
+@keyframes overlay {
+  0% {
+    height: 2.6rem;
+    width: 2.6rem;
+
+    // transform: translate(-50%, -50%);
+  }
+  100% {
+    height: 3.6rem;
+    width: 3.6rem;
+    // transform: scale(1);
+  }
+}
