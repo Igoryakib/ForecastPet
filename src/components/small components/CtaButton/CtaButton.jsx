@@ -1,6 +1,6 @@
 import styles from "./CtaButton.module.scss";
 
-const CtaButton = function ({ children, onClick, isDisabled = false, type }) {
+const CtaButton = function ({ children, onClick, isDisabled = false, type = 'signup' }) {
   return (
     <button
       onClick={onClick}

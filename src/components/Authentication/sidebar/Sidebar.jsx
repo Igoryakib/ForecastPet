@@ -35,7 +35,6 @@ const clients = [
 const Sidebar = function ({ activeFeedback, setActiveFeedback, type }) {
   const [advice, setAdvice] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  console.log(isLoading);
 
   useEffect(() => {
     if (type === "login") {

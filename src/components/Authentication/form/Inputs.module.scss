@@ -10,27 +10,11 @@
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+
+  position: relative;
 }
 
-.label {
-  color: #999;
-  font-family: Montserrat;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-.input {
-  border-radius: 8px;
-  border: 0.4px solid #777;
-  background: #fff;
-  height: 5.2rem;
-  width: 80%;
-  padding: 1.6rem;
-  font-family: inherit;
-  font-weight: 500;
-  font-size: 1.6rem;
-}
+
 
 .buttonBox {
   display: flex;
@@ -47,6 +31,8 @@
   align-items: center;
   justify-content: center;
   flex-direction: row !important;
+
+  cursor: pointer;
 }
 
 .checkbox input[type="checkbox"] {
@@ -88,4 +74,5 @@
   font-weight: 500;
   color: #999;
   font-size: 1.6rem;
+  pointer-events: none;
 }

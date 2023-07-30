@@ -15,6 +15,7 @@ import SignupContent from "../pages/Authentication/SignupContent.jsx";
 import Settings from "../pages/Settings/Settings.jsx";
 import NotFoundPage from "../pages/NotFoundPage";
 import Nav from "./Nav/Nav.jsx";
+import routes from '../utils/routes.js'
 
 const App = () => {
   return (
@@ -23,13 +24,13 @@ const App = () => {
         <Nav />
         <Routes>
           <Route index element={<HomePage />} />
-          <Route path="auth" element={<AuthPage />}>
-            <Route index element={<Navigate to="login" />} />
-            <Route path="login" element={<LoginContent />} />
-            <Route path="signup" element={<SignupContent />} />
+          <Route path={routes.authPage} element={<AuthPage />}>
+            <Route index element={<Navigate to={routes.loginContent} />} />
+            <Route path={routes.loginContent} element={<LoginContent />} />
+            <Route path={routes.signupContent} element={<SignupContent />} />
           </Route>
-          <Route path="settings" element={<Settings />} />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path={routes.settingsPage} element={<Settings />} />
+          <Route path={routes.notFoundPage} element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </>

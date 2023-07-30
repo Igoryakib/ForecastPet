@@ -1,0 +1,27 @@
+@import 'src/scss/variables.scss';
+
+.label {
+  color: #999;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.input {
+  border-radius: 8px;
+  border: 0.4px solid #777;
+  background: #fff;
+  height: 5.2rem;
+  width: 80%;
+  padding: 1.6rem;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 1.6rem;
+  position: relative;
+
+  transition: all 0.2s;
+}
+.input:focus {
+  border: $mainColor 2px solid;
+}
