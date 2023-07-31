@@ -20,11 +20,16 @@
     align-items: center;
 }
 
+.aqiContent {
+    text-align: left;
+}
+
 .weatherWindTitle {
     color: $footerTextColor;
     font-family: $montserrat;
     font-size: 32px;
     font-weight: 400;
+    margin-bottom: 20px;
 }
 
 .weatherAqiComponents {
@@ -47,6 +52,19 @@
     font-size: 32px;
     font-weight: 400;
     margin-right: 13px;
+    & > span {
+        font-size: 16px;
+    }
+}
+
+.levelCo {
+    width: 39px;
+    height: 24px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $footerTextColor;
 }
 
 .weatherAQIIndicator {
@@ -141,4 +159,12 @@
 
 .aqi_slider10 {
     left: 94px;
+}
+
+.levelO3Indicator {
+    width: 132px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 50px;
 }

@@ -11,7 +11,7 @@ const  App = () => {
     <>
       <Header />
       <WeatherSection />
-      <WeatherWind AQiIndex={50}/>
+      <WeatherWind AQiIndex={50} levelCo={15} levelO3={60}/>
       <Footer />
     </>
   );
