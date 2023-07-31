@@ -1,9 +1,9 @@
 @import "../../scss/variables.scss";
 
 .header {
-    width: 1315px;
-    padding: 45px 0 0 0;
-    margin: 0 auto 55px;
+    width: 131.5rem;
+    padding: 4.8rem 3.2rem;
+    margin: 0 auto 5.5rem;
     text-align: center;
     display: flex;
     justify-content: space-between;
@@ -11,7 +11,7 @@
 }
 
 .profile {
-    width: 422px;
+    width: 42.2rem;
     text-align: center;
     display: flex;
     justify-content: space-between;
@@ -19,8 +19,8 @@
 }
 
 .profileAvatar {
-    width: 92px;
-    height: 92px;
+    width: 9.2rem;
+    height: 9.2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,14 +34,14 @@
 .ellipse {
     position: absolute;
     bottom: 0;
-    left: -4px;
+    left: -0.4rem;
     z-index: 1;
 }
 
 .profileText {
-    width: 332px;
+    width: 33.2rem;
     text-align: left;
-    margin: 17px 0 0 0;
+    margin: 1.7rem 0 0 0;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -49,21 +49,21 @@
 }
 
 .subtitle {
-    font-size: 16px;
+    font-size: 1.6rem;
     font-weight: 400;
     font-family: $montserrat;
     color: $footerTextColor;
 }
 
 .title {
-    font-size: 24px;
+    font-size: 2.4rem;
     font-weight: 700;
     font-family: $montserrat;
     color: $footerTextColor;
 }
 
 .headerControls {
-    width: 631px;
+    width: 64rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
