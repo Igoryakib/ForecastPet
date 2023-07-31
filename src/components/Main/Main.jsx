@@ -1,15 +1,19 @@
-import WeatherSection from '../WeatherSection/WeatherSection';
-import WeatherWind from '../WeatherWind/WeatherWind';
-import styles from './Main.module.scss';
+import ForecastLater from "../Forecasts/ForecastLater/ForecastLater";
+import ForecastTomorrow from "../Forecasts/ForecastTomorrow/ForecastTomorrow";
+import WeatherSection from "../WeatherSection/WeatherSection";
+import WeatherWind from "../WeatherWind/WeatherWind";
+import styles from "./Main.module.scss";
+import "./Queries.module.css";
 
-const Main = function(){
+const Main = function () {
   return (
-    <main className='grid grid--2-cols'>
+    <main className="grid">
       <WeatherSection />
-      <div>tomorrow</div>
-      <WeatherWind AQiIndex={50}/>
+      <ForecastTomorrow />
+      <WeatherWind AQiIndex={50} levelCo={15} levelO3={60} />
+      <ForecastLater />
     </main>
-  )
-}
+  );
+};
 
-export default Main
+export default Main;

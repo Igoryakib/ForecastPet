@@ -1,16 +1,15 @@
-@import "../../scss/variables.scss";
+@import "src/scss/variables.scss";
 
 .labelSwitcher {
-  width: 14.3rem;
-  height: 4rem;
+  width: 12rem;
+  height: 2.7rem;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  background-color: $whiteColor;
-  border-radius: 10rem;
-  border: $border-shadow;
-  box-shadow: $box-shadow;
+  background-color: #fff;
+  border-radius: 0.8rem;
+  box-shadow: $box-shadow--containers;
   cursor: pointer;
 }
 
@@ -18,12 +17,13 @@
   display: none;
   &:checked + .wrapperTemp {
     &::before {
+      width: 6.4rem;
       left: calc(100% - 3px);
       transform: translate(-100%, -50%);
     }
   }
   &:checked + .wrapperTemp > .tempColorD {
-    color: $whiteColor;
+    color: #555;
   }
 
   &:checked + .wrapperTemp > .tempColorW {
@@ -32,7 +32,7 @@
 }
 
 .wrapperTemp {
-  width: 83px;
+  width: 9.2rem;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -43,44 +43,48 @@
     display: block;
     content: "";
     position: absolute;
-    width: 7.3rem;
-    height: 3.4rem;
-    border-radius: 100px;
-    background-color: $orangeColor;
-    box-shadow: 0 0 0.4rem 0 $orangeColor;
+    width: 5.6rem;
+    height: 2rem;
+    border-radius: 0.6rem;
+    background-color: #d8d8d8;
+    box-shadow: 0 0 0.4rem 0 #555;
     z-index: -1;
     top: 50%;
     transform: translateY(-50%);
-    left: 0.3rem;
-    transition: 0.2s;
+    left: 0.32rem;
+    transition: 0.3s;
   }
   &:active::before {
-    width: 4.8rem;
+    width: 5.4rem !important;
   }
 }
 
 .tempText {
-  color: $footerTextColor;
-  font-size: 20px;
-  font-weight: 700;
+  color: #555;
+  font-size: 1.4rem;
+  font-weight: 500;
   font-family: $monda;
   transition: 0.2s;
 }
 
 .tempColorW {
-  color: $whiteColor;
+  color: #555;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
 
 .tempColorD {
-  color: $footerTextColor;
+  color: #555;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }

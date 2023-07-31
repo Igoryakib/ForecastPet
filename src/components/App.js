@@ -1,11 +1,10 @@
 import React from "react";
 
 import Footer from "./Footer/Footer";
-import Header from './Header/Header';
+import Header from "./Header/Header";
 import Main from "./Main/Main";
 
-
-const  App = () => {
+const App = () => {
   return (
     <>
       <Header />
@@ -13,6 +12,6 @@ const  App = () => {
       <Footer />
     </>
   );
-}
+};
 
 export default App;

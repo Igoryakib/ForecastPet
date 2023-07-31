@@ -4,7 +4,7 @@ import classnames from "classnames";
 import Vector from "../../static/Vector.svg";
 import VectorEllipse from "../../static/VectorEllipse.svg";
 
-const LangSwitcher = ({setLang}) => {
+const LangSwitcher = ({ setLang }) => {
   const [vector, setVector] = useState();
   const [langContainer, setLangContainer] = useState();
   const [wrapperLang, setWrapperLang] = useState();

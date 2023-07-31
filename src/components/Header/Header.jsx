@@ -9,13 +9,13 @@ import SearchForm from "../SearchForm/SearchForm";
 const Header = () => {
   const [temperature, setTemperature] = useState(false);
   const [lang, setLang] = useState("укр");
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
   const onSubmitFn = (event) => {
     event.preventDefault();
     const data = {
-      value: searchValue
+      value: searchValue,
     };
-    console.log(data)
+    console.log(data);
   };
   return (
     <header className={styles.header}>

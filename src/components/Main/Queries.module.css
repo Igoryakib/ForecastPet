@@ -1,0 +1,5 @@
+@media (max-width: 100em) {
+  main {
+    margin: 0 16rem;
+  }
+}

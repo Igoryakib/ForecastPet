@@ -9,7 +9,7 @@ const WeatherSection = () => {
     const mouseWheel = document.querySelector(`.${styles.timeWeather}`);
 
     mouseWheel.addEventListener("wheel", function (e) {
-      const race = 15; // How many pixels to scroll
+      const race = 8; // How many pixels to scroll
 
       if (e.deltaY > 0)
         // Scroll right
@@ -22,17 +22,19 @@ const WeatherSection = () => {
   return (
     <section className={styles.weatherSection}>
       <div className={styles.weatherInfo}>
-        <img src={partlyCloudly} alt="icon" />
-        <div className={classnames(styles.weatherInfoText, styles.textAlign)}>
-          <h3 className={styles.weatherInfoTitle}>Полтава</h3>
-          <span
-            className={classnames(
-              styles.weatherInfoSubtitle,
-              styles.textPadding
-            )}
-          >
-            Україна
-          </span>
+        <div className={styles.weatherCountry}>
+          <img src={partlyCloudly} alt="icon" />
+          <div className={classnames(styles.weatherInfoText, styles.textAlign)}>
+            <h3 className={styles.weatherInfoTitle}>Полтава</h3>
+            <span
+              className={classnames(
+                styles.weatherInfoSubtitle,
+                styles.textPadding
+              )}
+            >
+              Україна
+            </span>
+          </div>
         </div>
         <div className={styles.weatherInfoText}>
           <h3 className={classnames(styles.weatherInfoTitle, styles.textSize)}>

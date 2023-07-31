@@ -1,7 +1,9 @@
-@import 'src/scss/variables.scss';
+@import "src/scss/variables.scss";
 
 main {
-  padding: 3.2rem 4.4rem;
-  
-  // display: ;
+  margin: 0 auto auto;
+  max-width: 130rem;
+  padding: 0rem 6.4rem 0rem 3.2rem;
+  grid-template-columns: 3fr 1fr;
+  gap: 2.4rem;
 }

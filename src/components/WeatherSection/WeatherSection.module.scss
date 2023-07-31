@@ -1,69 +1,113 @@
 @import "../../scss/variables.scss";
 
 .weatherSection {
-    width: 916px;
-    height: 282px;
-    padding: 28px 31px;
-    margin: 0 auto 23px;
-    border-radius: 54px;
-    background-color: $whiteColor;
-    box-shadow: $box-shadow;
+  max-width: $mainSectionWidth;
+  max-height: $sectionHeight;
 
-    
+  padding: 0.8rem 3.2rem 2.2rem 3.2rem;
+  margin: 0 auto 0.8rem auto;
+  border-radius: 5.4rem;
+  background-color: $whiteColor;
+  box-shadow: $box-shadow;
+  position: relative;
 }
 
 .weatherInfo {
-    width: 851px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto 15px;
+  width: 82rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .weatherInfoText {
-    width: fit-content;
+  width: fit-content;
 }
 
 .weatherInfoTitle {
-    color: $footerTextColor;
-    font-family: $montserrat;
-    font-size: 32px;
-    font-weight: 400;
-    margin-bottom: 5px;
-    & > span {
-        font-size: 22px;
-    }
+  color: $footerTextColor;
+  font-family: $montserrat;
+  font-size: 3.2rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  & > span {
+    font-size: 2.2rem;
+  }
 }
 
 .weatherInfoSubtitle {
-    color: $cardTextColor;
-    font-family: $montserrat;
-    font-size: 18px;
-    font-weight: 400;
+  color: $cardTextColor;
+  font-family: $montserrat;
+  font-size: 1.8rem;
+  font-weight: 400;
 }
 
 .textSize {
-    font-size: 36px;
+  font-size: 3.6rem;
 }
 
 .textAlign {
-    text-align: left;
+  text-align: left;
 }
 
 .textPadding {
-    padding-left: 3px;
+  padding-left: 0.3rem;
 }
 
 .timeWeather {
-    width: 887px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    overflow: scroll;
-    scrollbar-width: none;  /* Firefox */
-    -ms-overflow-style: none;
-    &::-webkit-scrollbar {
-        display: none;
-    }
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.weatherSection::before {
+  content: "";
+  height: 16rem;
+  width: 8rem;
+  // background-color: rgba(255, 255, 255, 0.5);
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 5%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.5) 80%,
+    rgba(255, 255, 255, 0)
+  );
+  filter: blur(0.64rem);
+
+  position: absolute;
+  left: 1.6rem;
+  bottom: 1rem;
+  border-radius: 2rem;
+}
+.weatherSection::after {
+  content: "";
+  height: 16rem;
+  width: 8rem;
+  // background-color: rgba(255, 255, 255, 0.5);
+  background-image: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 1) 5%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.5) 80%,
+    rgba(255, 255, 255, 0)
+  );
+  filter: blur(0.64rem);
+
+  position: absolute;
+  right: 1.6rem;
+  bottom: 1rem;
+  border-radius: 2rem;
+}
+
+.weatherCountry {
+  display: flex;
+  gap: 2.4rem;
+  align-items: center;
 }
