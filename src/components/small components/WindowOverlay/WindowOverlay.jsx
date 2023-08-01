@@ -1,13 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./WindowOverlay.module.scss";
+import { useEffect } from "react";
 
 const WindowOverlay = function () {
-  const navigate = useNavigate()
-  // document.querySelector('#overlay').addEventListener('click', () => {
-  //   navigate('/')
-  // })
+  const navigate = useNavigate();
 
-  return <div id='overlay' className={styles.overlay}></div>;
+  useEffect(() => {
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') navigate('/')
+    })
+  }, [])
+
+  return <div onClick={() => navigate('/')} id="overlay" className={styles.overlay}></div>;
 };
 
 export default WindowOverlay;

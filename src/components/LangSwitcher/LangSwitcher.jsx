@@ -46,7 +46,7 @@ const LangSwitcher = ({ setLang }) => {
     }
   };
   return (
-    <div className={styles.container} >
+    <div className={styles.container}>
       <div
         className={styles.changeLangContainer}
         onClick={(event) => onClickLang(event)}
@@ -60,7 +60,10 @@ const LangSwitcher = ({ setLang }) => {
           </h4>
           <img className={styles.vector} src={Vector} alt="icon" />
         </div>
-        <h4 className={classnames(styles.selectOption, styles.langEn)} type="en">
+        <h4
+          className={classnames(styles.selectOption, styles.langEn)}
+          type="en"
+        >
           eng
         </h4>
         <img className={styles.vectorEllipse} src={VectorEllipse} alt="icon" />

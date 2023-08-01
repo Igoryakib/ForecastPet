@@ -3,12 +3,12 @@
   display: inline;
   padding: 0.6rem 1.2rem;
   background-color: rgba(217, 43, 43, 0.25);
-  border: solid 0.14rem #D92B2B;
+  border: solid 0.14rem #d92b2b;
   border-radius: 0.6rem;
 
   color: #000;
   font-size: 1.2rem;
-  
+
   position: absolute;
   left: 14rem;
   top: -0.2rem;
@@ -16,17 +16,17 @@
   animation: show-up 0.2s;
 }
 
-.validate--short::before{
+.validate--short::before {
   content: "🔐 дуже короткий пароль ! ";
   display: inline;
   padding: 0.6rem 1.2rem;
   background-color: rgba(233, 132, 64, 0.25);
-  border: solid 0.14rem #E98540;
+  border: solid 0.14rem #e98540;
   border-radius: 0.6rem;
 
   color: #000;
   font-size: 1.2rem;
-  
+
   position: absolute;
   left: 14rem;
   top: -0.2rem;
@@ -34,17 +34,17 @@
   animation: show-up 0.2s;
 }
 
-.validate--email::before{
+.validate--email::before {
   content: "⚠️ некоректна пошта ! ";
   display: inline;
   padding: 0.6rem 1.2rem;
   background-color: rgba(233, 132, 64, 0.25);
-  border: solid 0.14rem #E98540;
+  border: solid 0.14rem #e98540;
   border-radius: 0.6rem;
 
   color: #000;
   font-size: 1.2rem;
-  
+
   position: absolute;
   left: 14rem;
   top: -0.2rem;

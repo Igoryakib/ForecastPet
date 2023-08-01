@@ -14,7 +14,6 @@ $switcher-width: 13.2rem;
   cursor: pointer;
 }
 
-
 .wrapperTemp {
   height: 100%;
   display: flex;
@@ -29,19 +28,18 @@ $switcher-width: 13.2rem;
 .inputSwitcher {
   display: none;
   &:checked + &::before {
-      content: '';
-      position: absolute;
-      left: calc(100% - 0.4rem);
-      transform: translateX(-100%);
-      background-color: $mainColor;
+    content: "";
+    position: absolute;
+    left: calc(100% - 0.4rem);
+    transform: translateX(-100%);
+    background-color: $mainColor;
 
-      width: 4.4rem;
-      height: 4.4rem;
-      border-radius: 99rem;
-      filter: blur(1rem);
+    width: 4.4rem;
+    height: 4.4rem;
+    border-radius: 99rem;
+    filter: blur(1rem);
   }
 }
-
 
 .active {
   position: absolute;

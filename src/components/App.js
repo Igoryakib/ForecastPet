@@ -15,7 +15,7 @@ import SignupContent from "../pages/Authentication/SignupContent.jsx";
 import Settings from "../pages/Settings/Settings.jsx";
 import NotFoundPage from "../pages/NotFoundPage";
 import Nav from "./Nav/Nav.jsx";
-import routes from '../utils/routes.js'
+import routes from "../utils/routes.js";
 
 const App = () => {
   return (
@@ -37,4 +37,4 @@ const App = () => {
   );
 };
 
-export default App
+export default App;

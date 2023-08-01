@@ -4,8 +4,7 @@ import classnames from "classnames";
 
 const SettingsSwitcher = function ({ textArray }) {
   const [value, setValue] = useState(false);
-  console.log(value)
-  
+
   return (
     <label className={styles.labelSwitcher}>
       <input
@@ -22,7 +21,9 @@ const SettingsSwitcher = function ({ textArray }) {
           {textArray[1]}
         </span>
       </div>
-      <span className={`${styles.active} ${value ? styles.right : styles.left}`}></span>
+      <span
+        className={`${styles.active} ${value ? styles.right : styles.left}`}
+      ></span>
     </label>
   );
 };

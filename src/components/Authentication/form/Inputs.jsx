@@ -7,73 +7,79 @@ const Inputs = function ({ type }) {
   // state for checkbox in the bottom of the form
   const [isAgree, setIsAgree] = useState(false);
 
+  // ⭕️⭕️⭕️⭕️⭕️ Caution, to much unclear code below ⭕️⭕️⭕️⭕️⭕️⭕️
+  //////////////////////////////////////////
+  //////////// FORM VALIDATION /////////////
+  //////////////////////////////////////////
 
-
-// ⭕️⭕️⭕️⭕️⭕️ Caution, to much unclear code below ⭕️⭕️⭕️⭕️⭕️⭕️
-//////////////////////////////////////////
-//////////// FORM VALIDATION /////////////
-//////////////////////////////////////////
-  
   const inputs = useRef(new Set());
   const checkbox = useRef();
 
   // function for validation UI change
-  const handleInputsValidation = function(){
-    inputs.current = [...inputs.current]    
-    inputs.current.map(el => {
-      const emailInput = inputs.current.filter(i => i.type === 'email')[0]
+  const handleInputsValidation = function () {
+    inputs.current = [...inputs.current];
+    inputs.current.map((el) => {
+      const emailInput = inputs.current.filter((i) => i.type === "email")[0];
 
-      const isEmailGood = emailInput?.value.split('@')[0].length !== 0 && emailInput?.value.split('@').length === 2 && emailInput?.value.split('@')[1].length >= 3 && emailInput?.value.split('@')[1].includes('.') && emailInput?.value.split('@')[1].at(-1) !== '.' && emailInput?.value.split('@')[1].split('.')[0].length !== 0
+      const isEmailGood =
+        emailInput?.value.split("@")[0].length !== 0 &&
+        emailInput?.value.split("@").length === 2 &&
+        emailInput?.value.split("@")[1].length >= 3 &&
+        emailInput?.value.split("@")[1].includes(".") &&
+        emailInput?.value.split("@")[1].at(-1) !== "." &&
+        emailInput?.value.split("@")[1].split(".")[0].length !== 0;
 
       // some visual effect to any kind of validation
-      const errorUI = function(){
-        el.style.borderWidth = '1.6px'
-        el.style.borderColor = '#D92B2B'
-        el.classList.add('animated')
-        const removeAnim = setTimeout(() => el.classList.remove('animated'), 500, '')
-      }
+      const errorUI = function () {
+        el.style.borderWidth = "1.6px";
+        el.style.borderColor = "#D92B2B";
+        el.classList.add("animated");
+        const removeAnim = setTimeout(
+          () => el.classList.remove("animated"),
+          500,
+          ""
+        );
+      };
       // (initial/default) visual effect for only onMounted or value eligible input fields
-      const initUI = function(){
-        el.style.borderColor = '#777';
-        el.style.borderWidth = '1.2px';
-        el.parentElement.className = ''
+      const initUI = function () {
+        el.style.borderColor = "#777";
+        el.style.borderWidth = "1.2px";
+        el.parentElement.className = "";
+      };
+
+      if (el && el.value === "") {
+        errorUI();
+        el.parentElement.classList.add("validate--empty");
+      } else if (el && el.value !== "") {
+        initUI();
       }
 
-      if (el && el.value === '') {
-        errorUI(); 
-        el.parentElement.classList.add('validate--empty')        
-      } else if (el && el.value !== ''){
-        initUI()
+      if (el?.type === "password" && el.value !== "" && el.value.length < 7) {
+        errorUI();
+        el.parentElement.classList.add("validate--short");
       }
-
-      if (el?.type === 'password' && el.value !== '' && el.value.length < 7){
-        errorUI(); 
-        el.parentElement.classList.add('validate--short')        
+      if (el?.type === "email" && el.value !== "" && !isEmailGood) {
+        errorUI();
+        el.parentElement.classList.add("validate--email");
       }
-      if (el?.type === 'email' && el.value !== '' && !isEmailGood ){
-        errorUI(); 
-        el.parentElement.classList.add('validate--email')        
-      }
-    })
-      inputs.current = new Set([...inputs.current])
+    });
+    inputs.current = new Set([...inputs.current]);
+  };
 
-  }
-  
-//////////////////////////////////////////
-//////////////////////////////////////////
-//////////////////////////////////////////
-//////////////////////////////////////////
-
+  //////////////////////////////////////////
+  //////////////////////////////////////////
+  //////////////////////////////////////////
+  //////////////////////////////////////////
 
   return (
-    <form className={styles.container} onSubmit={(e) => e.preventDefault()} >
+    <form className={styles.container} onSubmit={(e) => e.preventDefault()}>
       {type === "signup" ? (
-          <Input label="Ім'я" inputs={inputs} type='text' />
+        <Input label="Ім'я" inputs={inputs} type="text" />
       ) : (
         ""
       )}
-        <Input label="Email" inputs={inputs} type='Email' />
-        <Input label="Пароль" inputs={inputs} type='password' />
+      <Input label="Email" inputs={inputs} type="Email" />
+      <Input label="Пароль" inputs={inputs} type="password" />
       <div className={`flex-justify-left ${styles.buttonBox}`}>
         <CtaButton
           onClick={(e) => {
@@ -86,11 +92,20 @@ const Inputs = function ({ type }) {
           {type === "signup" ? "Зареєструватися" : "Увійти"}
         </CtaButton>
         {type === "signup" ? (
-          <div className={styles.checkbox} onClick={(e) => {
-              setIsAgree(isAgree => !isAgree)
+          <div
+            className={styles.checkbox}
+            onClick={(e) => {
+              setIsAgree((isAgree) => !isAgree);
               checkbox.current.checked = !checkbox.current.checked;
-            }} >
-            <input type="checkbox" ref={checkbox} onChange={() => checkbox.current.checked = !checkbox.current.checked} />
+            }}
+          >
+            <input
+              type="checkbox"
+              ref={checkbox}
+              onChange={() =>
+                (checkbox.current.checked = !checkbox.current.checked)
+              }
+            />
             <p>даю згоду на обробку персональних даних</p>
           </div>
         ) : (

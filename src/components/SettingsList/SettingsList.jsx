@@ -179,11 +179,7 @@ const SettingsList = function () {
                   y2="39.2143"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop
-                    offset="0.320459"
-                    stopColor="white"
-                    stopOpacity="0.1"
-                  />
+                  <stop offset="0.320459" stopColor="white" stopOpacity="0.1" />
                   <stop
                     offset="0.969904"
                     stopColor="#FEFFCA"

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import HomePage from "../Homepage/HomePage";
 import styles from "./AuthPage.module.scss";

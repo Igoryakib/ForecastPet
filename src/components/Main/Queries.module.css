@@ -1,6 +1,6 @@
 @media (max-width: 100em) {
   main {
     margin: 0;
-    transform: translate(10%, -10%) scale(.9);
+    transform: translate(10%, -10%) scale(0.9);
   }
 }

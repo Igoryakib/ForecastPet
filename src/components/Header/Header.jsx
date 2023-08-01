@@ -35,7 +35,7 @@ const Header = () => {
           searchValue={searchValue}
           setSearchValue={setSearchValue}
         />
-        <div className={styles.langSwitcherContainer} >
+        <div className={styles.langSwitcherContainer}>
           <LangSwitcher setLang={setLang} />
         </div>
         <Switcher value={temperature} setValue={setTemperature} />
