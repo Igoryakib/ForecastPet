@@ -1,7 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./WindowOverlay.module.scss";
 
 const WindowOverlay = function () {
-  return <div className={styles.overlay}></div>;
+  const navigate = useNavigate()
+  // document.querySelector('#overlay').addEventListener('click', () => {
+  //   navigate('/')
+  // })
+
+  return <div id='overlay' className={styles.overlay}></div>;
 };
 
 export default WindowOverlay;

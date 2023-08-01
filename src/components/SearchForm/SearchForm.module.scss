@@ -1,0 +1,33 @@
+@import "../../scss/variables.scss";
+
+.searchFormInput {
+  padding: 8px 43px;
+  width: 341px;
+  height: 40px;
+  background-color: $whiteColor;
+  box-shadow: $box-shadow;
+  border: $border-shadow;
+  border-radius: 100px;
+  &::placeholder {
+    position: relative;
+    left: 6px;
+    color: $placeholderColor;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: $monda;
+  }
+}
+
+.searchForm {
+  width: 341px;
+  height: 40px;
+  position: relative;
+}
+
+.formBtn {
+  position: absolute;
+  bottom: 7px;
+  left: 10px;
+  background-color: transparent;
+  cursor: pointer;
+}

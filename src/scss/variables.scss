@@ -1,22 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap");
 
-$montserrat: 'Montserrat', sans-serif;
-$monda: 'Monda', sans-serif;
+$montserrat: "Montserrat", sans-serif;
+$monda: "Monda", sans-serif;
 $footerTextColor: rgba(85, 85, 85, 1);
+$placeholderColor: rgba(204, 204, 204, 1);
 $cardColor: rgba(207, 231, 233, 1);
 $cardTextColor: rgba(119, 119, 119, 1);
 $orangeColor: rgba(233, 133, 64, 1);
 $whiteColor: rgba(255, 255, 255, 1);
 $whiteGray: rgba(216, 216, 216, 1);
 
+$box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.25);
+$box-shadow--containers: 0 0 0.8rem 0 rgba(0, 0, 0, 0.25);
+$border-shadow: .1rem solid rgba(0, 0, 0, 0.1);
+$shadow--smallElements: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+$shadow--smallElements-hover: 0px 0px 6px 2px rgba(0, 0, 0, 0.25);
+
 $greyColor: #555;
 $mainColor: #e98540;
 $mainColorDarker: #bb6830;
 
-$shadow--smallElements: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
-$shadow--smallElements-hover: 0px 0px 6px 2px rgba(0, 0, 0, 0.25);
-
-$whiteGray: rgba(216, 216, 216, 1);
-$box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.25);
-$border-shadow: 1px solid rgba(0, 0, 0, 0.1);
+// dimensions for sections on HomePage
+$sectionHeight: 28.2rem;
+$mainSectionWidth: 91.6rem;
+$sideSectionWidth: 23rem;

@@ -1,0 +1,20 @@
+@import "src/scss/variables.scss";
+
+main {
+  margin: 0 auto 0 auto;
+  max-width: 130rem;
+  // margin: 0 16rem;
+  padding: 0rem 6.4rem 0rem 3.2rem;
+  grid-template-columns: 3fr 1fr;
+  gap: 2.4rem;
+
+  transform: scale(1) translateY(-5%);
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}

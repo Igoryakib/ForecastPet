@@ -18,8 +18,9 @@
   display: none;
   &:checked + .wrapperTemp {
     &::before {
+      width: 3.6rem;
       left: calc(100% - 3px);
-      transform: translateX(-100%);
+      transform: translate(-100%, -50%);
     }
   }
   &:checked + .wrapperTemp > .tempColorD {
@@ -49,12 +50,13 @@
     background-color: #d8d8d8;
     box-shadow: 0px 0px 4px 0px #555;
     z-index: -1;
-    top: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
     left: 0.5rem;
     transition: 0.3s;
   }
   &:active::before {
-    width: 3.6rem;
+    width: 3.2rem !important;
   }
 }
 
@@ -68,8 +70,22 @@
 
 .tempColorW {
   color: #555;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
 
 .tempColorD {
   color: #555;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }

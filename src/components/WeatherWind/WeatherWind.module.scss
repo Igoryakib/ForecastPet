@@ -1,0 +1,180 @@
+@import "../../scss/variables.scss";
+
+.weatherWindSection {
+  max-width: $mainSectionWidth;
+  height: $sectionHeight;
+  border-radius: 5.4rem;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("../../static/Weather.svg");
+  margin: 0 auto;
+  text-align: center;
+  padding: 2rem 3rem 2.8rem 3rem;
+}
+
+.weatherWindContent {
+  width: 85rem;
+  display: flex;
+  align-items: center;
+  gap: 6.4rem;
+}
+
+.weatherWindHeading {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.aqiContent {
+  text-align: left;
+}
+
+.weatherWindTitle {
+  color: $footerTextColor;
+  font-family: $montserrat;
+  font-size: 3.2rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.weatherAqiComponents {
+  width: 25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weatherAQIWrapper {
+  width: 10.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weatherAQIIndex {
+  color: $footerTextColor;
+  font-family: $monda;
+  font-size: 3.2rem;
+  font-weight: 400;
+  margin-right: 1.3rem;
+  // inline-size: max-content;
+  // overflow-wrap: nowrap;
+  // word-wrap: nowrap;
+  inline-size: max-content;
+  & > span {
+    font-size: 1.6rem;
+  }
+}
+
+.levelCo {
+  width: 3.9rem;
+  height: 2.4rem;
+  border-radius: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $footerTextColor;
+}
+
+.weatherAQIIndicator {
+  width: 5.3rem;
+  height: 2.4rem;
+  border-radius: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $footerTextColor;
+}
+
+.aqi_color100 {
+  background-color: rgb(4, 248, 14);
+}
+
+.aqi_color90 {
+  background-color: rgb(79, 231, 37);
+}
+
+.aqi_color70 {
+  background-color: rgb(195, 209, 67);
+}
+
+.aqi_color50 {
+  background-color: rgb(229, 196, 84);
+}
+
+.aqi_color40 {
+  background-color: rgb(222, 104, 59);
+}
+
+.aqi_color20 {
+  background-color: rgb(219, 65, 49);
+}
+
+.aqi_color10 {
+  background-color: rgb(217, 43, 43);
+}
+
+.weatherAQIIcon {
+  color: $whiteColor;
+  font-size: 1.2rem;
+  font-family: $monda;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.AqiSlider {
+  width: 11.7rem;
+  height: 2.4rem;
+  position: relative;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #04f80e 0%, #e5c454 44.85%, #d92b2b 100%);
+  box-shadow: 0px 0px 0.8rem 0.2rem rgba(0, 0, 0, 0.25);
+}
+
+.sliderStick {
+  width: 2.3rem;
+  height: 0.2rem;
+  background-color: rgba(85, 85, 85, 0.75);
+  transform: rotate(90deg);
+  position: absolute;
+  border-radius: 5px;
+  top: 10.5px;
+  left: 0;
+  transition: left 0.2s;
+}
+
+.aqi_slider100 {
+  left: 0;
+}
+.aqi_slider90 {
+  left: 1rem;
+}
+
+.aqi_slider70 {
+  left: 3rem;
+}
+
+.aqi_slider50 {
+  left: 5rem;
+}
+
+.aqi_slider40 {
+  left: 6.6rem;
+}
+
+.aqi_slider20 {
+  left: 8.5rem;
+}
+
+.aqi_slider10 {
+  left: 9.4rem;
+}
+
+.levelO3Indicator {
+  width: 13.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 5rem;
+}

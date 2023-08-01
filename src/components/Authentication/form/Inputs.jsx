@@ -9,7 +9,7 @@ const Inputs = function ({ type }) {
 
 
 
-// ⭕️⭕️⭕️⭕️⭕️ Cautios, to much unclear code below ⭕️⭕️⭕️⭕️⭕️⭕️
+// ⭕️⭕️⭕️⭕️⭕️ Caution, to much unclear code below ⭕️⭕️⭕️⭕️⭕️⭕️
 //////////////////////////////////////////
 //////////// FORM VALIDATION /////////////
 //////////////////////////////////////////

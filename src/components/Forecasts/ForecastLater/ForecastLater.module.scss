@@ -1,0 +1,41 @@
+@import "src/scss/variables.scss";
+
+.section {
+  max-width: $sideSectionWidth;
+  height: max-content;
+  transition: height 0.5s ease-out;
+  padding: 2rem;
+
+  position: relative;
+  border-radius: 1.6rem 3.6rem 3.6rem 3.6rem;
+  background-color: #fff;
+  box-shadow: $box-shadow--containers;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.6rem;
+
+  
+  margin-bottom: 14rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  // transform: translate(-50%, -50%);
+}
+
+.heading {
+  font-size: 1.4rem;
+  font-weight: 600;
+}

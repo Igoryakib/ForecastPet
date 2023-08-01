@@ -1,13 +1,16 @@
 import React from "react";
-
-import WeatherCard from "../../components/WeatherCard/WeatherCard";
-import Footer from "../../components/Footer/Footer";
 import styles from "./HomePage.module.scss";
+
+import Header from '../../components/Header/Header'
+import Main from '../../components/Main/Main'
+import Footer from '../../components/Footer/Footer'
+
+
 const HomePage = () => {
   return (
     <div className={styles.homepage}>
-      <h1 className="App">Happy hacking ! :)</h1>
-      <WeatherCard />
+      <Header />
+      <Main />
       <Footer />
     </div>
   );
