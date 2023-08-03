@@ -1,14 +1,14 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, NavLink } from "react-router-dom";
 import styles from "./Nav.module.scss";
+import routes from "../../utils/routes";
 
 const Nav = function () {
-  const navigate = useNavigate();
   const location = useLocation();
   const isAuth = location.pathname.split("/")[1];
 
   return (
     <div className={`${styles.container}`}>
-      <div className={styles.button} onClick={() => navigate("/auth/login")}>
+      <NavLink className={styles.button} to={`${routes.authPage}/${routes.loginContent}`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="22"
@@ -43,8 +43,8 @@ const Nav = function () {
             <div className={styles.activeIndicatorOverlay}></div>
           </>
         )}
-      </div>
-      <div className={styles.button} onClick={() => navigate("/")}>
+      </NavLink>
+      <NavLink className={styles.button} to={routes.homePage}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="28"
@@ -99,8 +99,8 @@ const Nav = function () {
             <div className={styles.activeIndicatorOverlay}></div>
           </>
         )}
-      </div>
-      <div className={styles.button} onClick={() => navigate("/settings")}>
+      </NavLink>
+      <NavLink className={styles.button} to={routes.settingsPage}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="28"
@@ -150,7 +150,7 @@ const Nav = function () {
             <div className={styles.activeIndicatorOverlay}></div>
           </>
         )}
-      </div>
+      </NavLink>
     </div>
   );
 };
