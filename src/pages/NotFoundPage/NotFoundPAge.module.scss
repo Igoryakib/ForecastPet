@@ -1,0 +1,128 @@
+@import "../../scss/variables.scss";
+
+.main {
+    width: 1440px;
+    margin: 0 auto;
+    padding-top: 138px;
+    text-align: center;
+}
+
+.mainContent {
+    width: 603px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.subtitle {
+    color: $footerTextColor;
+    font-size: 32px;
+    font-weight: 600;
+    font-family: $montserrat;
+    margin-bottom: 8px;
+}
+
+.subtext {
+    color: $footerTextColor;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: $montserrat;
+    margin-bottom: 31px;
+}
+
+.navBtn {
+    color: #fff;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+
+    padding: 1.6rem 3.2rem;
+    background-color: $mainColor;
+    border-radius: 1.2rem;
+    width: 24rem;
+    transition: all 0.2s;
+    &:hover {
+        background-color: $mainColorDarker;
+    }
+}
+
+.title {
+    color: $footerTextColor;
+    font-size: 162px;
+    font-weight: 800;
+    font-family: $montserrat;
+    animation: appearTitle 550ms linear 0.5s forwards;
+    &::after {
+        display: block;
+        content: '';
+        background-image: url('../../static/Line.svg');
+        width: 444px;
+        height: 1px;
+        position: relative;
+        top: -18px;
+        margin: 0 auto 13px;
+    }
+}
+
+@keyframes appearTitle {
+    0%{
+        opacity: 0;
+        visibility: initial;
+        pointer-events: initial;
+    }
+    50%{
+        opacity: 0.5;
+        visibility: initial;
+        pointer-events: initial;
+    }
+    100%{
+        opacity: 1;
+        visibility: initial;
+        pointer-events: initial;
+    }
+}
+
+.title__letter {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.title__letter1 {
+    animation: appearLetter1 1.7s ease-in 1s forwards;
+}
+
+.title__letter2 {
+    animation: appearLetter1 1.9s ease-in 1.5s forwards;
+}
+
+.title__letter3 {
+    animation: appearLetter1 2.1s ease-in 2s forwards;
+}
+
+@keyframes appearLetter1{
+    0% {
+        opacity: 0.5;
+        visibility: initial;
+        pointer-events: initial;
+    }
+    25% {
+        opacity: 0;
+        visibility: initial;
+        pointer-events: initial;
+    }
+    50%{
+        opacity: 0.8;
+        visibility: initial;
+        pointer-events: initial;
+    }
+    75% {
+        opacity: 0;
+        visibility: initial;
+        pointer-events: initial;
+    }
+    100% {
+        opacity: 1;
+        visibility: initial;
+        pointer-events: initial;
+    }
+}

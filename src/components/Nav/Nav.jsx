@@ -8,7 +8,7 @@ const Nav = function () {
 
   return (
     <div className={`${styles.container}`}>
-      <div className={styles.button} onClick={() => navigate("auth/login")}>
+      <div className={styles.button} onClick={() => navigate("/auth/login")}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="22"

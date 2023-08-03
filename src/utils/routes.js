@@ -3,14 +3,14 @@ const routes = {
   homePage: "/",
 
   // overlay for different auth-window contents
-  authPage: "auth",
+  authPage: "/auth",
 
   // auth-widnow contents
   loginContent: "login",
   signupContent: "signup",
 
   // settings page
-  settingsPage: "settings",
+  settingsPage: "/settings",
 
   // not found
   notFoundPage: "*",
