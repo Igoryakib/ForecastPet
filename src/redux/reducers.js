@@ -1,13 +1,13 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import { weatherRegion } from "./actions";
+import { weatherRegion, weatherLanguage } from "./actions";
 import {
   getDailyWeather,
   getHourlyWeather,
   getCurrentlyWeather,
 } from "./action-operations";
 
-const region = createReducer("", {
+const regionInput = createReducer("", {
   [weatherRegion]: (_, action) => action.payload,
 });
 
@@ -28,6 +28,10 @@ const currentlyWeather = createReducer({},
     [getCurrentlyWeather.fulfilled]: (_, action) => action.payload,
   }
 );
+
+const language = createReducer('', {
+  [weatherLanguage]: (_, action) => action.payload,
+})
 
 const isLoading = createReducer(false, {
   [getDailyWeather.pending]: () => true,
@@ -51,10 +55,11 @@ const error = createReducer("", {
 });
 
 export default combineReducers({
-  region,
+  regionInput,
   dailyWeather,
   hourlyWeather,
   currentlyWeather,
+  language,
   isLoading,
   error,
 });

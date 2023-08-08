@@ -1,4 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+// redux
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getDailyWeather,
+  getHourlyWeather,
+  getCurrentlyWeather,
+} from "../redux/action-operations";
+import { getLanguage } from "../redux/selectors";
 
 // home page
 import HomePage from "../pages/Homepage/HomePage.jsx";
@@ -18,6 +27,23 @@ import Nav from "./Nav/Nav.jsx";
 import routes from "../utils/routes.js";
 
 const App = () => {
+  const dispatch = useDispatch();
+  const language = useSelector(getLanguage)
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position.coords.latitude, position.coords.longitude);
+      const data = {
+        lang: language,
+        regionData: {
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+        },
+      };
+      dispatch(getDailyWeather(data));
+      dispatch(getHourlyWeather(data));
+      dispatch(getCurrentlyWeather(data));
+    });
+  }, []);
   return (
     <>
       <BrowserRouter>
