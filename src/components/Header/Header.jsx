@@ -1,21 +1,41 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import styles from "./Header.module.scss";
+
+// svg 
 import Avatar from "../../static/avatar_26.svg";
 import Ellipse from "../../static/ellipse.svg";
+
+// components 
 import Switcher from "../Switcher/Switcher";
 import LangSwitcher from "../LangSwitcher/LangSwitcher";
 import SearchForm from "../SearchForm/SearchForm";
+
+// redux 
+import { weatherRegion } from "../../redux/actions";
+import { getDailyWeather, getHourlyWeather, getCurrentlyWeather } from "../../redux/action-operations";
 
 const Header = () => {
   const [temperature, setTemperature] = useState(false);
   const [lang, setLang] = useState("укр");
   const [searchValue, setSearchValue] = useState("");
+  const dispatch = useDispatch();
   const onSubmitFn = (event) => {
     event.preventDefault();
+    let langData = lang;
+    if (langData === 'укр') {
+      langData = 'uk';
+    } else {
+      langData = 'en';
+    }
     const data = {
-      value: searchValue,
+      regionData: searchValue,
+      lang: langData,
     };
-    console.log(data);
+    dispatch(weatherRegion(searchValue));
+    dispatch(getDailyWeather(data));
+    dispatch(getHourlyWeather(data));
+    dispatch(getCurrentlyWeather(data));
   };
   return (
     <header className={styles.header}>

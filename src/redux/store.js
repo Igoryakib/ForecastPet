@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import items from "./reducers";
+import weatherReducers from "./reducers";
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -20,14 +20,14 @@ const middleware = [
   }),
 ];
 
-const authPersistConfig = {
-  key: "auth",
+const weatherPersistConfig = {
+  key: "weather",
   storage,
 };
 
 const store = configureStore({
   reducer: {
-    items: persistReducer(authPersistConfig, items),
+    weatherData: persistReducer(weatherPersistConfig, weatherReducers),
   },
   middleware,
   devTools: process.env.NODE_ENV === "development",

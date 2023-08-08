@@ -4,7 +4,7 @@ axios.defaults.baseURL = "https://api.openweathermap.org/data/2.5";
 
 const API_KEY = "9ea4891c8392d9c904174b8d758cb626";
 
-export const getWeatherData = async (regionData, type, lang) => {
+export const getWeatherData = async (type, {regionData, lang}) => {
   try {
     const geoData = await axios.get(
       `http://api.openweathermap.org/geo/1.0/direct?q=${regionData}&limit=5&appid=${API_KEY}`
