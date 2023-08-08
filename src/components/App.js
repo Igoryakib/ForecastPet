@@ -28,20 +28,22 @@ import routes from "../utils/routes.js";
 
 const App = () => {
   const dispatch = useDispatch();
-  const language = useSelector(getLanguage)
+  const language = useSelector(getLanguage);
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       console.log(position.coords.latitude, position.coords.longitude);
-      const data = {
-        lang: language,
-        regionData: {
-          lat: position.coords.latitude,
-          lon: position.coords.longitude,
-        },
-      };
-      dispatch(getDailyWeather(data));
-      dispatch(getHourlyWeather(data));
-      dispatch(getCurrentlyWeather(data));
+      if (position) {
+        const data = {
+          lang: language,
+          regionData: {
+            lat: position.coords.latitude,
+            lon: position.coords.longitude,
+          },
+        };
+        dispatch(getDailyWeather(data));
+        dispatch(getHourlyWeather(data));
+        dispatch(getCurrentlyWeather(data));
+      }
     });
   }, []);
   return (
