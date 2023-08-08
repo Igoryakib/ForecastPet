@@ -44,6 +44,14 @@ const Header = () => {
       dispatch(weatherLanguage("en"));
     }
   }, [lang]);
+  const options = {
+    weekday: 'long',
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  };
+  
+  const day = Intl.DateTimeFormat(language, options).format(new Date());
   return (
     <header className={styles.header}>
       <div className={styles.profile}>
@@ -53,7 +61,7 @@ const Header = () => {
         </div>
         <div className={styles.profileText}>
           <h3 className={styles.subtitle}>Привіт Антон</h3>
-          <h2 className={styles.title}>Понеділок, 7 липня, 2023</h2>
+          <h2 className={styles.title}>{day.split('р.')[0]}</h2>
         </div>
       </div>
       <div className={styles.headerControls}>

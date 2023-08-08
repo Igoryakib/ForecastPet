@@ -60,6 +60,9 @@
   font-weight: 700;
   font-family: $montserrat;
   color: $footerTextColor;
+  &::first-letter {
+    text-transform: uppercase;
+  }
 }
 
 .headerControls {
