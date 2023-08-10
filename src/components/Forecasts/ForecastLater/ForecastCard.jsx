@@ -12,7 +12,8 @@ const ForecastCard = function ({
   tempMax = 30,
   tempMin = 20,
   icon = "rainy",
-  date = "1 August",
+  date = "2023-08-01",
+  language = "uk",
 }) {
   const currentIcon = [
     icon_cloudyRainy,
@@ -28,7 +29,7 @@ const ForecastCard = function ({
     day: "numeric",
     month: "long",
   };
-  const fullDateArray = Intl.DateTimeFormat("uk", options)
+  const fullDateArray = new Intl.DateTimeFormat(language, options)
     .format(new Date(date))
     .split(" ");
   const day = fullDateArray.filter((i) => !isNaN(+i));

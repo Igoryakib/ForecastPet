@@ -1,12 +1,17 @@
 import SettingsSwitcher from "./SettingsSwitcher";
 import styles from "../SettingsList/SettingsList.module.scss";
+import { useSelector } from "react-redux";
+import { getLanguage } from "../../redux/selectors";
 
 const SettingsList = function () {
+  const language = useSelector(getLanguage);
+
   return (
     <ul className={styles.list}>
       <li>
-        <span className={styles.label}>Тема</span>
-        {/* <div></div> */}
+        <span className={styles.label}>
+          {language === "uk" ? "Тема" : "Theme"}
+        </span>
         <SettingsSwitcher
           textArray={[
             <svg

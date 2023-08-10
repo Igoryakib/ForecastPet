@@ -11,27 +11,30 @@ const regionInput = createReducer("", {
   [weatherRegion]: (_, action) => action.payload,
 });
 
-const dailyWeather = createReducer({},
+const dailyWeather = createReducer(
+  {},
   {
     [getDailyWeather.fulfilled]: (_, action) => action.payload,
   }
 );
 
-const hourlyWeather = createReducer({},
+const hourlyWeather = createReducer(
+  {},
   {
     [getHourlyWeather.fulfilled]: (_, action) => action.payload,
   }
 );
 
-const currentlyWeather = createReducer({},
+const currentlyWeather = createReducer(
+  {},
   {
     [getCurrentlyWeather.fulfilled]: (_, action) => action.payload,
   }
 );
 
-const language = createReducer('', {
+const language = createReducer("", {
   [weatherLanguage]: (_, action) => action.payload,
-})
+});
 
 const isLoading = createReducer(false, {
   [getDailyWeather.pending]: () => true,

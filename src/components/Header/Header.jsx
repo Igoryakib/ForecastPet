@@ -18,14 +18,21 @@ import {
   getHourlyWeather,
   getCurrentlyWeather,
 } from "../../redux/action-operations";
-import { getLanguage } from "../../redux/selectors";
+
+// language selector
+import { getLanguage, getWeather } from "../../redux/selectors";
+import { store } from "../../redux/store";
+
+const TEMPRORARY_NAME_UK = "Антон";
+const TEMPRORARY_NAME_EN = "Anton";
 
 const Header = () => {
   const [temperature, setTemperature] = useState(false);
-  const [lang, setLang] = useState("укр");
+  const [lang, setLang] = useState("uk");
   const [searchValue, setSearchValue] = useState("");
   const dispatch = useDispatch();
   const language = useSelector(getLanguage);
+
   const onSubmitFn = (event) => {
     event.preventDefault();
     const data = {
@@ -38,19 +45,21 @@ const Header = () => {
     dispatch(getCurrentlyWeather(data));
   };
   useEffect(() => {
-    if (lang === "укр") {
+    if (lang === "uk") {
       dispatch(weatherLanguage("uk"));
+      localStorage.setItem("language", "uk");
     } else {
       dispatch(weatherLanguage("en"));
+      localStorage.setItem("language", "en");
     }
-  }, [lang]);
+  }, [language, lang, dispatch]);
   const options = {
-    weekday: 'long',
+    weekday: "long",
     day: "numeric",
     month: "long",
     year: "numeric",
   };
-  
+
   const day = Intl.DateTimeFormat(language, options).format(new Date());
   return (
     <header className={styles.header}>
@@ -60,8 +69,12 @@ const Header = () => {
           <img className={styles.ellipse} src={Ellipse} alt="ellipse" />
         </div>
         <div className={styles.profileText}>
-          <h3 className={styles.subtitle}>Привіт Антон</h3>
-          <h2 className={styles.title}>{day.split('р.')[0]}</h2>
+          <h3 className={styles.subtitle}>
+            {language === "uk"
+              ? `Привіт, ${TEMPRORARY_NAME_UK}`
+              : `Hello, ${TEMPRORARY_NAME_EN}`}
+          </h3>
+          <h2 className={styles.title}>{day.split("р.")[0]}</h2>
         </div>
       </div>
       <div className={styles.headerControls}>

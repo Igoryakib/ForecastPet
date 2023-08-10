@@ -1,9 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {
-  WEATHER_DAILY,
-  WEATHER_HOURLY,
-  WEATHER_CURRENTLY,
-} from "./types";
+import { WEATHER_DAILY, WEATHER_HOURLY, WEATHER_CURRENTLY } from "./types";
 import { getWeatherData } from "../utils/fetchApi";
 
 const getDailyWeather = createAsyncThunk(

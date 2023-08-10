@@ -7,19 +7,22 @@ const Time = function ({ language = "uk" }) {
     `${date.getHours()}`.padStart(2, 0) +
     ":" +
     `${date.getMinutes()}`.padStart(2, 0);
-  const timer = setInterval(() => setDate(new Date()), 60000);
+  useEffect(() => {
+    const timer = setInterval(() => setDate(new Date()), 60000);
+  }, []);
 
   const options = {
     day: "numeric",
     month: "long",
     year: "numeric",
   };
+
   const day = Intl.DateTimeFormat(language, options).format(date);
 
   return (
     <div className={styles.container}>
       <span className={styles.time}>{time}</span>
-      <span className={styles.day}>{day}</span>
+      <span className={styles.day}>{day.split(".")[0]}</span>
     </div>
   );
 };

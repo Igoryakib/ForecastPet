@@ -1,8 +1,12 @@
 import React from "react";
 import styles from "./SearchForm.module.scss";
 import Search from "../../static/Search.svg";
+import { useSelector } from "react-redux";
+import { getLanguage } from "../../redux/selectors";
 
 const SearchForm = ({ searchValue, setSearchValue, onSubmit }) => {
+  const language = useSelector(getLanguage);
+
   return (
     <form onSubmit={onSubmit} className={styles.searchForm}>
       <button className={styles.formBtn} type="submit">
@@ -13,7 +17,11 @@ const SearchForm = ({ searchValue, setSearchValue, onSubmit }) => {
         onChange={(event) => setSearchValue(event.target.value)}
         type="input"
         value={searchValue}
-        placeholder="Пошук міста або поштового індекса"
+        placeholder={
+          language === "uk"
+            ? "Пошук міста або поштового індекса"
+            : "Search for city name or postcode"
+        }
       />
     </form>
   );

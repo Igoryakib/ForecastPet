@@ -13,7 +13,13 @@ import { getLanguage } from "../redux/selectors";
 import HomePage from "../pages/Homepage/HomePage.jsx";
 
 // routes
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Outlet,
+  Route,
+  Routes,
+} from "react-router-dom";
 
 // auth pages
 import AuthPage from "../pages/Authentication/AuthPage.jsx";
@@ -46,43 +52,45 @@ const App = () => {
       }
     });
   }, []);
+
   return (
     <>
       <BrowserRouter>
         {/* <Nav /> */}
         <Routes>
           <Route
-            index
             path={routes.homePage}
             element={
               <>
-                <Nav />
+                <Outlet />
                 <HomePage />
-              </>
-            }
-          />
-          <Route
-            path={routes.authPage}
-            element={
-              <>
                 <Nav />
-                <AuthPage />
               </>
             }
           >
-            <Route index element={<Navigate to={routes.loginContent} />} />
-            <Route path={routes.loginContent} element={<LoginContent />} />
-            <Route path={routes.signupContent} element={<SignupContent />} />
+            <Route
+              path={routes.authPage}
+              element={
+                <>
+                  {/* <Nav /> */}
+                  <AuthPage />
+                </>
+              }
+            >
+              <Route index element={<Navigate to={routes.loginContent} />} />
+              <Route path={routes.loginContent} element={<LoginContent />} />
+              <Route path={routes.signupContent} element={<SignupContent />} />
+            </Route>
+            <Route
+              path={routes.settingsPage}
+              element={
+                <>
+                  {/* <Nav /> */}
+                  <Settings />
+                </>
+              }
+            />
           </Route>
-          <Route
-            path={routes.settingsPage}
-            element={
-              <>
-                <Nav />
-                <Settings />
-              </>
-            }
-          />
           <Route path={routes.notFoundPage} element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

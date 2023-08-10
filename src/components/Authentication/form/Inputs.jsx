@@ -2,10 +2,13 @@ import { useRef, useState } from "react";
 import CtaButton from "../../small components/CtaButton/CtaButton";
 import styles from "./Inputs.module.scss";
 import Input from "./Input";
+import { useSelector } from "react-redux";
+import { getLanguage } from "../../../redux/selectors";
 
 const Inputs = function ({ type }) {
   // state for checkbox in the bottom of the form
   const [isAgree, setIsAgree] = useState(false);
+  const language = useSelector(getLanguage)
 
   // ⭕️⭕️⭕️⭕️⭕️ Caution, to much unclear code below ⭕️⭕️⭕️⭕️⭕️⭕️
   //////////////////////////////////////////
@@ -74,12 +77,12 @@ const Inputs = function ({ type }) {
   return (
     <form className={styles.container} onSubmit={(e) => e.preventDefault()}>
       {type === "signup" ? (
-        <Input label="Ім'я" inputs={inputs} type="text" />
+        <Input label={language === 'uk' ? "Ім'я" : 'Name'} inputs={inputs} type="text" />
       ) : (
         ""
       )}
       <Input label="Email" inputs={inputs} type="Email" />
-      <Input label="Пароль" inputs={inputs} type="password" />
+      <Input label={language === 'uk' ? 'Пароль' : 'Password'} inputs={inputs} type="password" />
       <div className={`flex-justify-left ${styles.buttonBox}`}>
         <CtaButton
           onClick={(e) => {
@@ -89,7 +92,7 @@ const Inputs = function ({ type }) {
           isDisabled={!isAgree}
           type={type}
         >
-          {type === "signup" ? "Зареєструватися" : "Увійти"}
+          {type === "signup" ? language === 'uk' ? "Зареєструватися" : 'Sign up' : language === 'uk' ? "Увійти" : 'Log in'}
         </CtaButton>
         {type === "signup" ? (
           <div

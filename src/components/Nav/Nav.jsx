@@ -8,7 +8,10 @@ const Nav = function () {
 
   return (
     <div className={`${styles.container}`}>
-      <NavLink className={styles.button} to={`${routes.authPage}/${routes.loginContent}`}>
+      <NavLink
+        className={styles.button}
+        to={`${routes.authPage}/${routes.loginContent}`}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="22"

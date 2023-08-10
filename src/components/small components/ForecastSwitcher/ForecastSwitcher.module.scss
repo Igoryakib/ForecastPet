@@ -1,7 +1,7 @@
 @import "src/scss/variables.scss";
 
 .labelSwitcher {
-  width: 12rem;
+  width: 13.6rem;
   height: 2.7rem;
   display: flex;
   justify-content: center;
@@ -17,7 +17,7 @@
   display: none;
   &:checked + .wrapperTemp {
     &::before {
-      width: 6.4rem;
+      width: 7.2rem;
       left: calc(100% - 3px);
       transform: translate(-100%, -50%);
     }
@@ -32,7 +32,7 @@
 }
 
 .wrapperTemp {
-  width: 9.2rem;
+  width: 11rem;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -43,7 +43,7 @@
     display: block;
     content: "";
     position: absolute;
-    width: 5.6rem;
+    width: 6.4rem;
     height: 2rem;
     border-radius: 0.6rem;
     background-color: #d8d8d8;
@@ -55,7 +55,7 @@
     transition: 0.3s;
   }
   &:active::before {
-    width: 5.4rem !important;
+    width: 6.2rem !important;
   }
 }
 

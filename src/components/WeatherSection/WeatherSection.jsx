@@ -3,8 +3,12 @@ import styles from "./WeatherSection.module.scss";
 import classnames from "classnames";
 import partlyCloudly from "../../static/partlyCloudly.svg";
 import WeatherCard from "../WeatherCard/WeatherCard";
+import { useSelector } from "react-redux";
+import { getLanguage } from "../../redux/selectors";
 
 const WeatherSection = () => {
+  const language = useSelector(getLanguage);
+
   useEffect(() => {
     const mouseWheel = document.querySelector(`.${styles.timeWeather}`);
 
@@ -40,19 +44,25 @@ const WeatherSection = () => {
           <h3 className={classnames(styles.weatherInfoTitle, styles.textSize)}>
             +23°
           </h3>
-          <span className={styles.weatherInfoSubtitle}>Температура</span>
+          <span className={styles.weatherInfoSubtitle}>
+            {language === "uk" ? "Температура" : "Temperature"}
+          </span>
         </div>
         <div className={styles.weatherInfoText}>
           <h3 className={classnames(styles.weatherInfoTitle, styles.textSize)}>
             31%
           </h3>
-          <span className={styles.weatherInfoSubtitle}>Вологість</span>
+          <span className={styles.weatherInfoSubtitle}>
+            {language === "uk" ? "Вологість" : "Humidity"}
+          </span>
         </div>
         <div className={styles.weatherInfoText}>
           <h3 className={classnames(styles.weatherInfoTitle, styles.textSize)}>
-            14<span>км/год</span>
+            14<span>{language === "uk" ? "км/год" : "km/h"}</span>
           </h3>
-          <span className={styles.weatherInfoSubtitle}>Швидк.вітру</span>
+          <span className={styles.weatherInfoSubtitle}>
+            {language === "uk" ? "Швидк.вітру" : "Wind speed"}
+          </span>
         </div>
       </div>
       <div className={styles.timeWeather}>

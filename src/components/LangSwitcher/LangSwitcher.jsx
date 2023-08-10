@@ -30,7 +30,7 @@ const LangSwitcher = ({ setLang }) => {
     if (event.target.alt === "icon") {
       onClickVector();
     } else {
-      setLang(event.target.textContent);
+      setLang(event.target.textContent === "укр" ? "uk" : "en");
       if (event.target.textContent === "укр") {
         langUk.textContent = "укр";
         langEn.textContent = "eng";

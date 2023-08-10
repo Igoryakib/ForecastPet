@@ -18,7 +18,7 @@
   display: none;
   &:checked + .wrapperTemp {
     &::before {
-      width: 3.6rem;
+      width: 4rem;
       left: calc(100% - 3px);
       transform: translate(-100%, -50%);
     }
@@ -56,7 +56,7 @@
     transition: 0.3s;
   }
   &:active::before {
-    width: 3.2rem !important;
+    width: 3.6rem !important;
   }
 }
 

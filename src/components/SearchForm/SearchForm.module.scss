@@ -1,8 +1,8 @@
 @import "../../scss/variables.scss";
 
 .searchFormInput {
-  padding: 8px 43px;
-  width: 341px;
+  padding: .8rem 4.8rem;
+  width: 34rem;
   height: 40px;
   background-color: $whiteColor;
   box-shadow: $box-shadow;
@@ -10,24 +10,23 @@
   border-radius: 100px;
   &::placeholder {
     position: relative;
-    left: 6px;
     color: $placeholderColor;
-    font-size: 14px;
+    font-size: 1.4rem;
     font-weight: 700;
     font-family: $monda;
   }
 }
 
 .searchForm {
-  width: 341px;
-  height: 40px;
+  width: 34rem;
+  height: 4rem;
   position: relative;
 }
 
 .formBtn {
   position: absolute;
-  bottom: 7px;
-  left: 10px;
+  bottom: .7rem;
+  left: 1rem;
   background-color: transparent;
   cursor: pointer;
 }

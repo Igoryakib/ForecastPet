@@ -2,9 +2,12 @@ import React from "react";
 import styles from "./WeatherWind.module.scss";
 import Wind from "../../static/Wind.svg";
 import classNames from "classnames";
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { getLanguage } from "../../redux/selectors";
 
 const WeatherWind = ({ AQiIndex, levelCo, levelO3 }) => {
+  const language = useSelector(getLanguage);
+
   const activeClassnamesAQi = (AQiIndex) =>
     classNames(styles.weatherAQIIndicator, {
       [styles.aqi_color100]: AQiIndex >= 0 && AQiIndex <= 20,
@@ -49,7 +52,9 @@ const WeatherWind = ({ AQiIndex, levelCo, levelO3 }) => {
         <div className={styles.weatherWindHeading}>
           <img src={Wind} alt="icon" />
           <div className={styles.aqiContent}>
-            <h3 className={styles.weatherWindTitle}>Якість повітря</h3>
+            <h3 className={styles.weatherWindTitle}>
+              {language === "uk" ? "Якість повітря" : "Air Quality"}
+            </h3>
             <div className={styles.weatherAqiComponents}>
               <div className={styles.weatherAQIWrapper}>
                 <span className={styles.weatherAQIIndex}>{AQiIndex}</span>
@@ -66,7 +71,7 @@ const WeatherWind = ({ AQiIndex, levelCo, levelO3 }) => {
         <div className={styles.levelO3Indicator}>
           <span className={styles.weatherAQIIndex}>
             {levelCo}
-            <span>мг/м³</span>
+            <span>{language === "uk" ? "мг/м³" : "mg/m³"}</span>
           </span>
           <div className={activeClassnamesCO(levelCo)}>
             <span className={styles.weatherAQIIcon}>co</span>
@@ -75,7 +80,7 @@ const WeatherWind = ({ AQiIndex, levelCo, levelO3 }) => {
         <div className={styles.levelO3Indicator}>
           <span className={styles.weatherAQIIndex}>
             {levelO3}
-            <span>мг/м³</span>
+            <span>{language === "uk" ? "мг/м³" : "mg/m³"}</span>
           </span>
           <div className={activeClassnamesO3(levelO3)}>
             <span className={styles.weatherAQIIcon}>o3</span>

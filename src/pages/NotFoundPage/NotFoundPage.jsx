@@ -1,12 +1,12 @@
 import React from "react";
-import styles from './NotFoundPAge.module.scss';
-import classnames from 'classnames';
+import styles from "./NotFoundPAge.module.scss";
+import classnames from "classnames";
 import { useNavigate } from "react-router-dom";
 
 const NotFoundPage = () => {
   const navigate = useNavigate();
   const OnClickNavBtn = () => {
-    navigate('/', {replace: true})
+    navigate("/", { replace: true });
   };
   return (
     <article className={styles.main}>

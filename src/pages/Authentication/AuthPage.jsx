@@ -9,7 +9,6 @@ const AuthPage = () => {
       <div className={`grid ${styles.window}`}>
         <Outlet />
       </div>
-      <HomePage />
       <WindowOverlay />
     </>
   );

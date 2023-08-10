@@ -6,12 +6,18 @@ const WindowOverlay = function () {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') navigate('/')
-    })
-  }, [])
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") navigate("/");
+    });
+  }, []);
 
-  return <div onClick={() => navigate('/')} id="overlay" className={styles.overlay}></div>;
+  return (
+    <div
+      onClick={() => navigate("/")}
+      id="overlay"
+      className={styles.overlay}
+    ></div>
+  );
 };
 
 export default WindowOverlay;
