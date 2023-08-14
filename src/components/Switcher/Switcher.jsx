@@ -7,7 +7,7 @@ const Switcher = ({ value, setValue }) => {
     <label className={styles.labelSwitcher}>
       <input
         className={styles.inputSwitcher}
-        onChange={(event) => setValue(event.target.checked)}
+        onChange={(event) => setValue(event)}
         type="checkbox"
         checked={value}
       />

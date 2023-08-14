@@ -21,7 +21,7 @@
 .header {
   display: flex;
   flex-direction: column;
-  gap: 0.64rem;
+  gap: 1.2rem;
 }
 
 .subheading {
@@ -33,4 +33,36 @@
 
 .advice {
   font-size: 1.4rem;
+  overflow: hidden;
+  position: static;
+  max-height: 5rem;
+}
+
+.adviceContainer {
+  width: 100%;
+  border-right: 0.15em solid $mainColor; /* The typwriter cursor */
+  animation: blink-caret 0.5s step-end infinite, typing 2s steps(40, end);
+  overflow-wrap: normal;
+  white-space: normal;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: $mainColor;
+  }
 }

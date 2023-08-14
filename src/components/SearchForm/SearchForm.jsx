@@ -2,15 +2,17 @@ import React from "react";
 import styles from "./SearchForm.module.scss";
 import Search from "../../static/Search.svg";
 import { useSelector } from "react-redux";
-import { getLanguage } from "../../redux/selectors";
+import { getLanguage, getWeather } from "../../redux/selectors";
+import Spinner from "../Spinner/Spinner";
 
 const SearchForm = ({ searchValue, setSearchValue, onSubmit }) => {
   const language = useSelector(getLanguage);
+  const { isLoading } = useSelector(getWeather);
 
   return (
     <form onSubmit={onSubmit} className={styles.searchForm}>
       <button className={styles.formBtn} type="submit">
-        <img src={Search} alt="icon" />
+        {isLoading ? <Spinner /> : <img src={Search} alt="icon" />}
       </button>
       <input
         className={styles.searchFormInput}

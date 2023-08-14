@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./Header.module.scss";
 
 // svg
-import Avatar from "../../static/avatar_26.svg";
+import Avatar from "../../static/avatars/avatar_26.svg";
 import Ellipse from "../../static/ellipse.svg";
 
 // components
@@ -12,16 +12,21 @@ import LangSwitcher from "../LangSwitcher/LangSwitcher";
 import SearchForm from "../SearchForm/SearchForm";
 
 // redux
-import { weatherRegion, weatherLanguage } from "../../redux/actions";
+import {
+  weatherRegion,
+  weatherLanguage,
+  temperatureUnit,
+} from "../../redux/actions";
 import {
   getDailyWeather,
   getHourlyWeather,
   getCurrentlyWeather,
+  getGeoDetails,
+  getAirQuality,
 } from "../../redux/action-operations";
 
 // language selector
-import { getLanguage, getWeather } from "../../redux/selectors";
-import { store } from "../../redux/store";
+import { getLanguage } from "../../redux/selectors";
 
 const TEMPRORARY_NAME_UK = "Антон";
 const TEMPRORARY_NAME_EN = "Anton";
@@ -33,16 +38,24 @@ const Header = () => {
   const dispatch = useDispatch();
   const language = useSelector(getLanguage);
 
+  const onChangeUnit = (event) => {
+    const isChecked = event.target.checked;
+    setTemperature(isChecked);
+    dispatch(temperatureUnit(isChecked ? "F" : "C"));
+  };
   const onSubmitFn = (event) => {
     event.preventDefault();
     const data = {
       regionData: searchValue,
       lang: language,
     };
+    dispatch(getGeoDetails(data));
     dispatch(weatherRegion(searchValue));
     dispatch(getDailyWeather(data));
     dispatch(getHourlyWeather(data));
     dispatch(getCurrentlyWeather(data));
+    dispatch(getAirQuality(data));
+    setSearchValue("");
   };
   useEffect(() => {
     if (lang === "uk") {
@@ -86,7 +99,7 @@ const Header = () => {
         <div className={styles.langSwitcherContainer}>
           <LangSwitcher setLang={setLang} />
         </div>
-        <Switcher value={temperature} setValue={setTemperature} />
+        <Switcher value={temperature} setValue={onChangeUnit} />
       </div>
     </header>
   );

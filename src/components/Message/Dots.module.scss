@@ -1,0 +1,70 @@
+@import "src/scss/variables.scss";
+
+.dot-bricks {
+  position: relative;
+  top: 8px;
+  left: -9999px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: $mainColor;
+  color: $mainColor;
+  box-shadow: 9991px -16px 0 0 $mainColor, 9991px 0 0 0 $mainColor,
+    10007px 0 0 0 $mainColor;
+  animation: dot-bricks 2s infinite ease;
+}
+
+@keyframes dot-bricks {
+  0% {
+    box-shadow: 9991px -16px 0 0 $mainColor, 9991px 0 0 0 $mainColor,
+      10007px 0 0 0 $mainColor;
+  }
+  8.333% {
+    box-shadow: 10007px -16px 0 0 $mainColor, 9991px 0 0 0 $mainColor,
+      10007px 0 0 0 $mainColor;
+  }
+  16.667% {
+    box-shadow: 10007px -16px 0 0 $mainColor, 9991px -16px 0 0 $mainColor,
+      10007px 0 0 0 $mainColor;
+  }
+  25% {
+    box-shadow: 10007px -16px 0 0 $mainColor, 9991px -16px 0 0 $mainColor,
+      9991px 0 0 0 $mainColor;
+  }
+  33.333% {
+    box-shadow: 10007px 0 0 0 $mainColor, 9991px -16px 0 0 $mainColor,
+      9991px 0 0 0 $mainColor;
+  }
+  41.667% {
+    box-shadow: 10007px 0 0 0 $mainColor, 10007px -16px 0 0 $mainColor,
+      9991px 0 0 0 $mainColor;
+  }
+  50% {
+    box-shadow: 10007px 0 0 0 $mainColor, 10007px -16px 0 0 $mainColor,
+      9991px -16px 0 0 $mainColor;
+  }
+  58.333% {
+    box-shadow: 9991px 0 0 0 $mainColor, 10007px -16px 0 0 $mainColor,
+      9991px -16px 0 0 $mainColor;
+  }
+  66.666% {
+    box-shadow: 9991px 0 0 0 $mainColor, 10007px 0 0 0 $mainColor,
+      9991px -16px 0 0 $mainColor;
+  }
+  75% {
+    box-shadow: 9991px 0 0 0 $mainColor, 10007px 0 0 0 $mainColor,
+      10007px -16px 0 0 $mainColor;
+  }
+  83.333% {
+    box-shadow: 9991px -16px 0 0 $mainColor, 10007px 0 0 0 $mainColor,
+      10007px -16px 0 0 $mainColor;
+  }
+  91.667% {
+    box-shadow: 9991px -16px 0 0 $mainColor, 9991px 0 0 0 $mainColor,
+      10007px -16px 0 0 $mainColor;
+  }
+  100% {
+    box-shadow: 9991px -16px 0 0 $mainColor, 9991px 0 0 0 $mainColor,
+      10007px 0 0 0 $mainColor;
+  }
+}

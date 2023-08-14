@@ -3,48 +3,47 @@ import styles from "./WeatherWind.module.scss";
 import Wind from "../../static/Wind.svg";
 import classNames from "classnames";
 import { useSelector } from "react-redux";
-import { getLanguage } from "../../redux/selectors";
+import { getAir, getLanguage } from "../../redux/selectors";
 
-const WeatherWind = ({ AQiIndex, levelCo, levelO3 }) => {
+const WeatherWind = () => {
   const language = useSelector(getLanguage);
+  const airQualityData = useSelector(getAir);
+  const { o3: levelO3, co: levelCo } = airQualityData.list[0].components;
+  const AQiIndex = airQualityData.list[0].main.aqi;
 
   const activeClassnamesAQi = (AQiIndex) =>
     classNames(styles.weatherAQIIndicator, {
-      [styles.aqi_color100]: AQiIndex >= 0 && AQiIndex <= 20,
-      [styles.aqi_color90]: AQiIndex > 20 && AQiIndex <= 35,
-      [styles.aqi_color70]: AQiIndex > 35 && AQiIndex <= 50,
-      [styles.aqi_color50]: AQiIndex >= 51 && AQiIndex <= 100,
-      [styles.aqi_color40]: AQiIndex >= 101 && AQiIndex <= 150,
-      [styles.aqi_color20]: AQiIndex >= 151 && AQiIndex <= 200,
-      [styles.aqi_color10]: AQiIndex >= 201,
+      [styles.aqi_color100]: AQiIndex === 1,
+      [styles.aqi_color70]: AQiIndex === 2,
+      [styles.aqi_color50]: AQiIndex === 3,
+      [styles.aqi_color30]: AQiIndex === 4,
+      [styles.aqi_color10]: AQiIndex === 5,
     });
   const activeClassnamesO3 = (levelO3) =>
     classNames(styles.levelCo, {
-      [styles.aqi_color100]: levelO3 >= 0 && levelO3 <= 20,
-      [styles.aqi_color90]: levelO3 > 20 && levelO3 <= 35,
-      [styles.aqi_color70]: levelO3 > 35 && levelO3 <= 50,
-      [styles.aqi_color50]: levelO3 >= 51 && levelO3 <= 100,
-      [styles.aqi_color40]: levelO3 >= 101 && levelO3 <= 150,
-      [styles.aqi_color20]: levelO3 >= 151 && levelO3 <= 200,
-      [styles.aqi_color10]: levelO3 >= 201,
+      [styles.aqi_color100]: levelO3 >= 0 && levelO3 <= 30,
+      [styles.aqi_color90]: levelO3 > 30 && levelO3 <= 60,
+      [styles.aqi_color70]: levelO3 > 60 && levelO3 <= 100,
+      [styles.aqi_color50]: levelO3 > 100 && levelO3 <= 130,
+      [styles.aqi_color40]: levelO3 > 130 && levelO3 <= 160,
+      [styles.aqi_color20]: levelO3 > 160 && levelO3 <= 190,
+      [styles.aqi_color10]: levelO3 > 190,
     });
   const activeClassnamesCO = (levelCo) =>
     classNames(styles.levelCo, {
-      [styles.aqi_color100]: levelCo >= 0 && levelCo <= 9,
-      [styles.aqi_color90]: levelCo > 10 && levelCo <= 29,
-      [styles.aqi_color50]: levelCo > 30 && levelCo <= 35,
-      [styles.aqi_color20]: levelCo >= 36 && levelCo <= 99,
-      [styles.aqi_color10]: levelCo >= 100,
+      [styles.aqi_color100]: levelCo >= 0 && levelCo <= 4400,
+      [styles.aqi_color90]: levelCo > 4400 && levelCo <= 9400,
+      [styles.aqi_color50]: levelCo > 9400 && levelCo <= 12400,
+      [styles.aqi_color20]: levelCo > 12400 && levelCo <= 15400,
+      [styles.aqi_color10]: levelCo > 15400,
     });
   const activeClassnamesSliderAQi = (AQiIndex) =>
     classNames(styles.sliderStick, {
-      [styles.aqi_slider100]: AQiIndex >= 0 && AQiIndex <= 20,
-      [styles.aqi_slider90]: AQiIndex > 20 && AQiIndex <= 35,
-      [styles.aqi_slider70]: AQiIndex > 35 && AQiIndex <= 50,
-      [styles.aqi_slider50]: AQiIndex >= 51 && AQiIndex <= 100,
-      [styles.aqi_slider40]: AQiIndex >= 101 && AQiIndex <= 150,
-      [styles.aqi_slider20]: AQiIndex >= 151 && AQiIndex <= 200,
-      [styles.aqi_slider10]: AQiIndex >= 201,
+      [styles.aqi_slider100]: AQiIndex === 1,
+      [styles.aqi_slider70]: AQiIndex === 2,
+      [styles.aqi_slider50]: AQiIndex === 3,
+      [styles.aqi_slider30]: AQiIndex === 4,
+      [styles.aqi_slider10]: AQiIndex === 5,
     });
   return (
     <section className={styles.weatherWindSection}>
@@ -70,8 +69,8 @@ const WeatherWind = ({ AQiIndex, levelCo, levelO3 }) => {
         </div>
         <div className={styles.levelO3Indicator}>
           <span className={styles.weatherAQIIndex}>
-            {levelCo}
-            <span>{language === "uk" ? "мг/м³" : "mg/m³"}</span>
+            {Math.round(levelCo)}
+            <span>{language === "uk" ? "мг/м³" : "μg/m3"}</span>
           </span>
           <div className={activeClassnamesCO(levelCo)}>
             <span className={styles.weatherAQIIcon}>co</span>
@@ -79,8 +78,8 @@ const WeatherWind = ({ AQiIndex, levelCo, levelO3 }) => {
         </div>
         <div className={styles.levelO3Indicator}>
           <span className={styles.weatherAQIIndex}>
-            {levelO3}
-            <span>{language === "uk" ? "мг/м³" : "mg/m³"}</span>
+            {Math.round(levelO3)}
+            <span>{language === "uk" ? "мг/м³" : "μg/m3"}</span>
           </span>
           <div className={activeClassnamesO3(levelO3)}>
             <span className={styles.weatherAQIIcon}>o3</span>

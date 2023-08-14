@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import Photo from "../../../static/photos/1";
 import { useSelector } from "react-redux";
 import { getLanguage } from "../../../redux/selectors";
+import Dots from "../../Message/Dots";
 
 const clients = [
   {
@@ -49,7 +50,7 @@ const clients = [
 const Sidebar = function ({ activeFeedback, setActiveFeedback, type }) {
   const [advice, setAdvice] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const language = useSelector(getLanguage)
+  const language = useSelector(getLanguage);
 
   useEffect(() => {
     if (type === "login") {
@@ -71,23 +72,37 @@ const Sidebar = function ({ activeFeedback, setActiveFeedback, type }) {
 
   return (
     <div className={styles.sidebar}>
-      <span>{language === 'uk' ? 'найкраща погода' : 'the best forecast'}</span>
+      <span>{language === "uk" ? "найкраща погода" : "the best forecast"}</span>
       <div className={styles.header}>
         <Heading>
-          {type === "signup" 
-            ? language === 'uk' ? "Почни свою подорож у світ точних прогнозів!" : 'Start your journey in the realm of accurate forecasts!'
-            : language === 'uk' ? "Дякуємо за довіру!" : 'Thanks for your trust!'}
+          {type === "signup"
+            ? language === "uk"
+              ? "Почни свою подорож у світ точних прогнозів!"
+              : "Start your journey in the realm of accurate forecasts!"
+            : language === "uk"
+            ? "Дякуємо за довіру!"
+            : "Thanks for your trust!"}
         </Heading>
         {isLoading ? (
-          <Spinner />
+          <Dots />
         ) : (
           <>
             <p className={styles.subheading}>
               {type === "signup"
-                ? language === 'uk' ? "Розкрий світ прогнозів погоди, які ніколи не брешуть та доєднайся до ком’юніті однодумців" : "Reveal the whole domain of weather forecasts, which never lie and join the community of like-minded people"
-                : language === 'uk' ? "Порада дня:" : 'Daily adivce:'}{" "}
+                ? language === "uk"
+                  ? "Розкрий світ прогнозів погоди, які ніколи не брешуть та доєднайся до ком’юніті однодумців"
+                  : "Reveal the whole domain of weather forecasts, which never lie and join the community of like-minded people"
+                : language === "uk"
+                ? "Порада дня:"
+                : "Daily adivce:"}{" "}
             </p>
-            {type === "login" ? <p className={styles.advice}>{advice}</p> : ""}
+            {type === "login" ? (
+              <div className={styles.adviceContainer}>
+                <p className={styles.advice}>{advice}</p>
+              </div>
+            ) : (
+              ""
+            )}
           </>
         )}
       </div>

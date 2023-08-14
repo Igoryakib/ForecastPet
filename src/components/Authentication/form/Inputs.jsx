@@ -8,7 +8,7 @@ import { getLanguage } from "../../../redux/selectors";
 const Inputs = function ({ type }) {
   // state for checkbox in the bottom of the form
   const [isAgree, setIsAgree] = useState(false);
-  const language = useSelector(getLanguage)
+  const language = useSelector(getLanguage);
 
   // ⭕️⭕️⭕️⭕️⭕️ Caution, to much unclear code below ⭕️⭕️⭕️⭕️⭕️⭕️
   //////////////////////////////////////////
@@ -77,12 +77,20 @@ const Inputs = function ({ type }) {
   return (
     <form className={styles.container} onSubmit={(e) => e.preventDefault()}>
       {type === "signup" ? (
-        <Input label={language === 'uk' ? "Ім'я" : 'Name'} inputs={inputs} type="text" />
+        <Input
+          label={language === "uk" ? "Ім'я" : "Name"}
+          inputs={inputs}
+          type="text"
+        />
       ) : (
         ""
       )}
       <Input label="Email" inputs={inputs} type="Email" />
-      <Input label={language === 'uk' ? 'Пароль' : 'Password'} inputs={inputs} type="password" />
+      <Input
+        label={language === "uk" ? "Пароль" : "Password"}
+        inputs={inputs}
+        type="password"
+      />
       <div className={`flex-justify-left ${styles.buttonBox}`}>
         <CtaButton
           onClick={(e) => {
@@ -92,7 +100,13 @@ const Inputs = function ({ type }) {
           isDisabled={!isAgree}
           type={type}
         >
-          {type === "signup" ? language === 'uk' ? "Зареєструватися" : 'Sign up' : language === 'uk' ? "Увійти" : 'Log in'}
+          {type === "signup"
+            ? language === "uk"
+              ? "Зареєструватися"
+              : "Sign up"
+            : language === "uk"
+            ? "Увійти"
+            : "Log in"}
         </CtaButton>
         {type === "signup" ? (
           <div
@@ -109,7 +123,11 @@ const Inputs = function ({ type }) {
                 (checkbox.current.checked = !checkbox.current.checked)
               }
             />
-            <p>даю згоду на обробку персональних даних</p>
+            <p>
+              {language === "uk"
+                ? "даю згоду на обробку персональних даних"
+                : "allow to process my personal data"}
+            </p>
           </div>
         ) : (
           ""

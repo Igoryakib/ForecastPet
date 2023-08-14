@@ -1,14 +1,59 @@
-import React, { useEffect } from "react";
-import styles from "./WeatherSection.module.scss";
-import classnames from "classnames";
-import partlyCloudly from "../../static/partlyCloudly.svg";
-import WeatherCard from "../WeatherCard/WeatherCard";
+import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import { getLanguage } from "../../redux/selectors";
+import classnames from "classnames";
+
+import styles from "./WeatherSection.module.scss";
+import WeatherCard from "../WeatherCard/WeatherCard";
+import {
+  getGeo,
+  getLanguage,
+  getUnit,
+  getWeather,
+} from "../../redux/selectors";
+import { convertUnitFn } from "../../utils/convertUnitFn";
+
+import cloudyIcon from "../../static/currentIcon/cloudy.svg";
+import partlyCloudyIcon from "../../static/currentIcon/partlyCloudy.svg";
+import rainyIcon from "../../static/currentIcon/rainy.svg";
+import snowyIcon from "../../static/currentIcon/snowy.svg";
+import sunnyIcon from "../../static/currentIcon/sunny.svg";
 
 const WeatherSection = () => {
   const language = useSelector(getLanguage);
+  const weatherData = useSelector(getWeather);
+  const geo = useSelector(getGeo);
+  const unit = useSelector(getUnit);
+  const hasNecessaryLocalname = useRef();
+  useEffect(() => {
+    try {
+      hasNecessaryLocalname.current = geo.geoData.local_names[language]
+        ? true
+        : false;
+    } catch (error) {
+      console.error(error);
+    }
+  }, [geo.geoData.local_names, language]);
 
+  const weatherIconFn = function () {
+    if (weatherData.currentlyWeather.weather[0].icon.startsWith("01"))
+      return sunnyIcon;
+    if (weatherData.currentlyWeather.weather[0].icon.startsWith("02"))
+      return partlyCloudyIcon;
+    if (weatherData.currentlyWeather.weather[0].icon.startsWith("03"))
+      return cloudyIcon;
+    if (weatherData.currentlyWeather.weather[0].icon.startsWith("04"))
+      return cloudyIcon;
+    if (weatherData.currentlyWeather.weather[0].icon.startsWith("09"))
+      return rainyIcon;
+    if (weatherData.currentlyWeather.weather[0].icon.startsWith("10"))
+      return rainyIcon;
+    if (weatherData.currentlyWeather.weather[0].icon.startsWith("11"))
+      return rainyIcon;
+    if (weatherData.currentlyWeather.weather[0].icon.startsWith("13"))
+      return snowyIcon;
+    if (weatherData.currentlyWeather.weather[0].icon.startsWith("50"))
+      return cloudyIcon;
+  };
   useEffect(() => {
     const mouseWheel = document.querySelector(`.${styles.timeWeather}`);
 
@@ -23,26 +68,42 @@ const WeatherSection = () => {
       e.preventDefault();
     });
   }, []);
+
   return (
     <section className={styles.weatherSection}>
       <div className={styles.weatherInfo}>
         <div className={styles.weatherCountry}>
-          <img src={partlyCloudly} alt="icon" />
+          <img src={weatherIconFn()} alt="icon" />
           <div className={classnames(styles.weatherInfoText, styles.textAlign)}>
-            <h3 className={styles.weatherInfoTitle}>Полтава</h3>
+            <h3 className={styles.weatherInfoTitle}>
+              {language === "en"
+                ? geo.geoData.name
+                : hasNecessaryLocalname.current
+                ? geo.geoData.local_names[language]
+                : geo.geoData.name}
+            </h3>
             <span
               className={classnames(
                 styles.weatherInfoSubtitle,
                 styles.textPadding
               )}
             >
-              Україна
+              {language === "en"
+                ? geo.countryData.name_ENG
+                : geo.countryData.name_NATIVE
+                ? geo.countryData.name_NATIVE
+                : geo.countryData.name_ENG}
             </span>
           </div>
         </div>
         <div className={styles.weatherInfoText}>
           <h3 className={classnames(styles.weatherInfoTitle, styles.textSize)}>
-            +23°
+            {unit === "C"
+              ? `${Math.round(weatherData.currentlyWeather.main.temp)} C`
+              : `${Math.round(
+                  convertUnitFn(weatherData.currentlyWeather.main.temp)
+                )} F`}
+            °
           </h3>
           <span className={styles.weatherInfoSubtitle}>
             {language === "uk" ? "Температура" : "Temperature"}
@@ -50,7 +111,7 @@ const WeatherSection = () => {
         </div>
         <div className={styles.weatherInfoText}>
           <h3 className={classnames(styles.weatherInfoTitle, styles.textSize)}>
-            31%
+            {weatherData.currentlyWeather.main.humidity}%
           </h3>
           <span className={styles.weatherInfoSubtitle}>
             {language === "uk" ? "Вологість" : "Humidity"}
@@ -58,7 +119,8 @@ const WeatherSection = () => {
         </div>
         <div className={styles.weatherInfoText}>
           <h3 className={classnames(styles.weatherInfoTitle, styles.textSize)}>
-            14<span>{language === "uk" ? "км/год" : "km/h"}</span>
+            {weatherData.currentlyWeather.wind.speed.toFixed(1)}
+            <span>{language === "uk" ? "м/сек" : "m/sec"}</span>
           </h3>
           <span className={styles.weatherInfoSubtitle}>
             {language === "uk" ? "Швидк.вітру" : "Wind speed"}
@@ -66,30 +128,17 @@ const WeatherSection = () => {
         </div>
       </div>
       <div className={styles.timeWeather}>
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
+        {weatherData.hourlyWeather.list.slice(0, 23).map((hour) => (
+          <WeatherCard
+            key={hour.dt}
+            temp={
+              unit === "C"
+                ? Math.round(hour.main.temp)
+                : Math.round(convertUnitFn(hour.main.temp))
+            }
+            time={hour["dt_txt"].split(" ")[1].split(":")[0]}
+          />
+        ))}
       </div>
     </section>
   );

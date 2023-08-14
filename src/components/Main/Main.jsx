@@ -1,9 +1,10 @@
+import styles from "./Main.module.scss";
+import "./Queries.module.css";
+
 import ForecastLater from "../Forecasts/ForecastLater/ForecastLater";
 import ForecastTomorrow from "../Forecasts/ForecastTomorrow/ForecastTomorrow";
 import WeatherSection from "../WeatherSection/WeatherSection";
 import WeatherWind from "../WeatherWind/WeatherWind";
-import styles from "./Main.module.scss";
-import "./Queries.module.css";
 
 const Main = function () {
   return (

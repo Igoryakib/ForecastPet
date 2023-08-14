@@ -41,14 +41,15 @@
 .weatherAqiComponents {
   width: 25rem;
   display: flex;
-  justify-content: space-between;
+  gap: 2rem;
   align-items: center;
 }
 
 .weatherAQIWrapper {
   width: 10.6rem;
   display: flex;
-  justify-content: space-between;
+  gap: 1rem;
+  // justify-content: space-between;
   align-items: center;
 }
 
@@ -68,7 +69,7 @@
 }
 
 .levelCo {
-  width: 3.9rem;
+  width: 3.6rem;
   height: 2.4rem;
   border-radius: 0.8rem;
   display: flex;
@@ -88,11 +89,11 @@
 }
 
 .aqi_color100 {
-  background-color: rgb(4, 248, 14);
+  background-color: rgb(23, 213, 30);
 }
 
 .aqi_color90 {
-  background-color: rgb(79, 231, 37);
+  background-color: rgb(147, 202, 46);
 }
 
 .aqi_color70 {
@@ -100,15 +101,19 @@
 }
 
 .aqi_color50 {
-  background-color: rgb(229, 196, 84);
+  background-color: rgb(234, 230, 33);
 }
 
 .aqi_color40 {
-  background-color: rgb(222, 104, 59);
+  background-color: rgb(226, 149, 33);
+}
+
+.aqi_color30 {
+  background-color: rgb(231, 124, 23);
 }
 
 .aqi_color20 {
-  background-color: rgb(219, 65, 49);
+  background-color: rgb(226, 105, 18);
 }
 
 .aqi_color10 {
@@ -172,7 +177,7 @@
 }
 
 .levelO3Indicator {
-  width: 13.2rem;
+  width: fit-content;
   display: flex;
   justify-content: space-between;
   align-items: center;

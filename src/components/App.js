@@ -6,8 +6,10 @@ import {
   getDailyWeather,
   getHourlyWeather,
   getCurrentlyWeather,
+  getGeoDetails,
+  getAirQuality,
 } from "../redux/action-operations";
-import { getLanguage } from "../redux/selectors";
+import { getLanguage, getUnit } from "../redux/selectors";
 
 // home page
 import HomePage from "../pages/Homepage/HomePage.jsx";
@@ -31,13 +33,13 @@ import Settings from "../pages/Settings/Settings.jsx";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage.jsx";
 import Nav from "./Nav/Nav.jsx";
 import routes from "../utils/routes.js";
+import { temperatureUnit } from "../redux/actions";
 
 const App = () => {
   const dispatch = useDispatch();
   const language = useSelector(getLanguage);
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position.coords.latitude, position.coords.longitude);
       if (position) {
         const data = {
           lang: language,
@@ -49,6 +51,20 @@ const App = () => {
         dispatch(getDailyWeather(data));
         dispatch(getHourlyWeather(data));
         dispatch(getCurrentlyWeather(data));
+        dispatch(getGeoDetails(data));
+        dispatch(getAirQuality(data));
+        dispatch(temperatureUnit("C"));
+      } else {
+        const data = {
+          lang: "uk",
+          regionData: { lat: 1, lon: 9.5 },
+        };
+        dispatch(getDailyWeather(data));
+        dispatch(getHourlyWeather(data));
+        dispatch(getCurrentlyWeather(data));
+        dispatch(getGeoDetails(data));
+        dispatch(getAirQuality(data));
+        dispatch(temperatureUnit("C"));
       }
     });
   }, []);
@@ -56,7 +72,6 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-        {/* <Nav /> */}
         <Routes>
           <Route
             path={routes.homePage}
@@ -72,7 +87,6 @@ const App = () => {
               path={routes.authPage}
               element={
                 <>
-                  {/* <Nav /> */}
                   <AuthPage />
                 </>
               }
@@ -85,7 +99,6 @@ const App = () => {
               path={routes.settingsPage}
               element={
                 <>
-                  {/* <Nav /> */}
                   <Settings />
                 </>
               }

@@ -1,0 +1,54 @@
+@import "src/scss/variables.scss";
+
+.message {
+  display: flex;
+  gap: 3.2rem;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1.2rem 3.2rem 1.2rem 2.4rem;
+
+  position: absolute;
+  right: 6.4rem;
+  top: 10rem;
+  font-size: 2.4rem;
+  font-weight: 500;
+  z-index: 99999;
+  transition: all 0.2s;
+  border-radius: 1.6rem;
+  border: solid 0.2rem;
+}
+
+.green {
+  background-color: rgba(11, 162, 11, 0.2);
+  border-color: rgb(11, 162, 11);
+  & > span {
+    color: #fff;
+  }
+}
+.yellow {
+  background-color: rgba($mainColor, 0.1);
+  border-color: $mainColor;
+  & > span {
+    color: #555;
+  }
+}
+.red {
+  background-color: rgba(209, 50, 50, 0.8);
+  border-color: rgb(209, 50, 50);
+  color: #fff !important;
+  & > span {
+    color: #fff;
+  }
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s;
+
+  z-index: 99998;
+  background-color: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(0.64rem);
+}
