@@ -9,7 +9,7 @@ import {
   getGeoDetails,
   getAirQuality,
 } from "../redux/action-operations";
-import { getLanguage, getUnit } from "../redux/selectors";
+import { getLanguage, getUnit, getError } from "../redux/selectors";
 
 // home page
 import HomePage from "../pages/Homepage/HomePage.jsx";
@@ -38,6 +38,7 @@ import { temperatureUnit } from "../redux/actions";
 const App = () => {
   const dispatch = useDispatch();
   const language = useSelector(getLanguage);
+  const error = useSelector(getError);
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       if (position) {
