@@ -92,7 +92,6 @@ export const getWeatherData = async (type, data) => {
       }
     }
   } catch (error) {
-    console.log(error);
     throw error;
   }
 };

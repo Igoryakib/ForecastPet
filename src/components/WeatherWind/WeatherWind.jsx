@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./WeatherWind.module.scss";
 import Wind from "../../static/Wind.svg";
 import classNames from "classnames";

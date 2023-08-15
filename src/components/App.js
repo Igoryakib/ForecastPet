@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
@@ -34,44 +34,34 @@ import NotFoundPage from "../pages/NotFoundPage/NotFoundPage.jsx";
 import Nav from "./Nav/Nav.jsx";
 import routes from "../utils/routes.js";
 import { temperatureUnit } from "../redux/actions";
+import { store } from "../redux/store";
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true)
+
   const dispatch = useDispatch();
   const language = useSelector(getLanguage);
   const error = useSelector(getError);
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
-      if (position) {
-        const data = {
-          lang: language,
-          regionData: {
-            lat: position.coords.latitude,
-            lon: position.coords.longitude,
-          },
-        };
-        dispatch(getDailyWeather(data));
-        dispatch(getHourlyWeather(data));
-        dispatch(getCurrentlyWeather(data));
-        dispatch(getGeoDetails(data));
-        dispatch(getAirQuality(data));
-        dispatch(temperatureUnit("C"));
-      } else {
-        const data = {
-          lang: "uk",
-          regionData: { lat: 1, lon: 9.5 },
-        };
-        dispatch(getDailyWeather(data));
-        dispatch(getHourlyWeather(data));
-        dispatch(getCurrentlyWeather(data));
-        dispatch(getGeoDetails(data));
-        dispatch(getAirQuality(data));
-        dispatch(temperatureUnit("C"));
+      const data = {
+        lang: language || 'uk',
+        regionData: {lat: position.coords.latitude || 50.4501, lon: position.coords.longitude || 30.5234}  
       }
+        dispatch(getDailyWeather(data));
+        dispatch(getHourlyWeather(data));
+        dispatch(getCurrentlyWeather(data));
+        dispatch(getAirQuality(data));
+        dispatch(getGeoDetails(data));
+        dispatch(temperatureUnit("C"));
     });
+    setIsLoading(false)
   }, []);
 
   return (
     <>
+    {!isLoading ? 
       <BrowserRouter>
         <Routes>
           <Route
@@ -108,7 +98,9 @@ const App = () => {
           <Route path={routes.notFoundPage} element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
-    </>
+    : ''
+  }
+  </>
   );
 };
 
