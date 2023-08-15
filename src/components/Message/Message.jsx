@@ -5,10 +5,9 @@ import { useSelector } from "react-redux";
 import { getLanguage } from "../../redux/selectors";
 import Dots from "./Dots";
 
-const Message = function ({ color = "red", type = "loading" }) {
+const Message = function ({ color = "yellow", type = "loading" }) {
   const language = useSelector(getLanguage);
-  const dynamicDots = useRef();
-
+  
   return (
     <>
       <div className={classNames(styles[color], styles.message)}>

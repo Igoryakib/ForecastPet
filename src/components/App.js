@@ -9,7 +9,7 @@ import {
   getGeoDetails,
   getAirQuality,
 } from "../redux/action-operations";
-import { getLanguage, getUnit, getError } from "../redux/selectors";
+import { getLanguage, getUnit, getError, getIsLoading } from "../redux/selectors";
 
 // home page
 import HomePage from "../pages/Homepage/HomePage.jsx";
@@ -35,13 +35,16 @@ import Nav from "./Nav/Nav.jsx";
 import routes from "../utils/routes.js";
 import { temperatureUnit } from "../redux/actions";
 import { store } from "../redux/store";
+import Message from "./Message/Message";
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(true)
+  // const [isLoading, setIsLoading] = useState(true)
 
   const dispatch = useDispatch();
   const language = useSelector(getLanguage);
   const error = useSelector(getError);
+  const isLoading = useSelector(getIsLoading)
+  console.log(isLoading)
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -56,24 +59,38 @@ const App = () => {
         dispatch(getGeoDetails(data));
         dispatch(temperatureUnit("C"));
     });
-    setIsLoading(false)
+    // setIsLoading(false)
   }, []);
 
   return (
     <>
-    {!isLoading ? 
       <BrowserRouter>
-        <Routes>
+      <Routes>
           <Route
             path={routes.homePage}
             element={
               <>
+              {!isLoading ? 
+              <>
                 <Outlet />
                 <HomePage />
                 <Nav />
+                </>
+                : <Message />
+              }
               </>
             }
           >
+          </Route>
+        <Route
+          path={routes.settingsPage}
+          element={
+            <>
+              <Settings />
+            </>
+          }
+        />
+          <Route path={routes.notFoundPage} element={<NotFoundPage />} />
             <Route
               path={routes.authPage}
               element={
@@ -86,20 +103,8 @@ const App = () => {
               <Route path={routes.loginContent} element={<LoginContent />} />
               <Route path={routes.signupContent} element={<SignupContent />} />
             </Route>
-            <Route
-              path={routes.settingsPage}
-              element={
-                <>
-                  <Settings />
-                </>
-              }
-            />
-          </Route>
-          <Route path={routes.notFoundPage} element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
-    : ''
-  }
   </>
   );
 };
