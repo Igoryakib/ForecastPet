@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import { weatherRegion, weatherLanguage, temperatureUnit, weatherLoading } from "./actions";
+import { weatherRegion, weatherLanguage, temperatureUnit, weatherLoading, weatherError } from "./actions";
 import {
   getDailyWeather,
   getHourlyWeather,
@@ -80,10 +80,15 @@ const error = createReducer("", {
   [getHourlyWeather.pending]: () => "",
   [getCurrentlyWeather.pending]: () => "",
   [getGeoDetails.pending]: () => "",
+  [getDailyWeather.fulfilled]: () => "",
+  [getHourlyWeather.fulfilled]: () => "",
+  [getCurrentlyWeather.fulfilled]: () => "",
+  [getGeoDetails.fulfilled]: () => "",
   [getDailyWeather.rejected]: (_, action) => action.payload,
   [getHourlyWeather.rejected]: (_, action) => action.payload,
   [getCurrentlyWeather.rejected]: (_, action) => action.payload,
   [getGeoDetails.rejected]: (_, action) => action.payload,
+  [weatherError]: (_, action) => action.payload,
 });
 
 export default combineReducers({

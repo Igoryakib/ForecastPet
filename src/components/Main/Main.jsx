@@ -11,7 +11,7 @@ const Main = function () {
     <main className="grid">
       <WeatherSection />
       <ForecastTomorrow />
-      <WeatherWind AQiIndex={50} levelCo={15} levelO3={60} />
+      <WeatherWind />
       <ForecastLater />
     </main>
   );

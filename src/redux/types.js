@@ -8,6 +8,7 @@ const WEATHER_GEO = "weather/geo";
 const TEMPERATURE_UNIT = "weather/unit";
 const AIR_QUALITY = "weather/air";
 const WEATHER_LOADING = 'weather/loading';
+const WEATHER_ERROR = 'weather/error';
 
 export {
   WEATHER_DAILY,
@@ -19,4 +20,5 @@ export {
   TEMPERATURE_UNIT,
   AIR_QUALITY,
   WEATHER_LOADING,
+  WEATHER_ERROR,
 };

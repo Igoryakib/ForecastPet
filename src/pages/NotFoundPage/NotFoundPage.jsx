@@ -2,10 +2,14 @@ import React from "react";
 import styles from "./NotFoundPAge.module.scss";
 import classnames from "classnames";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { weatherError } from "../../redux/actions";
 
 const NotFoundPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const OnClickNavBtn = () => {
+    dispatch(weatherError(''));
     navigate("/", { replace: true });
   };
   return (

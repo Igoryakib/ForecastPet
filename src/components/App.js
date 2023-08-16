@@ -33,7 +33,7 @@ import Settings from "../pages/Settings/Settings.jsx";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage.jsx";
 import Nav from "./Nav/Nav.jsx";
 import routes from "../utils/routes.js";
-import { temperatureUnit, weatherLanguage } from "../redux/actions";
+import { temperatureUnit, weatherLoading } from "../redux/actions";
 import { store } from "../redux/store";
 import Message from "./Message/Message";
 
@@ -44,7 +44,7 @@ const App = () => {
   console.log(isLoading);
 
   useEffect(() => {
-    dispatch(weatherLanguage(true));
+    dispatch(weatherLoading(true));
     navigator.geolocation.getCurrentPosition((position) => {
       const data = {
         lang: language || "uk",
