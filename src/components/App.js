@@ -33,7 +33,7 @@ import Settings from "../pages/Settings/Settings.jsx";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage.jsx";
 import Nav from "./Nav/Nav.jsx";
 import routes from "../utils/routes.js";
-import { temperatureUnit, weatherLoading } from "../redux/actions";
+import { temperatureUnit, weatherLanguage, weatherLoading } from "../redux/actions";
 import { store } from "../redux/store";
 import Message from "./Message/Message";
 
@@ -41,25 +41,34 @@ const App = () => {
   const dispatch = useDispatch();
   const language = useSelector(getLanguage);
   const isLoading = useSelector(getIsLoading);
-  console.log(isLoading);
 
   useEffect(() => {
     dispatch(weatherLoading(true));
-    navigator.geolocation.getCurrentPosition((position) => {
-      const data = {
-        lang: language || "uk",
-        regionData: {
-          lat: position.coords.latitude || 50.4501,
-          lon: position.coords.longitude || 30.5234,
-        },
-      };
-      dispatch(getDailyWeather(data));
-      dispatch(getHourlyWeather(data));
-      dispatch(getCurrentlyWeather(data));
-      dispatch(getAirQuality(data));
-      dispatch(getGeoDetails(data));
-      dispatch(temperatureUnit("C"));
-    });
+    console.log(navigator.geolocation);
+    const data = {
+      lang: language || "uk",
+      regionData: {
+        lat: 50.4501,
+        lon: 30.5234,
+      },
+    };
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        data.regionData.lat = position.coords.latitude;
+        data.regionData.lon = position.coords.longitude;
+      });
+    } 
+    // else {
+    //   data.regionData.lat = 50.4501;
+    //   data.regionData.lon = 30.5234;
+    // }
+    console.log(data.regionData.lat, data.regionData.lon);
+    dispatch(getDailyWeather(data));
+    dispatch(getHourlyWeather(data));
+    dispatch(getCurrentlyWeather(data));
+    dispatch(getAirQuality(data));
+    dispatch(getGeoDetails(data));
+    dispatch(temperatureUnit("C"));
   }, []);
 
   return (
