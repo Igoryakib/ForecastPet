@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import { weatherRegion, weatherLanguage, temperatureUnit } from "./actions";
+import { weatherRegion, weatherLanguage, temperatureUnit, weatherLoading } from "./actions";
 import {
   getDailyWeather,
   getHourlyWeather,
@@ -48,7 +48,7 @@ const geoDetails = createReducer(
   }
 );
 
-const language = createReducer("", {
+const language = createReducer("uk", {
   [weatherLanguage]: (_, action) => action.payload,
 });
 
@@ -72,6 +72,7 @@ const isLoading = createReducer(false, {
   [getCurrentlyWeather.rejected]: () => false,
   [getGeoDetails.rejected]: () => false,
   [getAirQuality.rejected]: () => false,
+  [weatherLoading]: (_, action) => action.payload,
 });
 
 const error = createReducer("", {

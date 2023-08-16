@@ -60,10 +60,8 @@ const Header = () => {
   useEffect(() => {
     if (lang === "uk") {
       dispatch(weatherLanguage("uk"));
-      localStorage.setItem("language", "uk");
     } else {
       dispatch(weatherLanguage("en"));
-      localStorage.setItem("language", "en");
     }
   }, [language, lang, dispatch]);
   const options = {
