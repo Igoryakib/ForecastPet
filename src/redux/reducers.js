@@ -1,6 +1,12 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import { weatherRegion, weatherLanguage, temperatureUnit, weatherLoading, weatherError } from "./actions";
+import {
+  weatherRegion,
+  weatherLanguage,
+  temperatureUnit,
+  weatherLoading,
+  weatherError,
+} from "./actions";
 import {
   getDailyWeather,
   getHourlyWeather,
@@ -13,40 +19,25 @@ const regionInput = createReducer("", {
   [weatherRegion]: (_, action) => action.payload,
 });
 
-const dailyWeather = createReducer(
-  {},
-  {
-    [getDailyWeather.fulfilled]: (_, action) => action.payload,
-  }
-);
+const dailyWeather = createReducer("", {
+  [getDailyWeather.fulfilled]: (_, action) => action.payload,
+});
 
-const hourlyWeather = createReducer(
-  {},
-  {
-    [getHourlyWeather.fulfilled]: (_, action) => action.payload,
-  }
-);
+const hourlyWeather = createReducer("", {
+  [getHourlyWeather.fulfilled]: (_, action) => action.payload,
+});
 
-const currentlyWeather = createReducer(
-  {},
-  {
-    [getCurrentlyWeather.fulfilled]: (_, action) => action.payload,
-  }
-);
+const currentlyWeather = createReducer("", {
+  [getCurrentlyWeather.fulfilled]: (_, action) => action.payload,
+});
 
-const airQuality = createReducer(
-  {},
-  {
-    [getAirQuality.fulfilled]: (_, action) => action.payload,
-  }
-);
+const airQuality = createReducer("", {
+  [getAirQuality.fulfilled]: (_, action) => action.payload,
+});
 
-const geoDetails = createReducer(
-  {},
-  {
-    [getGeoDetails.fulfilled]: (_, action) => action.payload,
-  }
-);
+const geoDetails = createReducer("", {
+  [getGeoDetails.fulfilled]: (_, action) => action.payload,
+});
 
 const language = createReducer("uk", {
   [weatherLanguage]: (_, action) => action.payload,
@@ -56,21 +47,38 @@ const unit = createReducer("С", {
   [temperatureUnit]: (_, action) => action.payload,
 });
 
-const isLoading = createReducer(false, {
-  [getDailyWeather.pending]: () => true,
+const isLoadingHourly = createReducer(true, {
   [getHourlyWeather.pending]: () => true,
-  [getCurrentlyWeather.pending]: () => true,
-  [getGeoDetails.pending]: () => true,
-  [getAirQuality.pending]: () => true,
-  [getDailyWeather.fulfilled]: () => false,
   [getHourlyWeather.fulfilled]: () => false,
-  [getCurrentlyWeather.fulfilled]: () => false,
-  [getGeoDetails.fulfilled]: () => false,
-  [getAirQuality.fulfilled]: () => false,
-  [getDailyWeather.rejected]: () => false,
   [getHourlyWeather.rejected]: () => false,
+  [weatherLoading]: (_, action) => action.payload,
+});
+
+const isLoadingCurrently = createReducer(true, {
+  [getCurrentlyWeather.pending]: () => true,
+  [getCurrentlyWeather.fulfilled]: () => false,
   [getCurrentlyWeather.rejected]: () => false,
+  [getAirQuality.rejected]: () => false,
+  [weatherLoading]: (_, action) => action.payload,
+});
+
+const isLoadingDaily = createReducer(true, {
+  [getDailyWeather.pending]: () => true,
+  [getDailyWeather.fulfilled]: () => false,
+  [getDailyWeather.rejected]: () => false,
+  [weatherLoading]: (_, action) => action.payload,
+});
+
+const isLoadingGeo = createReducer(true, {
+  [getGeoDetails.pending]: () => true,
+  [getGeoDetails.fulfilled]: () => false,
   [getGeoDetails.rejected]: () => false,
+  [weatherLoading]: (_, action) => action.payload,
+});
+
+const isLoadingAirQuality = createReducer(true, {
+  [getAirQuality.pending]: () => true,
+  [getAirQuality.fulfilled]: () => false,
   [getAirQuality.rejected]: () => false,
   [weatherLoading]: (_, action) => action.payload,
 });
@@ -99,7 +107,11 @@ export default combineReducers({
   geoDetails,
   language,
   unit,
-  isLoading,
+  isLoadingHourly,
+  isLoadingCurrently,
+  isLoadingDaily,
+  isLoadingGeo,
+  isLoadingAirQuality,
   error,
   airQuality,
 });

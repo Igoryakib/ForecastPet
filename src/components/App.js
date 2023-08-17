@@ -9,7 +9,16 @@ import {
   getGeoDetails,
   getAirQuality,
 } from "../redux/action-operations";
-import { getLanguage, getUnit, getIsLoading } from "../redux/selectors";
+import {
+  getLanguage,
+  getUnit,
+  getIsLoading,
+  getIsLoadingHourly,
+  getIsLoadingCurrently,
+  getIsLoadingDaily,
+  getIsLoadingGeo,
+  getIsLoadingAirQuality,
+} from "../redux/selectors";
 
 // home page
 import HomePage from "../pages/Homepage/HomePage.jsx";
@@ -33,43 +42,43 @@ import Settings from "../pages/Settings/Settings.jsx";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage.jsx";
 import Nav from "./Nav/Nav.jsx";
 import routes from "../utils/routes.js";
-import { temperatureUnit, weatherLanguage, weatherLoading } from "../redux/actions";
+import {
+  temperatureUnit,
+  weatherLoading,
+} from "../redux/actions";
 import { store } from "../redux/store";
 import Message from "./Message/Message";
 
 const App = () => {
   const dispatch = useDispatch();
   const language = useSelector(getLanguage);
-  const isLoading = useSelector(getIsLoading);
-
+  const isLoadingHourly = useSelector(getIsLoadingHourly);
+  const isLoadingCurrently = useSelector(getIsLoadingCurrently);
+  const isLoadingDaily = useSelector(getIsLoadingDaily);
+  const isLoadingGeo = useSelector(getIsLoadingGeo);
+  const isLoadingAirQuality = useSelector(getIsLoadingAirQuality);
+  const [lat, setLat] = useState("");
+  const [lon, setLon] = useState("");
+  navigator.geolocation.getCurrentPosition((position) => {
+    setLat(position.coords.latitude);
+    setLon(position.coords.longitude);
+  });
+  const data = {
+    lang: language || "uk",
+    regionData: {
+      lat: lat || 50.4501,
+      lon: lon || 30.5234,
+    },
+  };
   useEffect(() => {
     dispatch(weatherLoading(true));
-    console.log(navigator.geolocation);
-    const data = {
-      lang: language || "uk",
-      regionData: {
-        lat: 50.4501,
-        lon: 30.5234,
-      },
-    };
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        data.regionData.lat = position.coords.latitude;
-        data.regionData.lon = position.coords.longitude;
-      });
-    } 
-    // else {
-    //   data.regionData.lat = 50.4501;
-    //   data.regionData.lon = 30.5234;
-    // }
-    console.log(data.regionData.lat, data.regionData.lon);
     dispatch(getDailyWeather(data));
     dispatch(getHourlyWeather(data));
-    dispatch(getCurrentlyWeather(data));
     dispatch(getAirQuality(data));
+    dispatch(getCurrentlyWeather(data));
     dispatch(getGeoDetails(data));
     dispatch(temperatureUnit("C"));
-  }, []);
+  }, [lat, lon]);
 
   return (
     <>
@@ -79,15 +88,22 @@ const App = () => {
             path={routes.homePage}
             element={
               <>
-                {!isLoading ? (
-                  <>
-                    <Outlet />
-                    <HomePage />
-                    <Nav />
-                  </>
-                ) : (
-                  <Message />
-                )}
+                {isLoadingHourly ||
+                  isLoadingCurrently ||
+                  isLoadingDaily ||
+                  isLoadingGeo ||
+                  (isLoadingAirQuality && <Message />)}
+                {!isLoadingHourly &&
+                  !isLoadingCurrently &&
+                  !isLoadingDaily &&
+                  !isLoadingGeo &&
+                  !isLoadingAirQuality && (
+                    <>
+                      <Outlet />
+                      <HomePage />
+                      <Nav />
+                    </>
+                  )}
               </>
             }
           ></Route>
