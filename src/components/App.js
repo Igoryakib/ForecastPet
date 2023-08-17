@@ -106,7 +106,7 @@ const App = () => {
                   )}
               </>
             }
-          ></Route>
+          >
           <Route
             path={routes.settingsPage}
             element={
@@ -127,6 +127,7 @@ const App = () => {
             <Route index element={<Navigate to={routes.loginContent} />} />
             <Route path={routes.loginContent} element={<LoginContent />} />
             <Route path={routes.signupContent} element={<SignupContent />} />
+          </Route>
           </Route>
         </Routes>
       </BrowserRouter>
