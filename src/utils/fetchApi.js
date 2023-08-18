@@ -25,7 +25,7 @@ export const getWeatherData = async (type, data) => {
           return currentlyWeather.data;
         case "daily":
           const dailyWeather = await axios.get(
-            `/forecast/daily?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&appid=${API_KEY}`
+            `/forecast/daily?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&cnt=8&appid=${API_KEY}`
           );
           return dailyWeather.data;
         case "geo":
@@ -65,7 +65,7 @@ export const getWeatherData = async (type, data) => {
           return currentlyWeather.data;
         case "daily":
           const dailyWeather = await axios.get(
-            `/forecast/daily?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&appid=${API_KEY}`
+            `/forecast/daily?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&cnt=8&appid=${API_KEY}`
           );
           return dailyWeather.data;
         case "geo":

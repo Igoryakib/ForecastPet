@@ -11,6 +11,17 @@
   margin: 0 auto;
   text-align: center;
   padding: 2rem 3rem 2.8rem 3rem;
+
+  animation: appear 0.5s;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .weatherWindContent {

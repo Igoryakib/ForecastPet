@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./WeatherCard.module.scss";
 import classnames from "classnames";
-import cardIcon from "../../static/cardIcon.svg";
+import cardIcon from "../../static/cardIcons/cardIcon.svg";
 
 const WeatherCard = ({ time, temp }) => {
   return (

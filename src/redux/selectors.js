@@ -4,6 +4,7 @@ const getGeo = (state) => state.weatherData.geoDetails;
 const getUnit = (state) => state.weatherData.unit;
 const getAir = (state) => state.weatherData.airQuality;
 const getError = (state) => state.weatherData.error;
+const getDaily = (state) => state.weatherData.dailyWeather;
 const getIsLoadingHourly = (state) => state.weatherData.isLoadingHourly;
 const getIsLoadingCurrently = (state) => state.weatherData.isLoadingCurrently;
 const getIsLoadingDaily = (state) => state.weatherData.isLoadingDaily;
@@ -22,4 +23,5 @@ export {
   getIsLoadingDaily,
   getIsLoadingGeo,
   getIsLoadingAirQuality,
+  getDaily,
 };

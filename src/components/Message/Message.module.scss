@@ -9,15 +9,26 @@
   padding: 1.2rem 3.2rem 1.2rem 2.4rem;
 
   position: absolute;
-  right: 6.4rem;
-  top: 10rem;
+  right: -1rem;
+  top: 12rem;
   font-size: 2.4rem;
   font-weight: 500;
   z-index: 99999;
   transition: all 0.2s;
   border-radius: 1.6rem;
-  border: solid 0.2rem;
+  transform: translateX(100%);
 }
+
+:global(.isOpen) {
+  transform: translateX(0);
+  transition: all 0.4s ease-in-out;
+}
+
+:global(.isClosed) {
+  transform: translateX(100%);
+  transition: all 0.2s ease-in-out;
+}
+
 
 .green {
   background-color: rgba(11, 162, 11, 0.2);
@@ -27,28 +38,16 @@
   }
 }
 .yellow {
-  background-color: rgba($mainColor, 0.1);
-  border-color: $mainColor;
+  background-color: #fff;
+  box-shadow: 0 0 2rem 0rem rgba(51, 51, 51, 0.5);
   & > span {
-    color: #555;
+    color: #333;
   }
 }
 .red {
-  background-color: rgba(209, 50, 50, 0.8);
-  border-color: rgb(209, 50, 50);
-  color: #fff !important;
+  background-color: fff;
+  box-shadow: 0 0 2rem 0rem rgba(209, 50, 50, 0.5);
   & > span {
-    color: #fff;
+    color: #333;
   }
-}
-
-.overlay {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transition: all 0.2s;
-
-  z-index: 99998;
-  background-color: rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(0.64rem);
 }

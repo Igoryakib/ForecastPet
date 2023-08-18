@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Switcher from "../../small components/ForecastSwitcher/ForecastSwitcher";
 import styles from "./ForecastLater.module.scss";
 import Time from "./Time";
 import ForecastCard from "./ForecastCard";
-import { getLanguage } from "../../../redux/selectors";
+import { getDaily, getLanguage, getUnit } from "../../../redux/selectors";
 import { useSelector } from "react-redux";
+import { convertUnitFn } from "../../../utils/convertUnitFn";
 
 const TEMPORARY_DATA = [
   {
@@ -54,10 +55,12 @@ const TEMPORARY_DATA = [
 const ForecastLater = function () {
   const [isMoreDays, setIsMoreDays] = useState(false);
   const language = useSelector(getLanguage);
+  const dailyWeather = useSelector(getDaily);
+  const unit = useSelector(getUnit)
+  console.log(dailyWeather.list)
 
   return (
     <section className={styles.section}>
-      {/* <div className={styles.container} > */}
       <Switcher
         textArray={
           language === "uk" ? ["3 дні", "7 днів"] : ["3 days", "7 days"]
@@ -69,28 +72,27 @@ const ForecastLater = function () {
         {language === "uk" ? "Прогноз погоди" : "Weather Forecast"}
       </h3>
       {isMoreDays
-        ? TEMPORARY_DATA.map((day) => (
+        ? dailyWeather.list.slice(1, 8).map((day) => (
             <ForecastCard
-              key={day.date}
-              date={day.date}
-              tempMax={day.tempMax}
-              tempMin={day.tempMin}
-              icon={day.icon}
+              key={day.dt}
+              date={new Date(day.dt*1000)}
+              tempMax={unit === 'C' ? Math.round(+day.temp.max) : Math.round(convertUnitFn(+day.temp.max))}
+              tempMin={unit === 'C' ? Math.round(+day.temp.min) : Math.round(convertUnitFn(+day.temp.min))}
+              icon={day.weather[0].icon}
               language={language}
             />
           ))
-        : TEMPORARY_DATA.slice(0, 3).map((day) => (
+        : dailyWeather.list.slice(1, 4).map((day) => (
             <ForecastCard
-              key={day.date}
-              date={day.date}
-              tempMax={day.tempMax}
-              tempMin={day.tempMin}
+              key={day.dt}
+              date={new Date(day.dt*1000)}
+              tempMax={unit === 'C' ? Math.round(+day.temp.max) : Math.round(convertUnitFn(+day.temp.max))}
+              tempMin={unit === 'C' ? Math.round(+day.temp.min) : Math.round(convertUnitFn(+day.temp.min))}
               language={language}
-              icon={day.icon}
+              icon={day.weather[0].icon}
             />
           ))}
       <Time language={language} />
-      {/* </div> */}
     </section>
   );
 };

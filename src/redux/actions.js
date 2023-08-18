@@ -1,5 +1,11 @@
 import { createAction } from "@reduxjs/toolkit";
-import { WEATHER_REGION, WEATHER_LANGUAGE, TEMPERATURE_UNIT, WEATHER_LOADING, WEATHER_ERROR } from "./types";
+import {
+  WEATHER_REGION,
+  WEATHER_LANGUAGE,
+  TEMPERATURE_UNIT,
+  WEATHER_LOADING,
+  WEATHER_ERROR,
+} from "./types";
 
 const weatherRegion = createAction(WEATHER_REGION);
 const weatherLanguage = createAction(WEATHER_LANGUAGE);

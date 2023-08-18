@@ -9,7 +9,7 @@ const NotFoundPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const OnClickNavBtn = () => {
-    dispatch(weatherError(''));
+    dispatch(weatherError(""));
     navigate("/", { replace: true });
   };
   return (

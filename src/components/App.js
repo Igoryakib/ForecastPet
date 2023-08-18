@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "../scss/styles.scss";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
@@ -11,8 +12,6 @@ import {
 } from "../redux/action-operations";
 import {
   getLanguage,
-  getUnit,
-  getIsLoading,
   getIsLoadingHourly,
   getIsLoadingCurrently,
   getIsLoadingDaily,
@@ -42,21 +41,12 @@ import Settings from "../pages/Settings/Settings.jsx";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage.jsx";
 import Nav from "./Nav/Nav.jsx";
 import routes from "../utils/routes.js";
-import {
-  temperatureUnit,
-  weatherLoading,
-} from "../redux/actions";
-import { store } from "../redux/store";
+import { temperatureUnit, weatherLoading } from "../redux/actions";
 import Message from "./Message/Message";
 
 const App = () => {
   const dispatch = useDispatch();
   const language = useSelector(getLanguage);
-  const isLoadingHourly = useSelector(getIsLoadingHourly);
-  const isLoadingCurrently = useSelector(getIsLoadingCurrently);
-  const isLoadingDaily = useSelector(getIsLoadingDaily);
-  const isLoadingGeo = useSelector(getIsLoadingGeo);
-  const isLoadingAirQuality = useSelector(getIsLoadingAirQuality);
   const [lat, setLat] = useState("");
   const [lon, setLon] = useState("");
   navigator.geolocation.getCurrentPosition((position) => {
@@ -88,47 +78,35 @@ const App = () => {
             path={routes.homePage}
             element={
               <>
-                {isLoadingHourly ||
-                  isLoadingCurrently ||
-                  isLoadingDaily ||
-                  isLoadingGeo ||
-                  isLoadingAirQuality || <Message />}
-                {!isLoadingHourly &&
-                  !isLoadingCurrently &&
-                  !isLoadingDaily &&
-                  !isLoadingGeo &&
-                  !isLoadingAirQuality && (
-                    <>
-                      <Outlet />
-                      <HomePage />
-                      <Nav />
-                    </>
-                  )}
+                <Message data-description='for loading state' type="loading" color="yellow" />
+                <Outlet />
+                <HomePage />
+                <Nav />
               </>
             }
           >
-          <Route
-            path={routes.settingsPage}
-            element={
-              <>
-                <Settings />
-              </>
-            }
-          />
-          <Route
-            path={routes.authPage}
-            element={
-              <>
-                <AuthPage />
-              </>
-            }
-          >
-            <Route index element={<Navigate to={routes.loginContent} />} />
-            <Route path={routes.loginContent} element={<LoginContent />} />
-            <Route path={routes.signupContent} element={<SignupContent />} />
+            <Route
+              path={routes.settingsPage}
+              element={
+                <>
+                  <Settings />
+                </>
+              }
+            />
+            <Route
+              path={routes.authPage}
+              element={
+                <>
+                  <AuthPage />
+                </>
+              }
+            >
+              <Route index element={<Navigate to={routes.loginContent} />} />
+              <Route path={routes.loginContent} element={<LoginContent />} />
+              <Route path={routes.signupContent} element={<SignupContent />} />
+            </Route>
           </Route>
-          </Route>
-            <Route path={routes.notFoundPage} element={<NotFoundPage />} />
+          <Route path={routes.notFoundPage} element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -10,6 +10,7 @@ import { getLanguage } from "../../redux/selectors";
 
 const Options = () => {
   const language = useSelector(getLanguage);
+
   return (
     <>
       <div className={styles.window}>

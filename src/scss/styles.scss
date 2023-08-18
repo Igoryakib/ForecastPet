@@ -32,3 +32,17 @@
 * {
   color: #555;
 }
+
+:global(section) {
+  animation: appear 1s;
+  transition: all 1s;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
