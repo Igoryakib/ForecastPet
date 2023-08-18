@@ -92,7 +92,7 @@ const App = () => {
                   isLoadingCurrently ||
                   isLoadingDaily ||
                   isLoadingGeo ||
-                  (isLoadingAirQuality && <Message />)}
+                  isLoadingAirQuality || <Message />}
                 {!isLoadingHourly &&
                   !isLoadingCurrently &&
                   !isLoadingDaily &&
@@ -115,7 +115,6 @@ const App = () => {
               </>
             }
           />
-          <Route path={routes.notFoundPage} element={<NotFoundPage />} />
           <Route
             path={routes.authPage}
             element={
@@ -129,6 +128,7 @@ const App = () => {
             <Route path={routes.signupContent} element={<SignupContent />} />
           </Route>
           </Route>
+            <Route path={routes.notFoundPage} element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </>
