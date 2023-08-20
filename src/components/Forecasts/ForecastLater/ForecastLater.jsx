@@ -7,57 +7,11 @@ import { getDaily, getLanguage, getUnit } from "../../../redux/selectors";
 import { useSelector } from "react-redux";
 import { convertUnitFn } from "../../../utils/convertUnitFn";
 
-const TEMPORARY_DATA = [
-  {
-    date: "2023-08-08",
-    tempMax: "31",
-    tempMin: "21",
-    icon: "sunny",
-  },
-  {
-    date: "2023-08-09",
-    tempMax: "25",
-    tempMin: "23",
-    icon: "cloudy_storm",
-  },
-  {
-    date: "2023-08-10",
-    tempMax: "20",
-    tempMin: "19",
-    icon: "day_partlycloudy",
-  },
-  {
-    date: "2023-08-11",
-    tempMax: "24",
-    tempMin: "22",
-    icon: "sunny",
-  },
-  {
-    date: "2023-08-12",
-    tempMax: "21",
-    tempMin: "15",
-    icon: "day_partlycloudy",
-  },
-  {
-    date: "2023-08-13",
-    tempMax: "17",
-    tempMin: "15",
-    icon: "snowy",
-  },
-  {
-    date: "2023-08-14",
-    tempMax: "16",
-    tempMin: "12",
-    icon: "cloudy_snowy",
-  },
-];
-
 const ForecastLater = function () {
   const [isMoreDays, setIsMoreDays] = useState(false);
   const language = useSelector(getLanguage);
   const dailyWeather = useSelector(getDaily);
   const unit = useSelector(getUnit)
-  console.log(dailyWeather.list)
 
   return (
     <section className={styles.section}>
