@@ -89,11 +89,4 @@
   position: relative;
   right: -53px;
   transition: opacity 0.2s;
-  pointer-events: none;
-  opacity: 0;
-}
-
-.visibleBtn {
-  pointer-events: initial;
-  opacity: 1;
 }

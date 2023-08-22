@@ -31,8 +31,6 @@ import {
 // language selector
 import {
   getLanguage,
-  getLatRegion,
-  getLonRegion,
   getUnit,
   getWeather,
 } from "../../redux/selectors";
@@ -44,12 +42,18 @@ const Header = () => {
   const [temperature, setTemperature] = useState(false);
   const [lang, setLang] = useState("uk");
   const [searchValue, setSearchValue] = useState("");
+  const [cords, setCords] = useState('');
   const dispatch = useDispatch();
   const language = useSelector(getLanguage);
   const unit = useSelector(getUnit);
-  const lat = useSelector(getLatRegion);
-  const lon = useSelector(getLonRegion);
   const weatherData = useSelector(getWeather);
+
+  useEffect(() => {
+    setCords({
+      lat: weatherData?.geoDetails?.geoData?.lat,
+      lon: weatherData?.geoDetails?.geoData?.lon,
+    });
+  }, [weatherData])
 
   const onChangeUnit = (event) => {
     const isChecked = event.target.checked;
@@ -90,8 +94,8 @@ const Header = () => {
     const data = {
       lang: language,
       regionData: {
-        lat: lat,
-        lon: lon,
+        lat: cords.lat,
+        lon: cords.lon,
       },
     };
     dispatch(weatherLoading(true));
@@ -120,14 +124,15 @@ const Header = () => {
         </div>
       </div>
       <div className={styles.headerControls}>
-        
-          <button onClick={reloadWeather} className={classnames(styles.reloaderButton, weatherData && styles.visibleBtn)}>
+        {weatherData && (
+          <button onClick={reloadWeather} className={styles.reloaderButton}>
             <img
               className={styles.reloaderButtonIcon}
               src={Reloader}
               alt="icon"
             />
           </button>
+        )}
         <SearchForm
           onSubmit={onSubmitFn}
           searchValue={searchValue}

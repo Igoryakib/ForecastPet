@@ -10,8 +10,6 @@ const getIsLoadingCurrently = (state) => state.weatherData.isLoadingCurrently;
 const getIsLoadingDaily = (state) => state.weatherData.isLoadingDaily;
 const getIsLoadingGeo = (state) => state.weatherData.isLoadingGeo;
 const getIsLoadingAirQuality = (state) => state.weatherData.isLoadingAirQuality;
-const getLatRegion = (state) => state.weatherData.geoDetails.geoData.lat;
-const getLonRegion = (state) => state.weatherData.geoDetails.geoData.lon;
 
 export {
   getLanguage,
@@ -26,6 +24,4 @@ export {
   getIsLoadingGeo,
   getIsLoadingAirQuality,
   getDaily,
-  getLatRegion,
-  getLonRegion,
 };

@@ -14,8 +14,11 @@ import {
   getIsLoadingGeo,
   getIsLoadingHourly,
 } from "../../redux/selectors";
-import WeatherSectionDuplicated from "../WeatherSection/WeatherSectionDuplicated";
-import WeatherWindDuplicated from '../WeatherWind/WeatherWindDuplicated';
+
+import WeatherSectionSkeleton from "../WeatherSection/WeatherSectionSkeleton";
+import WeatherWindSkeleton from "../WeatherWind/WeatherWindSkeleton";
+import ForecastTomorrowSkeleton from "../Forecasts/ForecastTomorrow/ForecastTomorrowSkeleton";
+import ForecastLaterSkeleton from "../Forecasts/ForecastLater/ForecastLaterSkeleton";
 const Main = function () {
   // selectors
   const isLoadingHourly = useSelector(getIsLoadingHourly);
@@ -33,46 +36,22 @@ const Main = function () {
   return (
     <main className="grid">
       {isLoadingWeatherSection ? (
-        <Skeleton
-          variant="rounded"
-          sx={{ borderRadius: "5.4rem", backgroundColor: "#e9e9e9" }}
-          animation="pulse"
-        >
-          <WeatherSectionDuplicated />
-        </Skeleton>
+        <WeatherSectionSkeleton />
       ) : (
         <WeatherSection />
       )}
       {isLoadingForecast ? (
-        <Skeleton
-          variant="rounded"
-          sx={{ borderRadius: "4rem", backgroundColor: "#e9e9e9" }}
-          animation="pulse"
-        >
-          <ForecastTomorrow />
-        </Skeleton>
+          <ForecastTomorrowSkeleton />
       ) : (
         <ForecastTomorrow />
       )}
       {isLoadingWeatherWind ? (
-        <Skeleton
-          variant="rounded"
-          sx={{ borderRadius: "5.4rem", backgroundColor: "#e9e9e9" }}
-          animation="pulse"
-        >
-          <WeatherWindDuplicated />
-        </Skeleton>
+          <WeatherWindSkeleton />
       ) : (
         <WeatherWind />
       )}
       {isLoadingForecast ? (
-        <Skeleton
-          variant="rounded"
-          sx={{ borderRadius: "4rem", backgroundColor: "#e9e9e9" }}
-          animation="pulse"
-        >
-          <ForecastLater />
-        </Skeleton>
+          <ForecastLaterSkeleton />
       ) : (
         <ForecastLater />
       )}
