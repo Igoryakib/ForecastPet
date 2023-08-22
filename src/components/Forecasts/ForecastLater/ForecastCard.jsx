@@ -52,10 +52,10 @@ const ForecastCard = function ({
       <img src={weatherIconFn()} className={styles.icon} alt="weather icon" />
       <div className={styles.temp}>
         <span className={styles.tempMax}>
-          {tempMax === 0 ? "0" : tempMax > 0 ? `+${tempMax}°` : `-${tempMax}`}
+          {tempMax === 0 ? "0°" : tempMax > 0 ? `+${tempMax}°` : `${tempMax}`}
         </span>
         <span className={styles.tempMin}>
-          /{tempMin === 0 ? "0" : tempMin > 0 ? `+${tempMin}°` : `-${tempMin}`}
+          /{tempMin === 0 ? "0°" : tempMin > 0 ? `+${tempMin}°` : `${tempMin}`}
         </span>
       </div>
       <div className={styles.date}>

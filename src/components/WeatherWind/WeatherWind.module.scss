@@ -4,15 +4,23 @@
   max-width: $mainSectionWidth;
   height: $sectionHeight;
   border-radius: 5.4rem;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url("../../static/Weather.svg");
+  // background-position: center;
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-image: url("../../static/windBackground/1-2.svg");
   margin: 0 auto;
   text-align: center;
   padding: 2rem 3rem 2.8rem 3rem;
+  position: relative;
 
   animation: appear 0.5s;
+}
+
+.background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -999;
 }
 
 @keyframes appear {
@@ -42,7 +50,7 @@
 }
 
 .weatherWindTitle {
-  color: $footerTextColor;
+  // color: $footerTextColor;
   font-family: $montserrat;
   font-size: 3.2rem;
   font-weight: 400;
@@ -65,7 +73,7 @@
 }
 
 .weatherAQIIndex {
-  color: $footerTextColor;
+  // color: $footerTextColor;
   font-family: $monda;
   font-size: 3.2rem;
   font-weight: 400;
@@ -177,6 +185,10 @@
 
 .aqi_slider40 {
   left: 6.6rem;
+}
+
+.aqi_slider30 {
+  left: 7.2rem;
 }
 
 .aqi_slider20 {

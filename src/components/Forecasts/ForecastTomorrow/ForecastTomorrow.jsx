@@ -8,12 +8,7 @@ import { useSelector } from "react-redux";
 import { getDaily, getLanguage, getUnit } from "../../../redux/selectors";
 import { convertUnitFn } from "../../../utils/convertUnitFn";
 
-const ForecastTomorrow = function ({
-  // temp = 17,
-  description_UK = "Сильний дощ",
-  description_EN = "Heavy rain",
-  // icon = "rainy",
-}) {
+const ForecastTomorrow = function () {
 
   // selectors
   const language = useSelector(getLanguage);
