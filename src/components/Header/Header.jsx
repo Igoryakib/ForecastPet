@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import classnames from "classnames";
 import styles from "./Header.module.scss";
 
 // svg
 import Avatar from "../../static/avatars/avatar_26.svg";
 import Ellipse from "../../static/ellipse.svg";
+import Reloader from "../../static/Reloader.svg";
 
 // components
 import Switcher from "../Switcher/Switcher";
@@ -16,6 +18,7 @@ import {
   weatherRegion,
   weatherLanguage,
   temperatureUnit,
+  weatherLoading,
 } from "../../redux/actions";
 import {
   getDailyWeather,
@@ -26,7 +29,13 @@ import {
 } from "../../redux/action-operations";
 
 // language selector
-import { getLanguage } from "../../redux/selectors";
+import {
+  getLanguage,
+  getLatRegion,
+  getLonRegion,
+  getUnit,
+  getWeather,
+} from "../../redux/selectors";
 
 const TEMPRORARY_NAME_UK = "Антон";
 const TEMPRORARY_NAME_EN = "Anton";
@@ -37,6 +46,10 @@ const Header = () => {
   const [searchValue, setSearchValue] = useState("");
   const dispatch = useDispatch();
   const language = useSelector(getLanguage);
+  const unit = useSelector(getUnit);
+  const lat = useSelector(getLatRegion);
+  const lon = useSelector(getLonRegion);
+  const weatherData = useSelector(getWeather);
 
   const onChangeUnit = (event) => {
     const isChecked = event.target.checked;
@@ -72,6 +85,24 @@ const Header = () => {
   };
 
   const day = Intl.DateTimeFormat(language, options).format(new Date());
+
+  const reloadWeather = () => {
+    const data = {
+      lang: language,
+      regionData: {
+        lat: lat,
+        lon: lon,
+      },
+    };
+    dispatch(weatherLoading(true));
+    dispatch(weatherLoading(true));
+    dispatch(getDailyWeather(data));
+    dispatch(getHourlyWeather(data));
+    dispatch(getAirQuality(data));
+    dispatch(getCurrentlyWeather(data));
+    dispatch(getGeoDetails(data));
+    dispatch(temperatureUnit(unit));
+  };
   return (
     <header className={styles.header}>
       <div className={styles.profile}>
@@ -89,6 +120,14 @@ const Header = () => {
         </div>
       </div>
       <div className={styles.headerControls}>
+        
+          <button onClick={reloadWeather} className={classnames(styles.reloaderButton, weatherData && styles.visibleBtn)}>
+            <img
+              className={styles.reloaderButtonIcon}
+              src={Reloader}
+              alt="icon"
+            />
+          </button>
         <SearchForm
           onSubmit={onSubmitFn}
           searchValue={searchValue}

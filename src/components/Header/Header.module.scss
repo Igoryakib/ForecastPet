@@ -67,7 +67,7 @@
 
 .headerControls {
   margin-top: 1.6rem;
-  width: 64rem;
+  width: 78rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -75,4 +75,25 @@
 
 .langSwitcherContainer {
   position: relative;
+}
+
+.reloaderButton {
+  width: 56px;
+  height: 40px;
+  background-color: $whiteColor;
+  border-radius: 100px 16px 100px 100px;
+  box-shadow: $box-shadow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  right: -53px;
+  transition: opacity 0.2s;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.visibleBtn {
+  pointer-events: initial;
+  opacity: 1;
 }
