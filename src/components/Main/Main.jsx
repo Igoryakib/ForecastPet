@@ -14,7 +14,8 @@ import {
   getIsLoadingGeo,
   getIsLoadingHourly,
 } from "../../redux/selectors";
-
+import WeatherSectionDuplicated from "../WeatherSection/WeatherSectionDuplicated";
+import WeatherWindDuplicated from '../WeatherWind/WeatherWindDuplicated';
 const Main = function () {
   // selectors
   const isLoadingHourly = useSelector(getIsLoadingHourly);
@@ -37,7 +38,7 @@ const Main = function () {
           sx={{ borderRadius: "5.4rem", backgroundColor: "#e9e9e9" }}
           animation="pulse"
         >
-          <WeatherSection />
+          <WeatherSectionDuplicated />
         </Skeleton>
       ) : (
         <WeatherSection />
@@ -59,7 +60,7 @@ const Main = function () {
           sx={{ borderRadius: "5.4rem", backgroundColor: "#e9e9e9" }}
           animation="pulse"
         >
-          <WeatherWind />
+          <WeatherWindDuplicated />
         </Skeleton>
       ) : (
         <WeatherWind />
