@@ -66,13 +66,15 @@ const Header = () => {
       regionData: searchValue,
       lang: language,
     };
-    dispatch(getGeoDetails(data));
-    dispatch(weatherRegion(searchValue));
-    dispatch(getDailyWeather(data));
-    dispatch(getHourlyWeather(data));
-    dispatch(getCurrentlyWeather(data));
-    dispatch(getAirQuality(data));
-    setSearchValue("");
+    if (searchValue){
+      dispatch(getGeoDetails(data));
+      dispatch(weatherRegion(searchValue));
+      dispatch(getDailyWeather(data));
+      dispatch(getHourlyWeather(data));
+      dispatch(getCurrentlyWeather(data));
+      dispatch(getAirQuality(data));
+      setSearchValue("");
+    }
   };
   useEffect(() => {
     if (lang === "uk") {
