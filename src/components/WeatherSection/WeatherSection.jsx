@@ -101,10 +101,20 @@ const WeatherSection = () => {
         <div className={styles.weatherInfoText}>
           <h3 className={classnames(styles.weatherInfoTitle, styles.textSize)}>
             {unit === "C"
-              ? `${currentTemp === 0 ? 0 : currentTemp > 0 ? currentTemp : '-'+currentTemp} C`
-              : `${currentTemp === 0 ? 0 : currentTemp > 0 ? Math.round(
-                  convertUnitFn(currentTemp)
-                ) : '-'+Math.round(convertUnitFn(currentTemp))} F`}
+              ? `${
+                  currentTemp === 0
+                    ? 0
+                    : currentTemp > 0
+                    ? currentTemp
+                    : "-" + currentTemp
+                } C`
+              : `${
+                  currentTemp === 0
+                    ? 0
+                    : currentTemp > 0
+                    ? Math.round(convertUnitFn(currentTemp))
+                    : "-" + Math.round(convertUnitFn(currentTemp))
+                } F`}
             °
           </h3>
           <span className={styles.weatherInfoSubtitle}>
@@ -135,12 +145,16 @@ const WeatherSection = () => {
             key={hour.dt}
             temp={
               unit === "C"
-                ? hour.main.temp === 0 ? 0 
-                : hour.main.temp > 0 ? '+'+Math.round(hour.main.temp) 
-                : '-'+Math.round(hour.main.temp)
-                : Math.round(convertUnitFn(hour.main.temp)) > 0 ? '+'+Math.round(convertUnitFn(hour.main.temp))
-                : Math.round(convertUnitFn(hour.main.temp)) === 0 ? 0
-                : '-'+Math.round(convertUnitFn(hour.main.temp))
+                ? hour.main.temp === 0
+                  ? 0
+                  : hour.main.temp > 0
+                  ? "+" + Math.round(hour.main.temp)
+                  : "-" + Math.round(hour.main.temp)
+                : Math.round(convertUnitFn(hour.main.temp)) > 0
+                ? "+" + Math.round(convertUnitFn(hour.main.temp))
+                : Math.round(convertUnitFn(hour.main.temp)) === 0
+                ? 0
+                : "-" + Math.round(convertUnitFn(hour.main.temp))
             }
             time={hour["dt_txt"].split(" ")[1].split(":")[0]}
             icon={hour.weather[0].icon}

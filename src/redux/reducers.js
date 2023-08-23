@@ -14,6 +14,7 @@ import {
   getCurrentlyWeather,
   getGeoDetails,
   getAirQuality,
+  getCities,
 } from "./action-operations";
 
 const regionInput = createReducer("", {
@@ -86,7 +87,7 @@ const isLoadingAirQuality = createReducer(true, {
 
 const theme = createReducer(true, {
   [weatherTheme]: (_, action) => action.payload,
-})
+});
 
 const error = createReducer("", {
   [getDailyWeather.pending]: () => "",
@@ -102,6 +103,11 @@ const error = createReducer("", {
   [getCurrentlyWeather.rejected]: (_, action) => action.payload,
   [getGeoDetails.rejected]: (_, action) => action.payload,
   [weatherError]: (_, action) => action.payload,
+});
+
+const cities = createReducer("", {
+  [getCities.pending]: () => "",
+  [getCities.fulfilled]: (_, action) => action.payload,
 });
 
 export default combineReducers({
@@ -120,4 +126,5 @@ export default combineReducers({
   error,
   airQuality,
   theme,
+  cities,
 });

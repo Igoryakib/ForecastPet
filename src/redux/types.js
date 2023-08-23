@@ -9,7 +9,8 @@ const TEMPERATURE_UNIT = "weather/unit";
 const AIR_QUALITY = "weather/air";
 const WEATHER_LOADING = "weather/loading";
 const WEATHER_ERROR = "weather/error";
-const WEATHER_THEME = 'weather/theme';
+const WEATHER_THEME = "weather/theme";
+const GET_CITIES = "weather/cities";
 
 export {
   WEATHER_DAILY,
@@ -23,4 +24,5 @@ export {
   WEATHER_LOADING,
   WEATHER_ERROR,
   WEATHER_THEME,
+  GET_CITIES,
 };

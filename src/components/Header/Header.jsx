@@ -26,10 +26,16 @@ import {
   getCurrentlyWeather,
   getGeoDetails,
   getAirQuality,
+  getCities,
 } from "../../redux/action-operations";
 
 // language selector
-import { getLanguage, getUnit, getWeather } from "../../redux/selectors";
+import {
+  getGeo,
+  getLanguage,
+  getUnit,
+  getWeather,
+} from "../../redux/selectors";
 
 const TEMPRORARY_NAME_UK = "Антон";
 const TEMPRORARY_NAME_EN = "Anton";
@@ -56,13 +62,11 @@ const Header = () => {
     setTemperature(isChecked);
     dispatch(temperatureUnit(isChecked ? "F" : "C"));
   };
-  const onSubmitFn = (event) => {
-    event.preventDefault();
-    const data = {
-      regionData: searchValue,
-      lang: language,
-    };
-    if (searchValue) {
+  useEffect(() => {
+    if (searchValue)
+      dispatch(getCities({ regionData: searchValue, lang: lang }));
+  }, [searchValue, lang, dispatch]);
+  const dispatchFn = (data) => {
       dispatch(getGeoDetails(data));
       dispatch(weatherRegion(searchValue));
       dispatch(getDailyWeather(data));
@@ -70,6 +74,15 @@ const Header = () => {
       dispatch(getCurrentlyWeather(data));
       dispatch(getAirQuality(data));
       setSearchValue("");
+  }
+  const onSubmitFn = (event) => {
+    event.preventDefault();
+    const data = {
+      regionData: searchValue,
+      lang: language,
+    };
+    if (searchValue) {
+      dispatchFn(data);
     }
   };
   useEffect(() => {
@@ -142,6 +155,7 @@ const Header = () => {
           onSubmit={onSubmitFn}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
+          dispatchFn={dispatchFn}
         />
         <div className={styles.langSwitcherContainer}>
           <LangSwitcher setLang={setLang} />

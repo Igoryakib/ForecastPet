@@ -1,0 +1,54 @@
+@import "src/scss/variables.scss";
+
+.dropDown {
+  width: 100%;
+  height: min-content;
+  border-radius: 2rem;
+
+  position: absolute;
+  top: 130%;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+  // gap: 0.6rem;
+
+  box-shadow: 0 0 1.4rem 0.2rem rgba(85, 85, 85, 0.3);
+  background-color: #fff;
+  z-index: 999;
+
+  font-size: 1.4rem;
+
+  animation: slideDown 0.5s;
+
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.dropDown li:not(:last-child),
+.dropDown button:not(:last-child) {
+  // border-bottom: solid 0.1rem #555;
+  box-shadow: 0 0.3rem 0 -2px rgba(85, 85, 85, 0.3);
+}
+
+.item {
+  width: 100%;
+  padding: 2.4rem 1.6rem;
+  background-color: inherit;
+}
+
+.rejected {
+  font-style: italic;
+}
+
+.btn:hover {
+  background-color: #efefef;
+  transition: all 0.2s;
+}

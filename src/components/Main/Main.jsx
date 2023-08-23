@@ -40,21 +40,9 @@ const Main = function () {
       ) : (
         <WeatherSection />
       )}
-      {isLoadingForecast ? (
-          <ForecastTomorrowSkeleton />
-      ) : (
-        <ForecastTomorrow />
-      )}
-      {isLoadingWeatherWind ? (
-          <WeatherWindSkeleton />
-      ) : (
-        <WeatherWind />
-      )}
-      {isLoadingForecast ? (
-          <ForecastLaterSkeleton />
-      ) : (
-        <ForecastLater />
-      )}
+      {isLoadingForecast ? <ForecastTomorrowSkeleton /> : <ForecastTomorrow />}
+      {isLoadingWeatherWind ? <WeatherWindSkeleton /> : <WeatherWind />}
+      {isLoadingForecast ? <ForecastLaterSkeleton /> : <ForecastLater />}
     </main>
   );
 };

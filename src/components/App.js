@@ -43,6 +43,7 @@ import Nav from "./Nav/Nav.jsx";
 import routes from "../utils/routes.js";
 import { temperatureUnit, weatherLoading } from "../redux/actions";
 import Message from "./Message/Message";
+import { store } from "../redux/store";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -70,6 +71,8 @@ const App = () => {
     dispatch(temperatureUnit("C"));
   }, [lat, lon]);
 
+  // console.log(store.getState().weatherData)
+
   return (
     <>
       <BrowserRouter>
@@ -78,7 +81,11 @@ const App = () => {
             path={routes.homePage}
             element={
               <>
-                <Message data-description='for loading state' type="loading" color="yellow" />
+                <Message
+                  data-description="for loading state"
+                  type="loading"
+                  color="yellow"
+                />
                 <Outlet />
                 <HomePage />
                 <Nav />

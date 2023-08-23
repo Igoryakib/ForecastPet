@@ -5,9 +5,9 @@ import classNames from "classnames";
 import { useSelector } from "react-redux";
 import { getAir, getLanguage } from "../../redux/selectors";
 
-import background12 from '../../static/windBackground/1-2.svg'
-import background3 from '../../static/windBackground/3.svg'
-import background45 from '../../static/windBackground/4-5.svg'
+import background12 from "../../static/windBackground/1-2.svg";
+import background3 from "../../static/windBackground/3.svg";
+import background45 from "../../static/windBackground/4-5.svg";
 
 const WeatherWind = () => {
   const language = useSelector(getLanguage);
@@ -17,16 +17,14 @@ const WeatherWind = () => {
 
   // selectors for color change
   const texts = useRef([]);
-  
+
   useEffect(() => {
-    texts.current.map(text => {
-      if (AQIIndex <= 2) text.style.color = '#333';
-      else if (AQIIndex === 3) text.style.color = '#fff';
-      else if (AQIIndex >= 4) text.style.color = '#fff';
-    })
-  }, [])
-
-
+    texts.current.map((text) => {
+      if (AQIIndex <= 2) text.style.color = "#333";
+      else if (AQIIndex === 3) text.style.color = "#fff";
+      else if (AQIIndex >= 4) text.style.color = "#fff";
+    });
+  }, []);
 
   const activeClassnamesAQi = (AQIIndex) =>
     classNames(styles.weatherAQIIndicator, {
@@ -64,17 +62,35 @@ const WeatherWind = () => {
     });
   return (
     <section className={styles.weatherWindSection}>
-      <img src={AQIIndex <= 2 ? background12 : AQIIndex === 3 ? background3 : background45} className={styles.background} alt='air condition' />
+      <img
+        src={
+          AQIIndex <= 2
+            ? background12
+            : AQIIndex === 3
+            ? background3
+            : background45
+        }
+        className={styles.background}
+        alt="air condition"
+      />
       <div className={styles.weatherWindContent}>
         <div className={styles.weatherWindHeading}>
           <img src={Wind} alt="icon" />
           <div className={styles.aqiContent}>
-            <h3 className={styles.weatherWindTitle} ref={el => texts.current.push(el)}>
+            <h3
+              className={styles.weatherWindTitle}
+              ref={(el) => texts.current.push(el)}
+            >
               {language === "uk" ? "Якість повітря" : "Air Quality"}
             </h3>
             <div className={styles.weatherAqiComponents}>
               <div className={styles.weatherAQIWrapper}>
-                <span className={styles.weatherAQIIndex} ref={el => texts.current.push(el)}>{AQIIndex}</span>
+                <span
+                  className={styles.weatherAQIIndex}
+                  ref={(el) => texts.current.push(el)}
+                >
+                  {AQIIndex}
+                </span>
                 <div className={activeClassnamesAQi(AQIIndex)}>
                   <span className={styles.weatherAQIIcon}>aqi</span>
                 </div>
@@ -86,18 +102,28 @@ const WeatherWind = () => {
           </div>
         </div>
         <div className={styles.levelO3Indicator}>
-          <span className={styles.weatherAQIIndex} ref={el => texts.current.push(el)}>
+          <span
+            className={styles.weatherAQIIndex}
+            ref={(el) => texts.current.push(el)}
+          >
             {Math.round(levelCo)}
-            <span ref={el => texts.current.push(el)}>{language === "uk" ? "мг/м³" : "μg/m3"}</span>
+            <span ref={(el) => texts.current.push(el)}>
+              {language === "uk" ? "мг/м³" : "μg/m3"}
+            </span>
           </span>
           <div className={activeClassnamesCO(levelCo)}>
             <span className={styles.weatherAQIIcon}>co</span>
           </div>
         </div>
         <div className={styles.levelO3Indicator}>
-          <span className={styles.weatherAQIIndex} ref={el => texts.current.push(el)}>
+          <span
+            className={styles.weatherAQIIndex}
+            ref={(el) => texts.current.push(el)}
+          >
             {Math.round(levelO3)}
-            <span ref={el => texts.current.push(el)}>{language === "uk" ? "мг/м³" : "μg/m3"}</span>
+            <span ref={(el) => texts.current.push(el)}>
+              {language === "uk" ? "мг/м³" : "μg/m3"}
+            </span>
           </span>
           <div className={activeClassnamesO3(levelO3)}>
             <span className={styles.weatherAQIIcon}>o3</span>

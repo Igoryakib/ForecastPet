@@ -15,28 +15,18 @@ const ForecastCard = function ({
   date = "2023-08-01",
   language = "uk",
 }) {
-
   const weatherIconFn = function () {
-    if (icon.startsWith("01"))
-      return icon_sunny;
-    if (icon.startsWith("02"))
-      return icon_partlyCloudy;
-    if (icon.startsWith("03"))
-      return icon_partlyCloudy;
-    if (icon.startsWith("04"))
-      return icon_partlyCloudy;
-    if (icon.startsWith("09"))
-      return icon_cloudyRainy;
-    if (icon.startsWith("10"))
-      return icon_rainy;
-    if (icon.startsWith("11"))
-      return icon_cloudyStorm;
-    if (icon.startsWith("13"))
-      return icon_snowy;
-    if (icon.startsWith("50"))
-      return icon_partlyCloudy;
+    if (icon.startsWith("01")) return icon_sunny;
+    if (icon.startsWith("02")) return icon_partlyCloudy;
+    if (icon.startsWith("03")) return icon_partlyCloudy;
+    if (icon.startsWith("04")) return icon_partlyCloudy;
+    if (icon.startsWith("09")) return icon_cloudyRainy;
+    if (icon.startsWith("10")) return icon_rainy;
+    if (icon.startsWith("11")) return icon_cloudyStorm;
+    if (icon.startsWith("13")) return icon_snowy;
+    if (icon.startsWith("50")) return icon_partlyCloudy;
   };
-  
+
   const options = {
     day: "numeric",
     month: "long",

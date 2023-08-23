@@ -11,7 +11,7 @@ const ForecastLater = function () {
   const [isMoreDays, setIsMoreDays] = useState(false);
   const language = useSelector(getLanguage);
   const dailyWeather = useSelector(getDaily);
-  const unit = useSelector(getUnit)
+  const unit = useSelector(getUnit);
 
   return (
     <section className={styles.section}>
@@ -26,26 +26,46 @@ const ForecastLater = function () {
         {language === "uk" ? "Прогноз погоди" : "Weather Forecast"}
       </h3>
       {isMoreDays
-        ? dailyWeather.list.slice(1, 8).map((day) => (
-            <ForecastCard
-              key={day.dt}
-              date={new Date(day.dt*1000)}
-              tempMax={unit === 'C' ? Math.round(+day.temp.max) : Math.round(convertUnitFn(+day.temp.max))}
-              tempMin={unit === 'C' ? Math.round(+day.temp.min) : Math.round(convertUnitFn(+day.temp.min))}
-              icon={day.weather[0].icon}
-              language={language}
-            />
-          ))
-        : dailyWeather.list.slice(1, 4).map((day) => (
-            <ForecastCard
-              key={day.dt}
-              date={new Date(day.dt*1000)}
-              tempMax={unit === 'C' ? Math.round(+day.temp.max) : Math.round(convertUnitFn(+day.temp.max))}
-              tempMin={unit === 'C' ? Math.round(+day.temp.min) : Math.round(convertUnitFn(+day.temp.min))}
-              language={language}
-              icon={day.weather[0].icon}
-            />
-          ))}
+        ? dailyWeather.list
+            .slice(1, 8)
+            .map((day) => (
+              <ForecastCard
+                key={day.dt}
+                date={new Date(day.dt * 1000)}
+                tempMax={
+                  unit === "C"
+                    ? Math.round(+day.temp.max)
+                    : Math.round(convertUnitFn(+day.temp.max))
+                }
+                tempMin={
+                  unit === "C"
+                    ? Math.round(+day.temp.min)
+                    : Math.round(convertUnitFn(+day.temp.min))
+                }
+                icon={day.weather[0].icon}
+                language={language}
+              />
+            ))
+        : dailyWeather.list
+            .slice(1, 4)
+            .map((day) => (
+              <ForecastCard
+                key={day.dt}
+                date={new Date(day.dt * 1000)}
+                tempMax={
+                  unit === "C"
+                    ? Math.round(+day.temp.max)
+                    : Math.round(convertUnitFn(+day.temp.max))
+                }
+                tempMin={
+                  unit === "C"
+                    ? Math.round(+day.temp.min)
+                    : Math.round(convertUnitFn(+day.temp.min))
+                }
+                language={language}
+                icon={day.weather[0].icon}
+              />
+            ))}
       <Time language={language} />
     </section>
   );

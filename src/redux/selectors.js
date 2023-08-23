@@ -11,6 +11,7 @@ const getIsLoadingDaily = (state) => state.weatherData.isLoadingDaily;
 const getIsLoadingGeo = (state) => state.weatherData.isLoadingGeo;
 const getIsLoadingAirQuality = (state) => state.weatherData.isLoadingAirQuality;
 const getTheme = (state) => state.weatherData.theme;
+const getCities = (state) => state.weatherData.cities;
 
 export {
   getLanguage,
@@ -26,4 +27,5 @@ export {
   getIsLoadingAirQuality,
   getDaily,
   getTheme,
+  getCities,
 };

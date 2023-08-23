@@ -8,8 +8,8 @@ const SettingsSwitcher = function ({ textArray }) {
   const [value, setValue] = useState(true);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(weatherTheme(value))
-  }, [value])
+    dispatch(weatherTheme(value));
+  }, [value]);
 
   return (
     <label className={styles.labelSwitcher}>

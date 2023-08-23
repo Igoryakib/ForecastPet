@@ -5,6 +5,7 @@ import {
   WEATHER_CURRENTLY,
   WEATHER_GEO,
   AIR_QUALITY,
+  GET_CITIES,
 } from "./types";
 import { getWeatherData } from "../utils/fetchApi";
 
@@ -53,10 +54,17 @@ const getAirQuality = createAsyncThunk(
   }
 );
 
+const getCities = createAsyncThunk(GET_CITIES, (data, { rejectWithValue }) => {
+  return getWeatherData("cities", data)
+    .then((data) => data)
+    .catch((error) => rejectWithValue(error));
+});
+
 export {
   getDailyWeather,
   getHourlyWeather,
   getCurrentlyWeather,
   getGeoDetails,
   getAirQuality,
+  getCities,
 };

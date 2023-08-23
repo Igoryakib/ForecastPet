@@ -10,9 +10,29 @@ export const getWeatherData = async (type, data) => {
     if (typeof regionData === "object") {
       const { lat, lon } = regionData;
       const geoData = await axios.get(
-        `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${API_KEY}`
+        `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=3&appid=${API_KEY}`
       );
+
       switch (type) {
+        case "cities":
+          const fetcher = async () => {
+            const countryDetails = await axios.get(
+              `https://restcountries.com/v3.1/alpha?codes=${geoData.data
+                .map((city) => city.country)
+                .join(",")}`
+            );
+            const result = [];
+            geoData.data.map((city, index) => {
+              result.push({
+                country: countryDetails.data.filter(
+                  (city, i) => city.cca2 === geoData.data[index].country
+                )[0],
+                city: city,
+              });
+            });
+            return result;
+          };
+          return fetcher();
         case "hourly":
           const hourlyWeather = await axios.get(
             `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${lat}&units=metric&lon=${lon}&lang=${lang}&appid=${API_KEY}`
@@ -49,10 +69,30 @@ export const getWeatherData = async (type, data) => {
       }
     } else {
       const geoData = await axios.get(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${regionData}&limit=1&appid=${API_KEY}`
+        `http://api.openweathermap.org/geo/1.0/direct?q=${regionData}&limit=3&appid=${API_KEY}`
       );
+
       const { lat = null, lon = null, country: countryCode } = geoData.data[0];
       switch (type) {
+        case "cities":
+          const fetcher = async () => {
+            const countryDetails = await axios.get(
+              `https://restcountries.com/v3.1/alpha?codes=${geoData.data
+                .map((city) => city.country)
+                .join(",")}`
+            );
+            const result = [];
+            geoData.data.map((city, index) => {
+              result.push({
+                country: countryDetails.data.filter(
+                  (city, i) => city.cca2 === geoData.data[index].country
+                )[0],
+                city: city,
+              });
+            });
+            return result;
+          };
+          return fetcher();
         case "hourly":
           const hourlyWeather = await axios.get(
             `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&appid=${API_KEY}`

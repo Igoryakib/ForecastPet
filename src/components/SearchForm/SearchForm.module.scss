@@ -3,12 +3,11 @@
 .searchFormInput {
   padding: 0.8rem 4.8rem;
   width: 34rem;
-  height: 40px;
+  height: 4rem;
   background-color: $whiteColor;
   box-shadow: $box-shadow;
   border: $border-shadow;
-  border-radius: 100px;
-  transition: linear 0.2s;
+  border-radius: 10rem;
   &::placeholder {
     position: relative;
     color: $placeholderColor;
