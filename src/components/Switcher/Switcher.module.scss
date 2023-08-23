@@ -12,6 +12,10 @@
   border: $border-shadow;
   box-shadow: $box-shadow;
   cursor: pointer;
+  transition: linear 0.2s;
+  &:hover {
+    box-shadow: $shadow--smallElements-hover--orange;
+  }
 }
 
 .inputSwitcher {

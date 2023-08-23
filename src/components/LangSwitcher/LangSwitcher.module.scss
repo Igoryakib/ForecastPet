@@ -4,7 +4,6 @@
   position: absolute;
   left: 0;
   top: 0;
-
   transform: translate(-50%, -50%);
 }
 
@@ -19,8 +18,11 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  transition: height 0.2s;
+  transition: linear 0.2s;
   cursor: pointer;
+  &:hover {
+    box-shadow: $shadow--smallElements-hover--orange;
+  }
 }
 
 .selectOption {

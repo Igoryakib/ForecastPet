@@ -17,10 +17,10 @@
     font-family: $monda;
   }
   &:hover {
-    box-shadow: $shadow--smallElements-hover;
+        box-shadow: $shadow--smallElements-hover--orange;
   }
   &:focus {
-    box-shadow: $shadow--smallElements-hover;
+    box-shadow: $shadow--smallElements-hover--orange;
   }
 }
 
@@ -36,4 +36,10 @@
   left: 1rem;
   background-color: transparent;
   cursor: pointer;
+  & > img {
+    transition: linear 0.2s;
+  }
+  &:hover > img {
+    transform: scale(1.1);
+  }
 }
