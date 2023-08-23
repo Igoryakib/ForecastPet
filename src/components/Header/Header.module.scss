@@ -93,7 +93,7 @@
     box-shadow: $shadow--smallElements-hover;
   }
   &:hover > img {
-    transform: rotate(270deg);
+    transform: rotate(270deg) scale(1.1);
   }
 }
 

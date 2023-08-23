@@ -8,12 +8,19 @@
   box-shadow: $box-shadow;
   border: $border-shadow;
   border-radius: 100px;
+  transition: linear 0.2s;
   &::placeholder {
     position: relative;
     color: $placeholderColor;
     font-size: 1.4rem;
     font-weight: 700;
     font-family: $monda;
+  }
+  &:hover {
+    box-shadow: $shadow--smallElements-hover;
+  }
+  &:focus {
+    box-shadow: $shadow--smallElements-hover;
   }
 }
 

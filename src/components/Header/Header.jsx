@@ -29,11 +29,7 @@ import {
 } from "../../redux/action-operations";
 
 // language selector
-import {
-  getLanguage,
-  getUnit,
-  getWeather,
-} from "../../redux/selectors";
+import { getLanguage, getUnit, getWeather } from "../../redux/selectors";
 
 const TEMPRORARY_NAME_UK = "Антон";
 const TEMPRORARY_NAME_EN = "Anton";
@@ -42,7 +38,7 @@ const Header = () => {
   const [temperature, setTemperature] = useState(false);
   const [lang, setLang] = useState("uk");
   const [searchValue, setSearchValue] = useState("");
-  const [cords, setCords] = useState('');
+  const [cords, setCords] = useState("");
   const dispatch = useDispatch();
   const language = useSelector(getLanguage);
   const unit = useSelector(getUnit);
@@ -53,7 +49,7 @@ const Header = () => {
       lat: weatherData?.geoDetails?.geoData?.lat,
       lon: weatherData?.geoDetails?.geoData?.lon,
     });
-  }, [weatherData])
+  }, [weatherData]);
 
   const onChangeUnit = (event) => {
     const isChecked = event.target.checked;
@@ -66,7 +62,7 @@ const Header = () => {
       regionData: searchValue,
       lang: language,
     };
-    if (searchValue){
+    if (searchValue) {
       dispatch(getGeoDetails(data));
       dispatch(weatherRegion(searchValue));
       dispatch(getDailyWeather(data));
@@ -109,6 +105,9 @@ const Header = () => {
     dispatch(getGeoDetails(data));
     dispatch(temperatureUnit(unit));
   };
+  const titleLang = {
+    title: language === "uk" ? "оновити" : "reload",
+  };
   return (
     <header className={styles.header}>
       <div className={styles.profile}>
@@ -127,7 +126,11 @@ const Header = () => {
       </div>
       <div className={styles.headerControls}>
         {weatherData && (
-          <button onClick={reloadWeather} className={styles.reloaderButton}>
+          <button
+            title={titleLang.title}
+            onClick={reloadWeather}
+            className={styles.reloaderButton}
+          >
             <img
               className={styles.reloaderButtonIcon}
               src={Reloader}
