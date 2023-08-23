@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./SettingsSwitcher.module.scss";
 import classnames from "classnames";
+import { useDispatch } from "react-redux";
+import { weatherTheme } from "../../redux/actions";
 
 const SettingsSwitcher = function ({ textArray }) {
-  const [value, setValue] = useState(false);
+  const [value, setValue] = useState(true);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(weatherTheme(value))
+  }, [value])
 
   return (
     <label className={styles.labelSwitcher}>

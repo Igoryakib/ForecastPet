@@ -6,6 +6,7 @@ import {
   temperatureUnit,
   weatherLoading,
   weatherError,
+  weatherTheme,
 } from "./actions";
 import {
   getDailyWeather,
@@ -83,6 +84,10 @@ const isLoadingAirQuality = createReducer(true, {
   [weatherLoading]: (_, action) => action.payload,
 });
 
+const theme = createReducer(true, {
+  [weatherTheme]: (_, action) => action.payload,
+})
+
 const error = createReducer("", {
   [getDailyWeather.pending]: () => "",
   [getHourlyWeather.pending]: () => "",
@@ -114,4 +119,5 @@ export default combineReducers({
   isLoadingAirQuality,
   error,
   airQuality,
+  theme,
 });
