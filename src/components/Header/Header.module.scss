@@ -88,5 +88,15 @@
   align-items: center;
   position: relative;
   right: -53px;
-  transition: opacity 0.2s;
+  transition: linear 0.2s;
+  &:hover {
+    box-shadow: $shadow--smallElements-hover;
+  }
+  &:hover > img {
+    transform: rotate(270deg);
+  }
+}
+
+.reloaderButtonIcon {
+  transition: ease-in-out 0.4s;
 }
