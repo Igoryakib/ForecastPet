@@ -50,10 +50,11 @@ const App = () => {
   const language = useSelector(getLanguage);
   const [lat, setLat] = useState("");
   const [lon, setLon] = useState("");
-  navigator.geolocation.getCurrentPosition((position) => {
+  const idCoordsWatcher = navigator.geolocation.watchPosition((position) => {
     setLat(position.coords.latitude);
     setLon(position.coords.longitude);
   });
+
   const data = {
     lang: language || "uk",
     regionData: {
@@ -61,6 +62,15 @@ const App = () => {
       lon: lon || 30.5234,
     },
   };
+  useEffect(() => {
+    return () => navigator.geolocation.clearWatch(idCoordsWatcher);
+  }, []);
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition((position) => {
+  //     setLat(position.coords.latitude);
+  //     setLon(position.coords.longitude);
+  //   });
+  // }, []);
   useEffect(() => {
     dispatch(weatherLoading(true));
     dispatch(getDailyWeather(data));
