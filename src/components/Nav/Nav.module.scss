@@ -33,6 +33,239 @@
   transition: linear 0.2s;
 }
 
+.activeTop {
+  border-left: solid $mainColor 0.36rem;
+  border-top-left-radius: 0.32rem;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 38%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 0;
+  transition: height 0.2s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.activeCenter {
+  border-left: solid $mainColor 0.36rem;
+  border-top-left-radius: 0.32rem;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 0;
+  transition: height 0.2s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.activeBot {
+  border-left: solid $mainColor 0.36rem;
+  border-top-left-radius: 0.32rem;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 59%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 0;
+  transition: height 0.2s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.visibleHoverTop {
+  pointer-events: initial;
+  animation: visibleBorderTop 200ms linear forwards;
+}
+
+.hiddenHoverTop {
+  animation: hiddenBorderTop 200ms linear forwards;
+  pointer-events: none;
+}
+
+.visibleHoverCenter {
+  pointer-events: initial;
+  animation: visibleBorderCenter 200ms linear forwards;
+}
+
+.hiddenHoverCenter {
+  animation: hiddenBorderCenter 200ms linear forwards;
+  pointer-events: none;
+}
+
+.visibleHoverBot {
+  pointer-events: initial;
+  animation: visibleBorderBot 200ms linear forwards;
+}
+
+.hiddenHoverBot {
+  animation: hiddenBorderBot 200ms linear forwards;
+  pointer-events: none;
+}
+
+@keyframes hiddenBorderTop {
+  100% {
+    opacity: 0;
+    height: 1rem;
+    border-radius: 0;
+  }
+  80% {
+    opacity: 1;
+    height: 2rem;
+    border-radius: 5px 0 0 0;
+  }
+  50% {
+    opacity: 1;
+    height: 3rem;
+    border-radius: 10px 0 0 0;
+  }
+  20% {
+    opacity: 1;
+    height: 4rem;
+    border-radius: 15px 0 0 0;
+  }
+  0% {
+    opacity: 1;
+    height: 6rem;
+    border-radius: 20px 0 0 0;
+  }
+}
+
+@keyframes visibleBorderTop {
+  0% {
+    opacity: 1;
+    height: 1rem;
+    border-radius: 0;
+  }
+  20% {
+    opacity: 1;
+    height: 2rem;
+    border-radius: 5px 0 0 0;
+  }
+  50% {
+    opacity: 1;
+    height: 3rem;
+    border-radius: 10px 0 0 0;
+  }
+  80% {
+    opacity: 1;
+    height: 4rem;
+    border-radius: 15px 0 0 0;
+  }
+  100% {
+    opacity: 1;
+    height: 6rem;
+    border-radius: 20px 0 0 0;
+  }
+}
+
+@keyframes hiddenBorderCenter {
+  100% {
+    opacity: 0;
+    height: 1rem;
+  }
+  80% {
+    opacity: 1;
+    height: 2rem;
+  }
+  50% {
+    opacity: 1;
+    height: 3rem;
+  }
+  20% {
+    opacity: 1;
+    height: 4rem;
+  }
+  0% {
+    opacity: 1;
+    height: 5rem;
+  }
+}
+
+@keyframes visibleBorderCenter {
+  0% {
+    opacity: 1;
+    height: 1rem;
+  }
+  20% {
+    opacity: 1;
+    height: 2rem;
+  }
+  50% {
+    opacity: 1;
+    height: 3rem;
+  }
+  80% {
+    opacity: 1;
+    height: 4rem;
+  }
+  100% {
+    opacity: 1;
+    height: 5rem;
+  }
+}
+
+@keyframes hiddenBorderBot {
+  100% {
+    opacity: 0;
+    height: 1rem;
+    border-radius: 0;
+  }
+  80% {
+    opacity: 1;
+    height: 2rem;
+    border-radius: 0 0 0 5px;
+  }
+  50% {
+    opacity: 1;
+    height: 3rem;
+    border-radius: 0 0 0 10px;
+  }
+  20% {
+    opacity: 1;
+    height: 4rem;
+    border-radius: 0 0 0 15px;
+  }
+  0% {
+    opacity: 1;
+    height: 6rem;
+    border-radius:  0 0 0 20px;
+  }
+}
+
+@keyframes visibleBorderBot {
+  0% {
+    opacity: 1;
+    height: 1rem;
+    border-radius: 0;
+  }
+  20% {
+    opacity: 1;
+    height: 2rem;
+    border-radius: 0 0 0 5px;
+  }
+  50% {
+    opacity: 1;
+    height: 3rem;
+    border-radius: 0 0 0 10px;
+  }
+  80% {
+    opacity: 1;
+    height: 4rem;
+    border-radius: 0 0 0 15px;
+  }
+  100% {
+    opacity: 1;
+    height: 6rem;
+    border-radius:  0 0 0 20px;
+  }
+}
+
 // .active {
 //   position: relative;
 // }
@@ -85,12 +318,7 @@ $borderWidth: 0.36rem;
   transform: translateY(-50%);
   width: 100%;
   height: 5rem;
-  background-image: linear-gradient(
-    to right,
-    rgba(233, 132, 64, 0.5),
-    #ffffff00
-  );
-
+  background-image: linear-gradient(to right, rgba(233, 132, 64, 0.5), #ffffff00);
   animation: border 0.3s;
 }
 
@@ -112,6 +340,9 @@ $borderWidth: 0.36rem;
 @keyframes border {
   0% {
     width: 0;
+  }
+  50% {
+    width: 50%;
   }
   100% {
     width: 100%;

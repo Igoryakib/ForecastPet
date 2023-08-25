@@ -1,14 +1,20 @@
 import { useLocation, NavLink } from "react-router-dom";
 import styles from "./Nav.module.scss";
 import routes from "../../utils/routes";
+import { useState } from "react";
+import classnames from "classnames";
 
 const Nav = function () {
   const location = useLocation();
   const isAuth = location.pathname.split("/")[1];
-
+  const [topCaptured, setTopCaptured] = useState(false);
+  const [centerCaptured, setCenterCaptured] = useState(false);
+  const [BotCaptured, setBotCaptured] = useState(false);
   return (
     <div className={`${styles.container}`}>
       <NavLink
+        onMouseEnter={(event) => setTopCaptured(true)}
+        onMouseLeave={() => setTopCaptured(false)}
         className={styles.button}
         to={`${routes.authPage}/${routes.loginContent}`}
       >
@@ -40,6 +46,14 @@ const Nav = function () {
             strokeLinejoin="round"
           />
         </svg>
+        <div
+          className={classnames(
+            styles.activeTop,
+            topCaptured && isAuth !== "auth"
+              ? styles.visibleHoverTop
+              : styles.hiddenHoverTop
+          )}
+        ></div>
         {isAuth === "auth" && (
           <>
             <div className={styles.activeIndicatorBorder}></div>
@@ -47,7 +61,12 @@ const Nav = function () {
           </>
         )}
       </NavLink>
-      <NavLink className={styles.button} to={routes.homePage}>
+      <NavLink
+        onMouseEnter={(event) => setCenterCaptured(true)}
+        onMouseLeave={() => setCenterCaptured(false)}
+        className={styles.button}
+        to={routes.homePage}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="28"
@@ -96,6 +115,14 @@ const Nav = function () {
             strokeLinejoin="round"
           />
         </svg>
+        <div
+          className={classnames(
+            styles.activeCenter,
+            centerCaptured && location.pathname !== "/"
+              ? styles.visibleHoverCenter
+              : styles.hiddenHoverCenter
+          )}
+        ></div>
         {location.pathname === "/" && (
           <>
             <div className={styles.activeIndicatorBorder}></div>
@@ -103,7 +130,12 @@ const Nav = function () {
           </>
         )}
       </NavLink>
-      <NavLink className={styles.button} to={routes.settingsPage}>
+      <NavLink
+        onMouseEnter={(event) => setBotCaptured(true)}
+        onMouseLeave={() => setBotCaptured(false)}
+        className={styles.button}
+        to={routes.settingsPage}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="28"
@@ -147,6 +179,14 @@ const Nav = function () {
             strokeLinejoin="round"
           />
         </svg>
+        <div
+          className={classnames(
+            styles.activeBot,
+            BotCaptured && location.pathname !== "/settings"
+              ? styles.visibleHoverBot
+              : styles.hiddenHoverBot
+          )}
+        ></div>
         {location.pathname === "/settings" && (
           <>
             <div className={styles.activeIndicatorBorder}></div>
