@@ -8,6 +8,7 @@
   box-shadow: $box-shadow;
   border: $border-shadow;
   border-radius: 10rem;
+  transition: box-shadow 0.2s;
   &::placeholder {
     position: relative;
     color: $placeholderColor;
