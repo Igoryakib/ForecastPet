@@ -10,7 +10,7 @@ export const getWeatherData = async (type, data) => {
     if (typeof regionData === "object") {
       const { lat, lon } = regionData;
       const geoData = await axios.get(
-        `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=3&appid=${API_KEY}`
+        `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=8&appid=${API_KEY}`
       );
 
       switch (type) {
@@ -69,7 +69,7 @@ export const getWeatherData = async (type, data) => {
       }
     } else {
       const geoData = await axios.get(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${regionData}&limit=3&appid=${API_KEY}`
+        `http://api.openweathermap.org/geo/1.0/direct?q=${regionData}&limit=8&appid=${API_KEY}`
       );
 
       const { lat = null, lon = null, country: countryCode } = geoData.data[0];

@@ -2,7 +2,8 @@
 
 .dropDown {
   width: 100%;
-  height: min-content;
+  height: 20rem;
+  overflow-y: scroll;
   border-radius: 2rem;
 
   position: absolute;
@@ -40,8 +41,10 @@
 
 .item {
   width: 100%;
-  padding: 2.4rem 1.6rem;
+  padding: 1.8rem 1.2rem;
   background-color: inherit;
+  display: flex;
+  gap: 1rem;
 }
 
 .rejected {
@@ -51,4 +54,25 @@
 .btn:hover {
   background-color: #efefef;
   transition: all 0.2s;
+}
+
+.flag {
+  font-size: 3.2rem;
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.itemCity {
+  font-size: 1.6rem;
+}
+
+.itemCountry {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: rgb(122, 122, 122)
 }

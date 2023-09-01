@@ -8,10 +8,6 @@ const DropDown = function ({dispatchFn}) {
   const language = useSelector(getLanguage);
   const searchCities = useSelector(getCities);
 
-  useEffect(() => {
-    console.log(searchCities);
-  }, []);
-
   return (
     <ul className={styles.dropDown}>
       {searchCities.length === 0 ? (
@@ -24,9 +20,11 @@ const DropDown = function ({dispatchFn}) {
         searchCities.map((city) => (
           <li className={classNames(styles.city, styles.btn)} key={city.lat} >
             <button className={styles.item} onClick={() => dispatchFn({regionData: {lat: city.city.lat, lon: city.city.lon}, lang: language})} >
-              {city.city.name}, {city.city.state ? `${city.city.state},` : ""}{" "}
-              {city.country.name.official ?? city.country.name.common}{" "}
-              {city.country.flag}
+              <span className={styles.flag}>{city.country.cca2 === 'RU' ? '🤮' : city.country.flag}</span>
+              <div className={styles.itemInfo} >
+                <span className={styles.itemCity} >{city.city.name}{city.city.state ? `, ${city.city.state}` : ""}{" "}</span>
+                <span className={styles.itemCountry}>{city.country.name.common ?? city.country.name.official}{" "}</span>
+              </div>
             </button>
           </li>
         ))
