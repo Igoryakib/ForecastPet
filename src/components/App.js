@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "../scss/styles.scss";
 
 // redux
@@ -55,13 +55,16 @@ const App = () => {
     setLon(position.coords.longitude);
   });
 
-  const data = {
-    lang: language || "uk",
-    regionData: {
+  const data = useMemo(function data(){
+    return {
+      lang: language || "uk",
+      regionData: {
       lat: lat || 50.4501,
       lon: lon || 30.5234,
     },
-  };
+}}, [language, lat, lon]);
+
+ 
   useEffect(() => {
     return () => navigator.geolocation.clearWatch(idCoordsWatcher);
   }, []);
@@ -79,7 +82,7 @@ const App = () => {
     dispatch(getCurrentlyWeather(data));
     dispatch(getGeoDetails(data));
     dispatch(temperatureUnit("C"));
-  }, [lat, lon]);
+  }, [lat, lon, data, dispatch]);
 
   // console.log(store.getState().weatherData)
 

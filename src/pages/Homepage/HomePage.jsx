@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import styles from "./HomePage.module.scss";
 
 import Header from "../../components/Header/Header";
@@ -9,10 +9,10 @@ import { getWeather, getError } from "../../redux/selectors";
 import Message from "../../components/Message/Message";
 import { useNavigate } from "react-router-dom";
 
-const HomePage = () => {
+const HomePage = memo(function HomePage(){
   const { isLoading } = useSelector(getWeather);
   const error = useSelector(getError);
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   useEffect(() => {
     if (error) {
       navigate("/error");
@@ -26,6 +26,6 @@ const HomePage = () => {
       <Footer />
     </div>
   );
-};
+});
 
 export default HomePage;
