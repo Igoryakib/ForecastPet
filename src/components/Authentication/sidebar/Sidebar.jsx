@@ -114,7 +114,7 @@ const Sidebar = function ({ activeFeedback, setActiveFeedback, type }) {
               <Feedback key={i} client={clients[activeFeedback - 1]} />
             ) : (
               ""
-            )
+            ),
           )}
           <FeedbackNav
             number={clients.length}

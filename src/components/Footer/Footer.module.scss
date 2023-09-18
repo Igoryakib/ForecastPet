@@ -1,24 +1,145 @@
 @import "../../scss/variables.scss";
 
 .footer {
-  width: 100vw;
-  margin: 0 auto;
+  width: 100dvw;
+  margin: 5.6rem auto;
   text-align: center;
-  border-top: 0.1rem solid rgba(85, 85, 85, 0.25);
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: #0a142f;
+
+}
+
+.divider {
+  position: absolute;
+
+  width: 80dvw;
+  height: 1px;
+  opacity: 0.15;
+  background-image: linear-gradient(
+    to right,
+    rgba(15, 81, 139, 0.5) 30%,
+    #0f528b 50%,
+    rgba(15, 81, 139, 0.5)
+  );
+  display: block;
+}
+
+.divider1 {
+  top: -3.5rem;
+}
+.divider2 {
+  bottom: 5.2rem;
 }
 
 .footerContent {
-  width: 125.5rem;
-  padding: 5.6rem;
-  margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  gap: 2rem;
+  margin: 3.5rem 0 7.2rem 0;
+  opacity: 0;
+  transform: translateY(30%);
+  transition: all 0.75s;
+}
+
+.footerIcon {
+  opacity: 0;
+  transform: translateY(30%);
+  transition: all 0.75s;
+}
+
+.appear {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 .footerTitle {
+  color: #0a142f;
+  text-align: center;
+  font-family: $montserrat;
+  font-size: 4rem;
+  font-weight: 600;
+  line-height: 5.6rem;
+
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.footerTitleStrong {
+  position: relative;
+  z-index: 99;
+  color: #FFF;
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.footerTitleStrong::after {
+  content: '';
+  z-index: -1;
+  display: inline;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: $mainColor;
+  height: 100%;
+  width: 100%;
+
+  border-radius: 0.32rem;
+  box-shadow: $box-shadow;
+}
+
+.links {
+  display: flex;
+  gap: 2.2rem;
+}
+
+.link {
+  background-color: #f7f9fb;
+  padding: 0.6rem 1.2rem;
+  border-radius: 99rem;
+  transition: all 0.1s;
+
+  height: 3.4rem;
+
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  font-family: $inter;
+  font-size: 1.4rem;
+}
+
+.link:hover {
+  background-color: #f1f1f1;
+}
+
+.githubIcon {
+  height: 2.2rem;
+  width: 2.2rem;
+}
+
+// .linkIcon {
+//   width: 1rem;
+//   height: 1rem;
+// }
+
+.version {
+  font-family: $montserrat;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: #555;
+}
+
+.copyright {
+  font-family: $montserrat;
   font-size: 1.4rem;
   font-weight: 400;
-  font-family: $montserrat;
-  color: $footerTextColor;
+  color: var(--Dark, #0a142f);
 }
+

@@ -9,10 +9,10 @@ import DropDown from "./DropDown";
 const SearchForm = ({ searchValue, setSearchValue, onSubmit, dispatchFn }) => {
   const language = useSelector(getLanguage);
   const { isLoading } = useSelector(getWeather);
-  const dropdownEl = useRef()
-  window.addEventListener('click', (e) => {
-    if(e.target !== dropdownEl.current) setSearchValue('');
-  })
+  const dropdownEl = useRef();
+  window.addEventListener("click", (e) => {
+    if (e.target !== dropdownEl.current) setSearchValue("");
+  });
 
   return (
     <form onSubmit={onSubmit} className={styles.searchForm} ref={dropdownEl}>

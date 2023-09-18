@@ -67,14 +67,14 @@ const Header = () => {
       dispatch(getCities({ regionData: searchValue, lang: lang }));
   }, [searchValue, lang, dispatch]);
   const dispatchFn = (data) => {
-      dispatch(getGeoDetails(data));
-      dispatch(weatherRegion(searchValue));
-      dispatch(getDailyWeather(data));
-      dispatch(getHourlyWeather(data));
-      dispatch(getCurrentlyWeather(data));
-      dispatch(getAirQuality(data));
-      setSearchValue("");
-  }
+    dispatch(getGeoDetails(data));
+    dispatch(weatherRegion(searchValue));
+    dispatch(getDailyWeather(data));
+    dispatch(getHourlyWeather(data));
+    dispatch(getCurrentlyWeather(data));
+    dispatch(getAirQuality(data));
+    setSearchValue("");
+  };
   const onSubmitFn = (event) => {
     event.preventDefault();
     const data = {

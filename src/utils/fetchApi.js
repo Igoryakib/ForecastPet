@@ -10,7 +10,7 @@ export const getWeatherData = async (type, data) => {
     if (typeof regionData === "object") {
       const { lat, lon } = regionData;
       const geoData = await axios.get(
-        `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=8&appid=${API_KEY}`
+        `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=8&appid=${API_KEY}`,
       );
 
       switch (type) {
@@ -19,13 +19,13 @@ export const getWeatherData = async (type, data) => {
             const countryDetails = await axios.get(
               `https://restcountries.com/v3.1/alpha?codes=${geoData.data
                 .map((city) => city.country)
-                .join(",")}`
+                .join(",")}`,
             );
             const result = [];
             geoData.data.map((city, index) => {
               result.push({
                 country: countryDetails.data.filter(
-                  (city, i) => city.cca2 === geoData.data[index].country
+                  (city, i) => city.cca2 === geoData.data[index].country,
                 )[0],
                 city: city,
               });
@@ -35,22 +35,22 @@ export const getWeatherData = async (type, data) => {
           return fetcher();
         case "hourly":
           const hourlyWeather = await axios.get(
-            `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${lat}&units=metric&lon=${lon}&lang=${lang}&appid=${API_KEY}`
+            `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${lat}&units=metric&lon=${lon}&lang=${lang}&appid=${API_KEY}`,
           );
           return hourlyWeather.data;
         case "currently":
           const currentlyWeather = await axios.get(
-            `/weather?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&appid=${API_KEY}`
+            `/weather?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&appid=${API_KEY}`,
           );
           return currentlyWeather.data;
         case "daily":
           const dailyWeather = await axios.get(
-            `/forecast/daily?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&cnt=8&appid=${API_KEY}`
+            `/forecast/daily?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&cnt=8&appid=${API_KEY}`,
           );
           return dailyWeather.data;
         case "geo":
           const countryDetails = await axios.get(
-            `https://restcountries.com/v3.1/alpha/${geoData.data[0].country}`
+            `https://restcountries.com/v3.1/alpha/${geoData.data[0].country}`,
           );
           const flag = countryDetails.data[0]?.flag;
           const name_ENG = countryDetails.data[0]?.name.common;
@@ -61,7 +61,7 @@ export const getWeatherData = async (type, data) => {
           };
         case "air":
           const airQuality = await axios.get(
-            `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+            `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`,
           );
           return airQuality.data;
         default:
@@ -69,7 +69,7 @@ export const getWeatherData = async (type, data) => {
       }
     } else {
       const geoData = await axios.get(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${regionData}&limit=8&appid=${API_KEY}`
+        `http://api.openweathermap.org/geo/1.0/direct?q=${regionData}&limit=8&appid=${API_KEY}`,
       );
 
       const { lat = null, lon = null, country: countryCode } = geoData.data[0];
@@ -79,13 +79,13 @@ export const getWeatherData = async (type, data) => {
             const countryDetails = await axios.get(
               `https://restcountries.com/v3.1/alpha?codes=${geoData.data
                 .map((city) => city.country)
-                .join(",")}`
+                .join(",")}`,
             );
             const result = [];
             geoData.data.map((city, index) => {
               result.push({
                 country: countryDetails.data.filter(
-                  (city, i) => city.cca2 === geoData.data[index].country
+                  (city, i) => city.cca2 === geoData.data[index].country,
                 )[0],
                 city: city,
               });
@@ -95,22 +95,22 @@ export const getWeatherData = async (type, data) => {
           return fetcher();
         case "hourly":
           const hourlyWeather = await axios.get(
-            `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&appid=${API_KEY}`
+            `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&appid=${API_KEY}`,
           );
           return hourlyWeather.data;
         case "currently":
           const currentlyWeather = await axios.get(
-            `/weather?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&appid=${API_KEY}`
+            `/weather?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&appid=${API_KEY}`,
           );
           return currentlyWeather.data;
         case "daily":
           const dailyWeather = await axios.get(
-            `/forecast/daily?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&cnt=8&appid=${API_KEY}`
+            `/forecast/daily?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&cnt=8&appid=${API_KEY}`,
           );
           return dailyWeather.data;
         case "geo":
           const countryDetails = await axios.get(
-            `https://restcountries.com/v3.1/alpha/${countryCode}`
+            `https://restcountries.com/v3.1/alpha/${countryCode}`,
           );
           const threeLetterCode = countryDetails.data[0].cca3.toLowerCase();
           const flag = countryDetails.data[0].flag;
@@ -123,7 +123,7 @@ export const getWeatherData = async (type, data) => {
           };
         case "air":
           const airQuality = await axios.get(
-            `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+            `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`,
           );
           return airQuality.data;
 

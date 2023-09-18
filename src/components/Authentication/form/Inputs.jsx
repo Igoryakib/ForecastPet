@@ -40,7 +40,7 @@ const Inputs = function ({ type }) {
         const removeAnim = setTimeout(
           () => el.classList.remove("animated"),
           500,
-          ""
+          "",
         );
       };
       // (initial/default) visual effect for only onMounted or value eligible input fields

@@ -87,7 +87,7 @@ const WeatherSection = () => {
             <span
               className={classnames(
                 styles.weatherInfoSubtitle,
-                styles.textPadding
+                styles.textPadding,
               )}
             >
               {language === "en"

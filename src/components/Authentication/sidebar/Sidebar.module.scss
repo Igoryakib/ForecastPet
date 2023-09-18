@@ -41,7 +41,9 @@
 .adviceContainer {
   width: 100%;
   border-right: 0.15em solid $mainColor; /* The typwriter cursor */
-  animation: blink-caret 0.5s step-end infinite, typing 2s steps(40, end);
+  animation:
+    blink-caret 0.5s step-end infinite,
+    typing 2s steps(40, end);
   overflow-wrap: normal;
   white-space: normal;
 }

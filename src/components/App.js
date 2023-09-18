@@ -55,16 +55,19 @@ const App = () => {
     setLon(position.coords.longitude);
   });
 
-  const data = useMemo(function data(){
-    return {
-      lang: language || "uk",
-      regionData: {
-      lat: lat || 50.4501,
-      lon: lon || 30.5234,
+  const data = useMemo(
+    function data() {
+      return {
+        lang: language || "uk",
+        regionData: {
+          lat: lat || 50.4501,
+          lon: lon || 30.5234,
+        },
+      };
     },
-}}, [language, lat, lon]);
+    [language, lat, lon],
+  );
 
- 
   useEffect(() => {
     return () => navigator.geolocation.clearWatch(idCoordsWatcher);
   }, []);
