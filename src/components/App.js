@@ -44,6 +44,7 @@ import routes from "../utils/routes.js";
 import { temperatureUnit, weatherLoading } from "../redux/actions";
 import Message from "./Message/Message";
 import { store } from "../redux/store";
+import ProfileContent from "../pages/Authentication/ProfileContent";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -124,6 +125,7 @@ const App = () => {
               <Route index element={<Navigate to={routes.loginContent} />} />
               <Route path={routes.loginContent} element={<LoginContent />} />
               <Route path={routes.signupContent} element={<SignupContent />} />
+              <Route path={routes.profilePage}  element={<ProfileContent/>}/>
             </Route>
           </Route>
           <Route path={routes.notFoundPage} element={<NotFoundPage />} />
