@@ -10,7 +10,6 @@ const Form = function ({ setSection, type }) {
 
   return (
     <div className={styles.container}>
-      <WindowCloseBtn />
       <FormHeader type={type} setSection={setSection} />
       <Inputs type={type} />
     </div>
