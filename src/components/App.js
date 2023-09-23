@@ -65,7 +65,7 @@ const App = () => {
       lat: lat || 50.4501,
       lon: lon || 30.5234,
     },
-}}, [language, lat, lon]);
+}}, [lat, lon]);
 
  
   useEffect(() => {
