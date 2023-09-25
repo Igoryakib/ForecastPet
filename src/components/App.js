@@ -44,6 +44,7 @@ import routes from "../utils/routes.js";
 import { temperatureUnit, weatherLoading } from "../redux/actions";
 import Message from "./Message/Message";
 import { store } from "../redux/store";
+import TeamPage from "../pages/Team/TeamPage";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -129,6 +130,7 @@ const App = () => {
               <Route path={routes.signupContent} element={<SignupContent />} />
             </Route>
           </Route>
+          <Route path={routes.teamPage} element={<TeamPage />} />
           <Route path={routes.notFoundPage} element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

@@ -3,8 +3,8 @@ import styles from "./Footer.module.scss";
 import { useSelector } from "react-redux";
 import { getLanguage } from "../../redux/selectors";
 import icon from "../../static/footerIcon.svg";
-import { Link } from "react-router-dom";
-import GithubIcon from "../../static/social/github.svg";
+import { Link, useNavigate } from "react-router-dom";
+import GithubIcon from "../../static/socials/github.svg";
 import useIsVisible from "../../utils/useIsVisible";
 
 const Footer = () => {
@@ -17,8 +17,6 @@ const Footer = () => {
 
   const elemRef = useRef();
   const isVisible = useIsVisible(elemRef);
-  console.log(isVisible)
-
 
   return (
     <footer className={styles.footer}>
@@ -37,8 +35,14 @@ const Footer = () => {
             : 'Web-application "Weather forecast"'}
         </h4>
       </div> */}
-      <img src={icon} alt="weather icon" className={`${styles.footerIcon} ${isVisible ? styles.appear : ''}`} />
-      <div className={`${styles.footerContent} ${isVisible ? styles.appear : ''}`}>
+      <img
+        src={icon}
+        alt="weather icon"
+        className={`${styles.footerIcon} ${isVisible ? styles.appear : ""}`}
+      />
+      <div
+        className={`${styles.footerContent} ${isVisible ? styles.appear : ""}`}
+      >
         <h2 className={styles.footerTitle}>
           {language === "uk"
             ? "Погода. Легко і точно"
@@ -47,7 +51,7 @@ const Footer = () => {
           <strong className={styles.footerTitleStrong}>Forecast Fox</strong>{" "}
         </h2>
         <ul className={styles.links}>
-          <Link to="/" className={styles.link} ref={elemRef}>
+          <Link to="/team" className={styles.link} ref={elemRef}>
             <span className={styles.linkIcon}>👨</span>
             <span>{language === "uk" ? "Команда" : "Team"}</span>
           </Link>

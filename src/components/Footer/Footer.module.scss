@@ -11,7 +11,6 @@
   align-items: center;
 
   color: #0a142f;
-
 }
 
 .divider {
@@ -74,13 +73,13 @@
 .footerTitleStrong {
   position: relative;
   z-index: 99;
-  color: #FFF;
+  color: #fff;
   font-size: 4rem;
   font-weight: 700;
 }
 
 .footerTitleStrong::after {
-  content: '';
+  content: "";
   z-index: -1;
   display: inline;
   position: absolute;
@@ -142,4 +141,3 @@
   font-weight: 400;
   color: var(--Dark, #0a142f);
 }
-

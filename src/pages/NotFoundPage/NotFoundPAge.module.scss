@@ -29,22 +29,6 @@
   margin-bottom: 31px;
 }
 
-.navBtn {
-  color: #fff;
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 600;
-
-  padding: 1.6rem 3.2rem;
-  background-color: $mainColor;
-  border-radius: 1.2rem;
-  width: 24rem;
-  transition: all 0.2s;
-  &:hover {
-    background-color: $mainColorDarker;
-  }
-}
-
 .title {
   color: $footerTextColor;
   font-size: 162px;

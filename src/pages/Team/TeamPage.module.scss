@@ -1,0 +1,122 @@
+@import "src/scss/variables.scss";
+
+.section {
+  padding: 7.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5.6rem;
+  align-items: center;
+}
+
+.header {
+  // margin-bottom: 4.8rem;
+
+  .headingPrimary {
+    font-size: 5.4rem;
+    margin-bottom: 1.6rem;
+  }
+  .headingSecondary {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .headingPrimary,
+  .headingSecondary {
+    font-family: $poppins;
+    font-weight: 500;
+    color: #282828;
+  }
+  .description {
+    color: #5f6980;
+    text-align: center;
+    font-family: $roboto;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 3.5rem;
+  }
+}
+
+.figures {
+  display: flex;
+  justify-content: center;
+  gap: 3.2rem;
+  flex-wrap: wrap;
+}
+
+.figure {
+  padding: 2rem 3.2rem 3.2rem 3.2rem;
+  border: 0.2rem solid #dcdcdc;
+  border-radius: 1.6rem;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.2rem;
+  transition: all 0.2s;
+  box-shadow: 0 0 4rem -1rem rgba(119, 119, 119, 0.3);
+
+  &:hover {
+    transform: translateY(-2%);
+    box-shadow: 0 0.5rem 4rem 0 rgba(119, 119, 119, 0.3);
+  }
+}
+
+.figureInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.figureName {
+  font-family: $poppins;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #282828;
+}
+
+.figureSkills {
+  font-family: $roboto;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.figureSocials {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  max-width: 25.5rem;
+  max-height: 4.5rem;
+
+  .linkedinLogo {
+    height: 3.4rem;
+    width: 3.4rem;
+    padding: 1rem;
+  }
+  a {
+    border-radius: 99rem;
+    // box-shadow: 0 0 0 0.1rem #777;
+    width: 4.5rem;
+    height: 4.5rem;
+    padding: 1rem;
+    border: solid rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+    background-color: transparent;
+
+    img {
+      transition: all 0.2s;
+    }
+    &:hover img {
+      outline: #fff;
+      filter: invert(80%) sepia(9%) saturate(0%) hue-rotate(86deg)
+        brightness(100%) contrast(1000%);
+    }
+    &:hover {
+      background-color: #777;
+      cursor: pointer;
+      border-color: #fff;
+    }
+  }
+}

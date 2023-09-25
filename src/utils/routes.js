@@ -14,6 +14,9 @@ const routes = {
 
   // not found
   notFoundPage: "*",
+
+  // team page
+  teamPage: "/team",
 };
 
 export default routes;

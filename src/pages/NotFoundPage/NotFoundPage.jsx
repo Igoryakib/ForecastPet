@@ -4,14 +4,10 @@ import classnames from "classnames";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { weatherError } from "../../redux/actions";
+import ButtonHome from "../../components/ButtonHome/ButtonHome";
 
 const NotFoundPage = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const OnClickNavBtn = () => {
-    dispatch(weatherError(""));
-    navigate("/", { replace: true });
-  };
+
   return (
     <article className={styles.main}>
       <div className={styles.mainContent}>
@@ -36,10 +32,8 @@ const NotFoundPage = () => {
         <h4 className={styles.subtext}>
           на жаль ми не змогли знайти сторінку по вашому запиту
         </h4>
-        <button className={styles.navBtn} onClick={OnClickNavBtn} type="button">
-          На головну
-        </button>
       </div>
+      <ButtonHome />
     </article>
   );
 };
