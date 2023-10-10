@@ -91,7 +91,7 @@ const Header = () => {
     } else {
       dispatch(weatherLanguage("en"));
     }
-  }, [language, lang, dispatch]);
+  }, [lang, dispatch]);
   const options = {
     weekday: "long",
     day: "numeric",
