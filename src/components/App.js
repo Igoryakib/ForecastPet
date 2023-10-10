@@ -35,7 +35,7 @@ import {
 import AuthPage from "../pages/Authentication/AuthPage.jsx";
 import LoginContent from "../pages/Authentication/LoginContent.jsx";
 import SignupContent from "../pages/Authentication/SignupContent.jsx";
-import ProfileContent from "../pages/Authentication/ProfileContent";
+import ProfileContent from "../pages/Authentication/ProfileContent/ProfileContent";
 
 
 // other pages/components

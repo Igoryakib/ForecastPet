@@ -1,0 +1,22 @@
+@import "../../../scss/variables.scss";
+
+.profileContent {
+    width: 100%;
+    height: 64rem;
+    padding: 42px 28px 52px 70px;
+    margin: 0 auto;
+}
+
+.profileTitle {
+    font-size: 2.2rem;
+    font-weight: 700;
+    font-family: $montserrat;
+    color: $footerTextColor;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.wrapperProfileContent {
+    width: 961px;
+    height: 100%;
+}
