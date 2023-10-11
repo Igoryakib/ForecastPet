@@ -42,5 +42,7 @@
   box-shadow: 0px 0px 2px 0px #555;
 
   position: absolute;
-  transition: 0.3s ease all, right 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
+  transition:
+    0.3s ease all,
+    right 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
 }

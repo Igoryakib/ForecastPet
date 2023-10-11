@@ -37,7 +37,6 @@ import LoginContent from "../pages/Authentication/LoginContent.jsx";
 import SignupContent from "../pages/Authentication/SignupContent.jsx";
 import ProfileContent from "../pages/Authentication/ProfileContent/ProfileContent";
 
-
 // other pages/components
 import Settings from "../pages/Settings/Settings.jsx";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage.jsx";
@@ -46,7 +45,6 @@ import routes from "../utils/routes.js";
 import { temperatureUnit, weatherLoading } from "../redux/actions";
 import Message from "./Message/Message";
 import { store } from "../redux/store";
-
 
 const App = () => {
   const dispatch = useDispatch();
@@ -58,16 +56,19 @@ const App = () => {
     setLon(position.coords.longitude);
   });
 
-  const data = useMemo(function data(){
-    return {
-      lang: language || "uk",
-      regionData: {
-      lat: lat || 50.4501,
-      lon: lon || 30.5234,
+  const data = useMemo(
+    function data() {
+      return {
+        lang: language || "uk",
+        regionData: {
+          lat: lat || 50.4501,
+          lon: lon || 30.5234,
+        },
+      };
     },
-}}, [lat, lon]);
+    [lat, lon],
+  );
 
- 
   useEffect(() => {
     return () => navigator.geolocation.clearWatch(idCoordsWatcher);
   }, []);
@@ -127,7 +128,10 @@ const App = () => {
               <Route index element={<Navigate to={routes.loginContent} />} />
               <Route path={routes.loginContent} element={<LoginContent />} />
               <Route path={routes.signupContent} element={<SignupContent />} />
-              <Route path={routes.profileContent}  element={<ProfileContent/>}/>
+              <Route
+                path={routes.profileContent}
+                element={<ProfileContent />}
+              />
             </Route>
           </Route>
           <Route path={routes.notFoundPage} element={<NotFoundPage />} />

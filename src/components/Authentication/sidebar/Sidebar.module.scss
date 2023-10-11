@@ -41,7 +41,9 @@
 .adviceContainer {
   width: 100%;
   border-right: 0.15em solid $mainColor; /* The typwriter cursor */
-  animation: blink-caret 0.5s step-end infinite, typing 2s steps(40, end);
+  animation:
+    blink-caret 0.5s step-end infinite,
+    typing 2s steps(40, end);
   overflow-wrap: normal;
   white-space: normal;
 }
@@ -65,4 +67,16 @@
   50% {
     border-color: $mainColor;
   }
+}
+
+.profile {
+  height: 70%;
+  align-self: center;
+  // padding: 3.6rem 1.6rem 1.6rem 1.6rem;
+  padding-top: 6.4rem;
+}
+
+.profile .subheading {
+  font-size: 2.2rem;
+  font-weight: 700;
 }

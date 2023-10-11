@@ -19,7 +19,7 @@ const Switcher = function ({ textArray }) {
         onChange={(event) => {
           setTimeout(
             () => navigate(authPath === "login" ? "../signup" : "../login"),
-            260
+            260,
           );
           return setValue(event.target.checked);
         }}

@@ -51,7 +51,7 @@ const Nav = function () {
             styles.activeTop,
             topCaptured && isAuth !== "auth"
               ? styles.visibleHoverTop
-              : styles.hiddenHoverTop
+              : styles.hiddenHoverTop,
           )}
         ></div>
         {isAuth === "auth" && (
@@ -120,7 +120,7 @@ const Nav = function () {
             styles.activeCenter,
             centerCaptured && location.pathname !== "/"
               ? styles.visibleHoverCenter
-              : styles.hiddenHoverCenter
+              : styles.hiddenHoverCenter,
           )}
         ></div>
         {location.pathname === "/" && (
@@ -184,7 +184,7 @@ const Nav = function () {
             styles.activeBot,
             BotCaptured && location.pathname !== "/settings"
               ? styles.visibleHoverBot
-              : styles.hiddenHoverBot
+              : styles.hiddenHoverBot,
           )}
         ></div>
         {location.pathname === "/settings" && (

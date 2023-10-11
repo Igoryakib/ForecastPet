@@ -9,7 +9,8 @@ import styles from "./Sidebar.module.scss";
 import Heading from "../../small components/Heading/Heading";
 import { useEffect, useState } from "react";
 
-import Photo from "../../../static/photos/1";
+import Photo1 from "../../../static/photos/1";
+import Photo2 from "../../../static/photos/2.svg";
 import { useSelector } from "react-redux";
 import { getLanguage } from "../../../redux/selectors";
 import Dots from "../../Message/Dots";
@@ -53,7 +54,7 @@ const Sidebar = function ({ activeFeedback, setActiveFeedback, type }) {
   const language = useSelector(getLanguage);
 
   useEffect(() => {
-    if (type === "login") {
+    if (type === "login" || type === "profile") {
       const fetcher = async function () {
         setIsLoading(true);
         try {
@@ -71,18 +72,32 @@ const Sidebar = function ({ activeFeedback, setActiveFeedback, type }) {
   }, []);
 
   return (
-    <div className={styles.sidebar}>
-      <span>{language === "uk" ? "найкраща погода" : "the best forecast"}</span>
+    <div
+      className={`${styles.sidebar} ${
+        type === "profile" ? styles.profile : ""
+      }`}
+    >
+      {type !== "profile" ? (
+        <span>
+          {language === "uk" ? "найкраща погода" : "the best forecast"}
+        </span>
+      ) : (
+        ""
+      )}
       <div className={styles.header}>
-        <Heading>
-          {type === "signup"
-            ? language === "uk"
-              ? "Почни свою подорож у світ точних прогнозів!"
-              : "Start your journey in the realm of accurate forecasts!"
-            : language === "uk"
-            ? "Дякуємо за довіру!"
-            : "Thanks for your trust!"}
-        </Heading>
+        {type !== "profile" ? (
+          <Heading>
+            {type === "signup"
+              ? language === "uk"
+                ? "Почни свою подорож у світ точних прогнозів!"
+                : "Start your journey in the realm of accurate forecasts!"
+              : language === "uk"
+              ? "Дякуємо за довіру!"
+              : "Thanks for your trust!"}
+          </Heading>
+        ) : (
+          ""
+        )}
         {isLoading ? (
           <Dots />
         ) : (
@@ -96,7 +111,7 @@ const Sidebar = function ({ activeFeedback, setActiveFeedback, type }) {
                 ? "Порада дня:"
                 : "Daily adivce:"}{" "}
             </p>
-            {type === "login" ? (
+            {type === "login" || type === "profile" ? (
               <div className={styles.adviceContainer}>
                 <p className={styles.advice}>{advice}</p>
               </div>
@@ -114,7 +129,7 @@ const Sidebar = function ({ activeFeedback, setActiveFeedback, type }) {
               <Feedback key={i} client={clients[activeFeedback - 1]} />
             ) : (
               ""
-            )
+            ),
           )}
           <FeedbackNav
             number={clients.length}
@@ -123,7 +138,7 @@ const Sidebar = function ({ activeFeedback, setActiveFeedback, type }) {
           />
         </div>
       ) : (
-        <Photo />
+        type === "profile" ? <img src={Photo2} alt="good weather and home" /> : <Photo1 />
       )}
     </div>
   );

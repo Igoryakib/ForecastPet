@@ -15,7 +15,7 @@ const getDailyWeather = createAsyncThunk(
     return getWeatherData("daily", data)
       .then((data) => data)
       .catch((error) => rejectWithValue(error));
-  }
+  },
 );
 
 const getHourlyWeather = createAsyncThunk(
@@ -24,7 +24,7 @@ const getHourlyWeather = createAsyncThunk(
     return getWeatherData("hourly", data)
       .then((data) => data)
       .catch((error) => rejectWithValue(error));
-  }
+  },
 );
 
 const getCurrentlyWeather = createAsyncThunk(
@@ -33,7 +33,7 @@ const getCurrentlyWeather = createAsyncThunk(
     return getWeatherData("currently", data)
       .then((data) => data)
       .catch((error) => rejectWithValue(error));
-  }
+  },
 );
 
 const getGeoDetails = createAsyncThunk(
@@ -42,7 +42,7 @@ const getGeoDetails = createAsyncThunk(
     return getWeatherData("geo", data)
       .then((data) => data)
       .catch((error) => rejectWithValue(error));
-  }
+  },
 );
 
 const getAirQuality = createAsyncThunk(
@@ -51,7 +51,7 @@ const getAirQuality = createAsyncThunk(
     return getWeatherData("air", data)
       .then((data) => data)
       .catch((error) => rejectWithValue(error));
-  }
+  },
 );
 
 const getCities = createAsyncThunk(GET_CITIES, (data, { rejectWithValue }) => {

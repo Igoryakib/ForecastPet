@@ -9,10 +9,10 @@ import { getWeather, getError } from "../../redux/selectors";
 import Message from "../../components/Message/Message";
 import { useNavigate } from "react-router-dom";
 
-const HomePage = memo(function HomePage(){
+const HomePage = memo(function HomePage() {
   const { isLoading } = useSelector(getWeather);
   const error = useSelector(getError);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     if (error) {
       navigate("/error");
