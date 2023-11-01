@@ -7,7 +7,6 @@ import { weatherError } from "../../redux/actions";
 import ButtonHome from "../../components/ButtonHome/ButtonHome";
 
 const NotFoundPage = () => {
-
   return (
     <article className={styles.main}>
       <div className={styles.mainContent}>

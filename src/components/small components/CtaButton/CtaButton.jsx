@@ -6,6 +6,8 @@ const CtaButton = function ({
   isDisabled = false,
   type = "signup",
 }) {
+  const onSubmit = function () {};
+
   return (
     <button
       onClick={onClick}

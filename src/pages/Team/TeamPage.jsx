@@ -144,10 +144,8 @@ const TeamPage = function () {
         </figure>
       </div>
       <ButtonHome />
-    </section> 
-    
+    </section>
   );
-    
 };
 
 export default TeamPage;
