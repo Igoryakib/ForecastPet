@@ -9,6 +9,7 @@ const routes = {
   loginContent: "login",
   signupContent: "signup",
   profileContent: "profile",
+  changeAvatar: "change_avatar",
 
   // settings page
   settingsPage: "/settings",

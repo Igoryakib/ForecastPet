@@ -9,3 +9,9 @@
   z-index: 998;
   animation: trans 0.5s;
 }
+
+.position {
+  left: 50%;
+  top: 77%;
+  transform: translate(-50%, -50%);
+}

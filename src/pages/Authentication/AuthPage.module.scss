@@ -20,6 +20,38 @@
   animation: trans 0.5s;
 }
 
+.windowAvatar {
+  padding: 10px;
+  font-family: $montserrat;
+
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 2rem;
+
+  width: 75rem;
+  height: 60rem;
+  background-color: #fff;
+  z-index: 999;
+  box-shadow: $box-shadow--containers;
+  grid-template-columns: 3fr 5fr;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // transition: all 2s;
+  animation: trans 0.5s;
+}
+
+.avatarsContainer {
+  width: 100%;
+  display: grid;
+  gap: 20px;
+  margin: 0 auto;
+  grid-template-rows: repeat(6, auto);
+  grid-template-columns: repeat(5, auto);
+}
+
 @keyframes trans {
   from {
     opacity: 0;

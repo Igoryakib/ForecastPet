@@ -1,0 +1,34 @@
+@import '../../scss/variables';
+
+.profileAvatar {
+    width: 9.2rem;
+    height: 9.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.widthAvatar{
+    width: 12.2rem;
+    height: 7.2rem;
+    cursor: pointer;
+    transition: 200ms linear;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    padding: 10px 20px;
+    &:hover {
+        border: 2px solid $mainColor;
+    }
+}
+
+.avatar {
+    z-index: 2;
+}
+
+.ellipse {
+    position: absolute;
+    bottom: 0;
+    left: -0.4rem;
+    z-index: 1;
+}

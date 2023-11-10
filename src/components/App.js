@@ -45,6 +45,7 @@ import routes from "../utils/routes.js";
 import { temperatureUnit, weatherLoading } from "../redux/actions";
 import Message from "./Message/Message";
 import { store } from "../redux/store";
+import ChangeAvatar from "../pages/Authentication/ProfileContent/ChangeAvatar";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -131,7 +132,9 @@ const App = () => {
               <Route
                 path={routes.profileContent}
                 element={<ProfileContent />}
-              />
+              >
+                <Route path={routes.changeAvatar} element={<ChangeAvatar/>}/>
+              </Route>
             </Route>
           </Route>
           <Route path={routes.notFoundPage} element={<NotFoundPage />} />

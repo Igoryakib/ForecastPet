@@ -36,6 +36,7 @@ import {
   getUnit,
   getWeather,
 } from "../../redux/selectors";
+import AvatarElement from "../AvatarElement/AvatarElement";
 
 const TEMPRORARY_NAME_UK = "Антон";
 const TEMPRORARY_NAME_EN = "Anton";
@@ -124,10 +125,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.profile}>
-        <div className={styles.profileAvatar}>
-          <img className={styles.avatar} src={Avatar} alt="avatar" />
-          <img className={styles.ellipse} src={Ellipse} alt="ellipse" />
-        </div>
+      <AvatarElement avatar={Avatar} ellipse={Ellipse}/>
         <div className={styles.profileText}>
           <h3 className={styles.subtitle}>
             {language === "uk"

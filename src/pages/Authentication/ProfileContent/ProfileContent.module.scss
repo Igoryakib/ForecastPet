@@ -20,7 +20,7 @@
   color: $footerTextColor;
   align-items: flex-start;
   text-align: left;
-  margin-left: 0.64rem
+  margin: 0 0 3rem 0.64rem
 }
 
 .wrapperProfileContent {
@@ -29,6 +29,32 @@
   grid-template-columns: 3fr 2fr;
 }
 
-// .profileContent {
-//     padding:
-// }
+.avatarContent {
+  width: 187px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.avatarContentTitle {
+  color: $cardTextColor;
+  font-family: $montserrat;
+  font-weight: 700;
+  font-size: 2.05rem;
+  margin-bottom: 7px;
+}
+
+.avatarContentChangeBtn {
+  color: #fff;
+  text-align: center;
+  font-size: 1.688rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  background-color: $orangeColorBtn;
+  border-radius: 4px;
+  width: 10rem;
+  transition: all 0.2s;
+  &:hover {
+    background-color: $mainColorDarker;
+  }
+}
