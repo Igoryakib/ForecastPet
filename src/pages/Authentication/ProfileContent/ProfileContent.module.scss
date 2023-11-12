@@ -24,9 +24,11 @@
 }
 
 .wrapperProfileContent {
-  width: 96.1rem;
+  width: 100.1rem;
   height: 100%;
-  grid-template-columns: 3fr 2fr;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .avatarContent {
@@ -34,6 +36,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 32px;
 }
 
 .avatarContentTitle {
@@ -57,4 +60,51 @@
   &:hover {
     background-color: $mainColorDarker;
   }
+}
+
+.textInfo {
+  width: 537px;
+  margin: 0 auto 34px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nicknameField {
+  color: $cardTextColor;
+  font-family: $montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+
+.nicknameFieldText {
+  margin: 10px 0 0 0;
+  border-radius: 5px;
+  padding: 20px 25px;
+  border: 1px solid $footerTextColor;
+  color: $footerTextColor;
+  font-family: $montserrat;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.wrapperTextInfo {
+ text-align: left;
+}
+
+.textInfoEmail {
+  color: $cardTextColor;
+  font-family: $montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.textInfoEmailContent {
+  color: $footerTextColor;
+  font-family: $montserrat;
+  font-size: 16px;
+  font-weight: 500;
 }

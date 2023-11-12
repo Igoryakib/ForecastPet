@@ -28,6 +28,14 @@ const ProfileContent = () => {
             <button onClick={OnclickBtn} className={styles.avatarContentChangeBtn} type="button">Змінити</button>
           </div>
           </div>
+          <div className={styles.textInfo}>
+            <label className={styles.nicknameField}>Nickname<input className={styles.nicknameFieldText} type="text" placeholder="Антон"/></label>
+            <label className={styles.nicknameField}>Password<input className={styles.nicknameFieldText} type="password" placeholder="*******"/></label>
+          </div>
+          <div className={styles.wrapperTextInfo}>
+              <h4 className={styles.textInfoEmail}>Email</h4>
+              <span className={styles.textInfoEmailContent}>solyanicks@gmail.com</span>
+            </div>
         </div>
         <Sidebar type="profile" />
       </div>
