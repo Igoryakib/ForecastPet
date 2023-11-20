@@ -5,12 +5,18 @@ const CtaButton = function ({
   onClick,
   isDisabled = false,
   type = "signup",
+  isValid,
+  onSubmit,
 }) {
-  const onSubmit = function () {};
-
   return (
     <button
-      onClick={onClick}
+      onClick={(e) => {
+        // handleInputsValidation();
+        // e.preventDefault();
+        onClick(e);
+        // console.log(isValid)
+        onSubmit(e);
+      }}
       className={styles.btn}
       disabled={type === "signup" ? isDisabled : false}
     >

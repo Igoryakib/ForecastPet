@@ -45,6 +45,7 @@ import { temperatureUnit, weatherLoading } from "../redux/actions";
 import Message from "./Message/Message";
 import { store } from "../redux/store";
 import TeamPage from "../pages/Team/TeamPage";
+import { handleGetUser } from "../services/apiGetUser.js";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -87,6 +88,9 @@ const App = () => {
     dispatch(getGeoDetails(data));
     dispatch(temperatureUnit("C"));
   }, [lat, lon, data, dispatch]);
+  useEffect(() => {
+    handleGetUser();
+  }, []);
 
   // console.log(store.getState().weatherData)
 

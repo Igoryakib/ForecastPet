@@ -80,8 +80,8 @@ const Sidebar = function ({ activeFeedback, setActiveFeedback, type }) {
               ? "Почни свою подорож у світ точних прогнозів!"
               : "Start your journey in the realm of accurate forecasts!"
             : language === "uk"
-            ? "Дякуємо за довіру!"
-            : "Thanks for your trust!"}
+              ? "Дякуємо за довіру!"
+              : "Thanks for your trust!"}
         </Heading>
         {isLoading ? (
           <Dots />
@@ -93,8 +93,8 @@ const Sidebar = function ({ activeFeedback, setActiveFeedback, type }) {
                   ? "Розкрий світ прогнозів погоди, які ніколи не брешуть та доєднайся до ком’юніті однодумців"
                   : "Reveal the whole domain of weather forecasts, which never lie and join the community of like-minded people"
                 : language === "uk"
-                ? "Порада дня:"
-                : "Daily adivce:"}{" "}
+                  ? "Порада дня:"
+                  : "Daily adivce:"}{" "}
             </p>
             {type === "login" ? (
               <div className={styles.adviceContainer}>

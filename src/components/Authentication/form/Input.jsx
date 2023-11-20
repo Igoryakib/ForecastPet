@@ -8,6 +8,7 @@ const Input = function ({
   ref,
   placeholder = "",
   inputs,
+  onChange,
 }) {
   let addInput;
   addInput = (el) => el && inputs.current.add(el);
@@ -20,6 +21,7 @@ const Input = function ({
         type={type}
         ref={addInput}
         placeholder={placeholder}
+        onChange={onChange}
         required
       ></input>
     </div>

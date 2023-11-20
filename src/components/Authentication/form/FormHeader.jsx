@@ -16,8 +16,8 @@ const FormHeader = function ({ type }) {
             ? "Зареєструйся"
             : "Sign up"
           : language === "uk"
-          ? "Увійди в свій акаунт"
-          : "Log into your account"}
+            ? "Увійди в свій акаунт"
+            : "Log into your account"}
       </Heading>
       <div className={styles.subheading}>
         <p>

@@ -36,6 +36,7 @@ import {
   getUnit,
   getWeather,
 } from "../../redux/selectors";
+import { handleGetUser } from "../../services/apiGetUser";
 
 const TEMPRORARY_NAME_UK = "Антон";
 const TEMPRORARY_NAME_EN = "Anton";
@@ -49,6 +50,11 @@ const Header = () => {
   const language = useSelector(getLanguage);
   const unit = useSelector(getUnit);
   const weatherData = useSelector(getWeather);
+  const user = null;
+  console.log(user);
+  useEffect(() => {
+    // user = handleGetUser();
+  }, [])
 
   useEffect(() => {
     setCords({

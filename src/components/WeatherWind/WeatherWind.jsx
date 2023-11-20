@@ -67,8 +67,8 @@ const WeatherWind = () => {
           AQIIndex <= 2
             ? background12
             : AQIIndex === 3
-            ? background3
-            : background45
+              ? background3
+              : background45
         }
         className={styles.background}
         alt="air condition"

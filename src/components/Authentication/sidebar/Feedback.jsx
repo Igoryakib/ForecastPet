@@ -22,13 +22,13 @@ const Feedback = ({ client }) => {
                 ? `${age}`.endsWith(1)
                   ? "рік"
                   : `${age}`.endsWith(2) ||
-                    `${age}`.endsWith(3) ||
-                    `${age}`.endsWith(4)
-                  ? "роки"
-                  : "років"
+                      `${age}`.endsWith(3) ||
+                      `${age}`.endsWith(4)
+                    ? "роки"
+                    : "років"
                 : age === 1
-                ? "year"
-                : "years"}
+                  ? "year"
+                  : "years"}
             </p>
           </div>
         </div>

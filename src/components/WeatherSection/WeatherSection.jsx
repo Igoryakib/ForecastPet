@@ -81,8 +81,8 @@ const WeatherSection = () => {
               {language === "en"
                 ? geo.geoData.name
                 : hasNecessaryLocalname?.current
-                ? geo.geoData.local_names[language]
-                : geo.geoData.name}
+                  ? geo.geoData.local_names[language]
+                  : geo.geoData.name}
             </h3>
             <span
               className={classnames(
@@ -93,8 +93,8 @@ const WeatherSection = () => {
               {language === "en"
                 ? geo.countryData.name_ENG
                 : geo.countryData.name_NATIVE
-                ? geo.countryData.name_NATIVE
-                : geo.countryData.name_ENG}
+                  ? geo.countryData.name_NATIVE
+                  : geo.countryData.name_ENG}
             </span>
           </div>
         </div>
@@ -105,15 +105,15 @@ const WeatherSection = () => {
                   currentTemp === 0
                     ? 0
                     : currentTemp > 0
-                    ? currentTemp
-                    : "-" + currentTemp
+                      ? currentTemp
+                      : "" + currentTemp
                 } C`
               : `${
                   currentTemp === 0
                     ? 0
                     : currentTemp > 0
-                    ? Math.round(convertUnitFn(currentTemp))
-                    : "-" + Math.round(convertUnitFn(currentTemp))
+                      ? Math.round(convertUnitFn(currentTemp))
+                      : "" + Math.round(convertUnitFn(currentTemp))
                 } F`}
             °
           </h3>
@@ -148,13 +148,13 @@ const WeatherSection = () => {
                 ? hour.main.temp === 0
                   ? 0
                   : hour.main.temp > 0
-                  ? "+" + Math.round(hour.main.temp)
-                  : "-" + Math.round(hour.main.temp)
+                    ? "+" + Math.round(hour.main.temp)
+                    : "-" + Math.round(hour.main.temp)
                 : Math.round(convertUnitFn(hour.main.temp)) > 0
-                ? "+" + Math.round(convertUnitFn(hour.main.temp))
-                : Math.round(convertUnitFn(hour.main.temp)) === 0
-                ? 0
-                : "-" + Math.round(convertUnitFn(hour.main.temp))
+                  ? "+" + Math.round(convertUnitFn(hour.main.temp))
+                  : Math.round(convertUnitFn(hour.main.temp)) === 0
+                    ? 0
+                    : "-" + Math.round(convertUnitFn(hour.main.temp))
             }
             time={hour["dt_txt"].split(" ")[1].split(":")[0]}
             icon={hour.weather[0].icon}
