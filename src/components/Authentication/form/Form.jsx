@@ -29,6 +29,7 @@ const Form = function ({ setSection, type }) {
   const [isValid, setIsValid] = useState(false);
 
   const onSubmit = async function () {
+    console.log(isValid);
     if (isValid) {
       if (type === "signup") await handleSignUp(email, password, name);
       else if (type === "login") await handleLogin(email, password);

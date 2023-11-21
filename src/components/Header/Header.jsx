@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import classnames from "classnames";
 import styles from "./Header.module.scss";
@@ -37,6 +37,7 @@ import {
   getWeather,
 } from "../../redux/selectors";
 import { handleGetUser } from "../../services/apiGetUser";
+import { Skeleton } from "@mui/material";
 
 const TEMPRORARY_NAME_UK = "Антон";
 const TEMPRORARY_NAME_EN = "Anton";
@@ -50,11 +51,37 @@ const Header = () => {
   const language = useSelector(getLanguage);
   const unit = useSelector(getUnit);
   const weatherData = useSelector(getWeather);
-  const user = null;
-  console.log(user);
+  //////////////////////////////////////////////////////////////////////////////
+  // GET USER FUNCTIONALITY
+  // GET USER FUNCTIONALITY
+  // GET USER FUNCTIONALITY
+  //////////////////////////////////////////////////////////////////////////////
+
+  const [isLoadingUser, setIsLoadingUser] = useState(true);
+
+  let user = useRef();
   useEffect(() => {
-    // user = handleGetUser();
+    async function fetcher(){
+      setIsLoadingUser(true);
+      try {
+        user.current = await handleGetUser();
+      } catch(error) {
+        console.error("Error fetching user data: ", error)
+      };
+      setIsLoadingUser(false);
+    }
+    fetcher();
   }, [])
+  useEffect(() => {
+    // console.log(isLoadingUser);
+    if (!isLoadingUser) console.log(user);
+  }, [user.current])
+
+  //////////////////////////////////////////////////////////////////////////////
+  // GET USER FUNCTIONALITY
+  // GET USER FUNCTIONALITY
+  // GET USER FUNCTIONALITY
+  //////////////////////////////////////////////////////////////////////////////
 
   useEffect(() => {
     setCords({
@@ -129,7 +156,12 @@ const Header = () => {
   };
   return (
     <header className={styles.header}>
-      <div className={styles.profile}>
+      {isLoadingUser ? 
+      <Skeleton
+        variant="rounded"
+        sx={{ borderRadius: "1.8rem", backgroundColor: "#e9e9e9" }}
+        animation="pulse">
+        <div className={styles.profile}>
         <div className={styles.profileAvatar}>
           <img className={styles.avatar} src={Avatar} alt="avatar" />
           <img className={styles.ellipse} src={Ellipse} alt="ellipse" />
@@ -142,7 +174,35 @@ const Header = () => {
           </h3>
           <h2 className={styles.title}>{day.split("р.")[0]}</h2>
         </div>
-      </div>
+      </div>  
+      </Skeleton> : <div className={styles.profile}>
+        <div className={styles.profileAvatar}>
+          <img className={styles.avatar} src={Avatar} alt="avatar" />
+          <img className={styles.ellipse} src={Ellipse} alt="ellipse" />
+        </div>
+        <div className={styles.profileText}>
+          <h3 className={styles.subtitle}>
+            {language === "uk"
+              ? `Привіт, ${TEMPRORARY_NAME_UK}`
+              : `Hello, ${TEMPRORARY_NAME_EN}`}
+          </h3>
+          <h2 className={styles.title}>{day.split("р.")[0]}</h2>
+        </div>
+      </div>}
+      {/* <div className={styles.profile}>
+        <div className={styles.profileAvatar}>
+          <img className={styles.avatar} src={Avatar} alt="avatar" />
+          <img className={styles.ellipse} src={Ellipse} alt="ellipse" />
+        </div>
+        <div className={styles.profileText}>
+          <h3 className={styles.subtitle}>
+            {language === "uk"
+              ? `Привіт, ${TEMPRORARY_NAME_UK}`
+              : `Hello, ${TEMPRORARY_NAME_EN}`}
+          </h3>
+          <h2 className={styles.title}>{day.split("р.")[0]}</h2>
+        </div>
+      </div> */}
       <div className={styles.headerControls}>
         {weatherData && (
           <button
