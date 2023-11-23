@@ -11,6 +11,9 @@ const WEATHER_LOADING = "weather/loading";
 const WEATHER_ERROR = "weather/error";
 const WEATHER_THEME = "weather/theme";
 const GET_CITIES = "weather/cities";
+const GET_USER = "user/get";
+const SIGN_OUT_USER = "user/signout";
+const LOGIN_USER = "user/login";
 
 export {
   WEATHER_DAILY,
@@ -25,4 +28,7 @@ export {
   WEATHER_ERROR,
   WEATHER_THEME,
   GET_CITIES,
+  GET_USER,
+  SIGN_OUT_USER,
+  LOGIN_USER,
 };

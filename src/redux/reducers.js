@@ -15,6 +15,9 @@ import {
   getGeoDetails,
   getAirQuality,
   getCities,
+  getUser,
+  loginUser,
+  signOutUser,
 } from "./action-operations";
 
 const regionInput = createReducer("", {
@@ -110,7 +113,7 @@ const cities = createReducer("", {
   [getCities.fulfilled]: (_, action) => action.payload,
 });
 
-export default combineReducers({
+const weatherReducers = combineReducers({
   regionInput,
   dailyWeather,
   hourlyWeather,
@@ -128,3 +131,24 @@ export default combineReducers({
   theme,
   cities,
 });
+
+const isUserLoading = createReducer("", {
+  [getUser.pending]: () => true,
+  [getUser.rejected]: () => false,
+  [getUser.fulfilled]: () => false,
+  [loginUser.pending]: () => true,
+  [loginUser.rejected]: () => false,
+  [loginUser.fulfilled]: () => false,
+  [signOutUser.pending]: () => true,
+  [signOutUser.rejected]: () => false,
+  [signOutUser.fulfilled]: () => false,
+});
+const userData = createReducer("", {
+  [getUser.fulfilled]: (_, action) => action.payload,
+  [loginUser.fulfilled]: (_, action) => action.payload,
+  [signOutUser.fulfilled]: (_, action) => null,
+});
+
+const userReducers = combineReducers({ userData, isUserLoading });
+
+export { weatherReducers, userReducers };

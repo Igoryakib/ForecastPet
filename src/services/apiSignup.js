@@ -11,16 +11,19 @@ export async function handleSignUp(email, password, name) {
         },
       },
     });
-    console.log("data = ")
+    console.log("data = ");
     console.log(data);
     console.log(error);
-    if (data.id) await supabase.from("profiles").insert([
-      {id: data.id},
-      {email: email},
-      {firstName: name},
-      {created_at: data.created_at},
-      {id_avatar: 1},
-    ])
+    if (data.id)
+      await supabase
+        .from("profiles")
+        .insert([
+          { id: data.id },
+          { email: email },
+          { firstName: name },
+          { created_at: data.created_at },
+          { id_avatar: 1 },
+        ]);
   } catch (error) {
     console.error(error);
     throw Error("Couldn't sign up");

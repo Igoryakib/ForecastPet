@@ -27,17 +27,22 @@ import {
   getGeoDetails,
   getAirQuality,
   getCities,
+  getUser,
 } from "../../redux/action-operations";
 
 // language selector
 import {
   getGeo,
+  getIsUserLoading,
   getLanguage,
   getUnit,
+  getUserData,
   getWeather,
 } from "../../redux/selectors";
 import { handleGetUser } from "../../services/apiGetUser";
 import { Skeleton } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import CtaButton from "../small components/CtaButton/CtaButton";
 
 const TEMPRORARY_NAME_UK = "Антон";
 const TEMPRORARY_NAME_EN = "Anton";
@@ -51,31 +56,42 @@ const Header = () => {
   const language = useSelector(getLanguage);
   const unit = useSelector(getUnit);
   const weatherData = useSelector(getWeather);
+  const navigate = useNavigate();
+
   //////////////////////////////////////////////////////////////////////////////
   // GET USER FUNCTIONALITY
   // GET USER FUNCTIONALITY
   // GET USER FUNCTIONALITY
   //////////////////////////////////////////////////////////////////////////////
 
-  const [isLoadingUser, setIsLoadingUser] = useState(true);
+  // const [isLoadingUser, setIsLoadingUser] = useState(true);
 
-  let user = useRef();
+  const userData = useSelector(getUserData);
+  const isLoadingUser = useSelector(getIsUserLoading);
+  // let user = useRef();
+  // const userData = getUserData();
+  // useEffect(() => {
+  //   async function fetcher() {
+  //     // setIsLoadingUser(true);
+  //     try {
+  //       // userData = await dispatch(getUserData);
+  //     } catch (error) {
+  //       console.error("Error fetching user data: ", error);
+  //     }
+  //     // setIsLoadingUser(false);
+  //   }
+  //   fetcher();
+  // }, []);
   useEffect(() => {
-    async function fetcher(){
-      setIsLoadingUser(true);
-      try {
-        user.current = await handleGetUser();
-      } catch(error) {
-        console.error("Error fetching user data: ", error)
-      };
-      setIsLoadingUser(false);
-    }
-    fetcher();
-  }, [])
+    // if(userData) console.log("user data is loaded");
+    // else console.log("user data isn't loaded")
+    // if (!isLoadingUser) console.log(userData);
+  }, [userData, isLoadingUser]);
+
   useEffect(() => {
-    // console.log(isLoadingUser);
-    if (!isLoadingUser) console.log(user);
-  }, [user.current])
+    // dispatch(getUser());
+    console.log("get user inside header")
+  }, [userData, dispatch]);
 
   //////////////////////////////////////////////////////////////////////////////
   // GET USER FUNCTIONALITY
@@ -156,39 +172,65 @@ const Header = () => {
   };
   return (
     <header className={styles.header}>
-      {isLoadingUser ? 
-      <Skeleton
-        variant="rounded"
-        sx={{ borderRadius: "1.8rem", backgroundColor: "#e9e9e9" }}
-        animation="pulse">
+      {/* ////////////////////////////////////////// */}
+      {/* conditional profile data. Depends on if user's logged in  */}
+      {/* ////////////////////////////////////////// */}
+
+      {isLoadingUser ? (
+        <Skeleton
+          variant="rounded"
+          sx={{ borderRadius: "1.8rem", backgroundColor: "#e9e9e9" }}
+          animation="pulse"
+        >
+          <div className={styles.profile}>
+            <div className={styles.profileAvatar}>
+              <img className={styles.avatar} src={Avatar} alt="avatar" />
+              <img className={styles.ellipse} src={Ellipse} alt="ellipse" />
+            </div>
+            <div className={styles.profileText}>
+              <h3 className={styles.subtitle}>
+                {language === "uk"
+                  ? `Привіт, ${userData?.user_metadata?.first_name}`
+                  : `Hello, ${userData?.user_metadata?.first_name}`}
+              </h3>
+              <h2 className={styles.title}>{day.split("р.")[0]}</h2>
+            </div>
+          </div>
+        </Skeleton>
+      ) : userData ? (
         <div className={styles.profile}>
-        <div className={styles.profileAvatar}>
-          <img className={styles.avatar} src={Avatar} alt="avatar" />
-          <img className={styles.ellipse} src={Ellipse} alt="ellipse" />
+          <div className={styles.profileAvatar}>
+            <img className={styles.avatar} src={Avatar} alt="avatar" />
+            <img className={styles.ellipse} src={Ellipse} alt="ellipse" />
+          </div>
+          <div className={styles.profileText}>
+            <h3 className={styles.subtitle}>
+              {language === "uk"
+                ? `Привіт, ${userData?.user_metadata?.first_name}`
+                : `Hello, ${userData?.user_metadata?.first_name}`}
+            </h3>
+            <h2 className={styles.title}>{day.split("р.")[0]}</h2>
+          </div>
         </div>
-        <div className={styles.profileText}>
-          <h3 className={styles.subtitle}>
-            {language === "uk"
-              ? `Привіт, ${TEMPRORARY_NAME_UK}`
-              : `Hello, ${TEMPRORARY_NAME_EN}`}
-          </h3>
+      ) : (
+        <div className={styles.loginHeaderContainer}>
+          <CtaButton
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/auth/login");
+            }}
+            type="header"
+          >
+            Log in
+          </CtaButton>
           <h2 className={styles.title}>{day.split("р.")[0]}</h2>
         </div>
-      </div>  
-      </Skeleton> : <div className={styles.profile}>
-        <div className={styles.profileAvatar}>
-          <img className={styles.avatar} src={Avatar} alt="avatar" />
-          <img className={styles.ellipse} src={Ellipse} alt="ellipse" />
-        </div>
-        <div className={styles.profileText}>
-          <h3 className={styles.subtitle}>
-            {language === "uk"
-              ? `Привіт, ${TEMPRORARY_NAME_UK}`
-              : `Hello, ${TEMPRORARY_NAME_EN}`}
-          </h3>
-          <h2 className={styles.title}>{day.split("р.")[0]}</h2>
-        </div>
-      </div>}
+      )}
+
+      {/* ////////////////////////////////////////// */}
+      {/* conditional profile data. Depends on if user's logged in  */}
+      {/* ////////////////////////////////////////// */}
+
       {/* <div className={styles.profile}>
         <div className={styles.profileAvatar}>
           <img className={styles.avatar} src={Avatar} alt="avatar" />

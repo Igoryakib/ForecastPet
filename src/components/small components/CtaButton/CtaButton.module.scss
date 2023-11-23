@@ -58,3 +58,22 @@
   visibility: visible;
   opacity: 1;
 }
+
+.headerBtn {
+  padding: 0.5rem 0 !important;
+  font-size: 1.4rem !important;
+  width: 100% !important;
+  margin: 0.64rem 0 !important;
+  border-radius: 100rem !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  color: #555;
+  border: dashed $mainColor 0.19rem;
+}
+
+.headerBtn:hover {
+  color: #fff;
+  border-color: $mainColor;
+}

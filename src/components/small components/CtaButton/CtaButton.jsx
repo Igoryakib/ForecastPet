@@ -17,7 +17,7 @@ const CtaButton = function ({
         // console.log(isValid)
         onSubmit(e);
       }}
-      className={styles.btn}
+      className={`${styles.btn} ${type === "header" ? styles.headerBtn : ""}`}
       disabled={type === "signup" ? isDisabled : false}
     >
       {children}

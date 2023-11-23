@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CtaButton from "../../small components/CtaButton/CtaButton";
 import styles from "./Inputs.module.scss";
 import Input from "./Input";
@@ -90,14 +90,18 @@ const Inputs = function ({
   //////////////////////////////////////////
   //////////////////////////////////////////
 
+
+  // first, onClick()
   const onClick = function (e) {
     e.preventDefault();
-    // console.log(email)
-    // handleInputsValidation();
     handleInputsValidation(isValid, setIsValid, inputs, name, password, email);
-    onSubmit();
-    // console.log(isValid)
   };
+
+  // second, onSubmit in useEffect
+  useEffect(() => {
+    if (isValid) onSubmit();
+  }, [isValid, onSubmit]);
+
 
   return (
     <form className={styles.container}>
@@ -126,7 +130,7 @@ const Inputs = function ({
       <div className={`flex-justify-left ${styles.buttonBox}`}>
         <CtaButton
           onClick={onClick}
-          onSubmit={onSubmit}
+          onSubmit={() => {}}
           isValid={isValid}
           isDisabled={!isAgree}
           type={type}

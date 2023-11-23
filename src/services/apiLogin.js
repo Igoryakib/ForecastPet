@@ -7,7 +7,7 @@ export async function handleLogin(email, password) {
   });
   if (error) {
     console.error(error);
-    throw new error("Couldn't sign up");
+    throw new Error("Couldn't sign up");
   }
   console.log(data);
   return data;

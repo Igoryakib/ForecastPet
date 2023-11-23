@@ -6,8 +6,14 @@ import {
   WEATHER_GEO,
   AIR_QUALITY,
   GET_CITIES,
+  GET_USER,
+  SIGN_OUT_USER,
+  LOGIN_USER,
 } from "./types";
 import { getWeatherData } from "../utils/fetchApi";
+import { handleGetUser } from "../services/apiGetUser";
+import { handleSignout } from "../services/apiSignOut";
+import { handleLogin } from "../services/apiLogin";
 
 const getDailyWeather = createAsyncThunk(
   WEATHER_DAILY,
@@ -60,6 +66,18 @@ const getCities = createAsyncThunk(GET_CITIES, (data, { rejectWithValue }) => {
     .catch((error) => rejectWithValue(error));
 });
 
+const getUser = createAsyncThunk(GET_USER, () => {
+  return handleGetUser();
+});
+
+const signOutUser = createAsyncThunk(SIGN_OUT_USER, () => {
+  return handleSignout();
+})
+
+const loginUser = createAsyncThunk(LOGIN_USER, (data) => {
+  return handleLogin(data.email, data.password)
+})
+
 export {
   getDailyWeather,
   getHourlyWeather,
@@ -67,4 +85,7 @@ export {
   getGeoDetails,
   getAirQuality,
   getCities,
+  getUser,
+  signOutUser,
+  loginUser,
 };

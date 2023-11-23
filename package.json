@@ -16,7 +16,6 @@
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "gh-pages": "^4.0.0",
-    "node-sass": "^9.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-loader-spinner": "^5.1.5",
@@ -27,6 +26,7 @@
     "react-transition-group": "^4.4.5",
     "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
+    "sass": "^1.69.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

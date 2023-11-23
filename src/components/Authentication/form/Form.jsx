@@ -15,6 +15,9 @@ import supabase from "../../../services/supabase";
 import { handleSignUp } from "../../../services/apiSignup";
 import { handleLogin } from "../../../services/apiLogin";
 import { handleGetUser } from "../../../services/apiGetUser";
+import CtaButton from "../../small components/CtaButton/CtaButton";
+import { useDispatch } from "react-redux";
+import { loginUser, signOutUser } from "../../../redux/action-operations";
 
 const Form = function ({ setSection, type }) {
   // const supabase = createClient(
@@ -22,6 +25,7 @@ const Form = function ({ setSection, type }) {
   //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJqZG9obXdpeWNobGlpaG1ya3dmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTg4MDI4MDEsImV4cCI6MjAxNDM3ODgwMX0.y2C60-Ac2j7q6gW7-sU_qt829e4_jl7an_jCpJOzSyI",
   // );
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -29,10 +33,14 @@ const Form = function ({ setSection, type }) {
   const [isValid, setIsValid] = useState(false);
 
   const onSubmit = async function () {
-    console.log(isValid);
+    // console.log(isValid);
+    const data = {
+      email: email,
+      password: password,
+    }
     if (isValid) {
       if (type === "signup") await handleSignUp(email, password, name);
-      else if (type === "login") await handleLogin(email, password);
+      else if (type === "login") await dispatch(loginUser(data));
       // handleGetUser().then(user => console.log(user))
     }
   };
@@ -100,8 +108,8 @@ const Form = function ({ setSection, type }) {
       {/* TODO */}
       {/* TODO */}
       {/* TODO */}
-      <button onClick={async () => await supabase.auth.signOut()}>
-        dadadkjajdajdjadjakd
+      <button onClick={() => dispatch(signOutUser())}>
+        signout
       </button>
       {/* TODO */}
       {/* TODO */}

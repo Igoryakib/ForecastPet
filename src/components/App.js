@@ -9,6 +9,7 @@ import {
   getCurrentlyWeather,
   getGeoDetails,
   getAirQuality,
+  getUser,
 } from "../redux/action-operations";
 import {
   getLanguage,
@@ -87,6 +88,7 @@ const App = () => {
     dispatch(getCurrentlyWeather(data));
     dispatch(getGeoDetails(data));
     dispatch(temperatureUnit("C"));
+    dispatch(getUser());
   }, [lat, lon, data, dispatch]);
   useEffect(() => {
     handleGetUser();
