@@ -68,30 +68,6 @@ const Header = () => {
 
   const userData = useSelector(getUserData);
   const isLoadingUser = useSelector(getIsUserLoading);
-  // let user = useRef();
-  // const userData = getUserData();
-  // useEffect(() => {
-  //   async function fetcher() {
-  //     // setIsLoadingUser(true);
-  //     try {
-  //       // userData = await dispatch(getUserData);
-  //     } catch (error) {
-  //       console.error("Error fetching user data: ", error);
-  //     }
-  //     // setIsLoadingUser(false);
-  //   }
-  //   fetcher();
-  // }, []);
-  useEffect(() => {
-    // if(userData) console.log("user data is loaded");
-    // else console.log("user data isn't loaded")
-    // if (!isLoadingUser) console.log(userData);
-  }, [userData, isLoadingUser]);
-
-  useEffect(() => {
-    // dispatch(getUser());
-    console.log("get user inside header")
-  }, [userData, dispatch]);
 
   //////////////////////////////////////////////////////////////////////////////
   // GET USER FUNCTIONALITY
@@ -172,6 +148,7 @@ const Header = () => {
   };
   return (
     <header className={styles.header}>
+
       {/* ////////////////////////////////////////// */}
       {/* conditional profile data. Depends on if user's logged in  */}
       {/* ////////////////////////////////////////// */}
@@ -228,7 +205,7 @@ const Header = () => {
       )}
 
       {/* ////////////////////////////////////////// */}
-      {/* conditional profile data. Depends on if user's logged in  */}
+      {/* conditional profile data. Depends on if user's logged in ⬆️  */}
       {/* ////////////////////////////////////////// */}
 
       {/* <div className={styles.profile}>

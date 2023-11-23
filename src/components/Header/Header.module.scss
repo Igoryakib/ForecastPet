@@ -30,6 +30,21 @@
 
 .avatar {
   z-index: 2;
+  transform: translateY(0%);
+
+  // temporary until animation
+  opacity: 0;
+  transform: translateY(80%);
+
+  animation: animAvatar 1s 0.1s forwards;
+  // transition: all 0.5s;
+}
+
+@keyframes animAvatar {
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
 }
 
 .ellipse {
@@ -37,6 +52,17 @@
   bottom: 0;
   left: -0.4rem;
   z-index: 1;
+
+  // temporary until animation
+  opacity: 0;
+
+  animation: animEllipse 1s forwards;
+}
+
+@keyframes animEllipse {
+  to {
+    opacity: 1;
+  }
 }
 
 .profileText {
@@ -54,6 +80,12 @@
   font-weight: 400;
   font-family: $montserrat;
   color: $footerTextColor;
+
+  // temporary until animation
+  opacity: 0;
+  transform: translateY(100%);
+
+  animation: animSubtitle 1.2s forwards;
 }
 
 .title {
@@ -63,6 +95,19 @@
   color: $footerTextColor;
   &::first-letter {
     text-transform: uppercase;
+  }
+
+  // temporary until animation
+  opacity: 0;
+  transform: translateY(100%);
+
+  animation: animSubtitle 1.2s 0.5s forwards;
+}
+
+@keyframes animSubtitle {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -106,5 +151,17 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  // width: 12rem;
+
+  // temporary until anim
+  opacity: 0;
+  transform: translateX(-100%);
+
+  animation: animLogin 0.5s forwards;
+}
+
+@keyframes animLogin {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

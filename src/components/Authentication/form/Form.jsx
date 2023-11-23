@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import styles from "./Form.module.scss";
 import FormHeader from "./FormHeader";
@@ -16,8 +16,9 @@ import { handleSignUp } from "../../../services/apiSignup";
 import { handleLogin } from "../../../services/apiLogin";
 import { handleGetUser } from "../../../services/apiGetUser";
 import CtaButton from "../../small components/CtaButton/CtaButton";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser, signOutUser } from "../../../redux/action-operations";
+import { getUserData } from "../../../redux/selectors";
 
 const Form = function ({ setSection, type }) {
   // const supabase = createClient(
@@ -31,19 +32,24 @@ const Form = function ({ setSection, type }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isValid, setIsValid] = useState(false);
+  const isLoggedIn = useSelector(getUserData) ? true : false;
 
-  const onSubmit = async function () {
-    // console.log(isValid);
+  const onSubmit = useCallback (async function onSubmit () {
+    // console.log(console.log('onSubmit in Form'));
     const data = {
       email: email,
       password: password,
     }
     if (isValid) {
       if (type === "signup") await handleSignUp(email, password, name);
-      else if (type === "login") await dispatch(loginUser(data));
+      else if (type === "login") {
+        await dispatch(loginUser(data))
+        console.log(isLoggedIn);
+        // if (isLoggedIn) navigate("/");
+      };
       // handleGetUser().then(user => console.log(user))
     }
-  };
+  }, []);
   // const { user } = supabase.auth;
   // useEffect(() => {
   //   console.log(user);

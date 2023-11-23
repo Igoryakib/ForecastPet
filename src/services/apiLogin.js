@@ -6,9 +6,9 @@ export async function handleLogin(email, password) {
     password: password,
   });
   if (error) {
-    console.error(error);
+    // console.log(error);
     throw new Error("Couldn't sign up");
   }
-  console.log(data);
+  // console.log(data);
   return data;
 }

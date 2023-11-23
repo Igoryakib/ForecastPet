@@ -91,16 +91,20 @@ const Inputs = function ({
   //////////////////////////////////////////
 
 
+  let remountKey = 0;
+
   // first, onClick()
   const onClick = function (e) {
     e.preventDefault();
     handleInputsValidation(isValid, setIsValid, inputs, name, password, email);
+    remountKey++;
   };
 
   // second, onSubmit in useEffect
   useEffect(() => {
+    console.log('useEffect in inputs');
     if (isValid) onSubmit();
-  }, [isValid, onSubmit]);
+  }, [remountKey, isValid, onSubmit]);
 
 
   return (

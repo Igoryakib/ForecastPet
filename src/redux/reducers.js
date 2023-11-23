@@ -145,7 +145,7 @@ const isUserLoading = createReducer("", {
 });
 const userData = createReducer("", {
   [getUser.fulfilled]: (_, action) => action.payload,
-  [loginUser.fulfilled]: (_, action) => action.payload,
+  [loginUser.fulfilled]: (_, action) => action.payload.user ? action.payload.user : action.payload,
   [signOutUser.fulfilled]: (_, action) => null,
 });
 
