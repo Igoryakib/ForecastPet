@@ -41,8 +41,8 @@ const geoDetails = createReducer("", {
   [getGeoDetails.fulfilled]: (_, action) => action.payload,
 });
 
-const language = createReducer("uk", {
-  [weatherLanguage]: (_, action) => action.payload,
+const language = createReducer("en", {
+  [weatherLanguage]: (_, action) => "en",
 });
 
 const unit = createReducer("С", {

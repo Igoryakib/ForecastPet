@@ -43,7 +43,7 @@ const TEMPRORARY_NAME_EN = "Anton";
 
 const Header = () => {
   const [temperature, setTemperature] = useState(false);
-  const [lang, setLang] = useState("uk");
+  const [lang, setLang] = useState("en");
   const [searchValue, setSearchValue] = useState("");
   const [cords, setCords] = useState("");
   const dispatch = useDispatch();
@@ -155,9 +155,9 @@ const Header = () => {
           setSearchValue={setSearchValue}
           dispatchFn={dispatchFn}
         />
-        <div className={styles.langSwitcherContainer}>
+        {/* <div className={styles.langSwitcherContainer}>
           <LangSwitcher setLang={setLang} />
-        </div>
+        </div> */}
         <Switcher value={temperature} setValue={onChangeUnit} />
       </div>
     </header>
