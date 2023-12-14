@@ -31,5 +31,5 @@ export {
   getTheme,
   getCities,
   getUserData,
-  getIsUserLoading
+  getIsUserLoading,
 };

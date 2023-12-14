@@ -1,14 +1,16 @@
 import supabase from "./supabase";
 
 export async function handleLogin(email, password) {
-  let { data, error } = await supabase.auth.signInWithPassword({
-    email: email,
-    password: password,
-  });
-  if (error) {
-    // console.log(error);
-    throw new Error("Couldn't sign up");
+  console.log("login attempted");
+  try {
+    let { data, _ } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+    console.log(data);
+
+    return data?.user ? data : null;
+  } catch (error) {
+    throw new Error("Couldn't sign in: " + error);
   }
-  // console.log(data);
-  return data;
 }

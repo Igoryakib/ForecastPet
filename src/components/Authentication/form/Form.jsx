@@ -11,7 +11,7 @@ import WindowCloseBtn from "../../small components/WindowCloseBtn/WindowCloseBtn
 // import { Auth } from "@supabase/auth-ui-react";
 // import { ThemeSupa } from "@supabase/auth-ui-shared";
 //
-import supabase from "../../../services/supabase";
+// import supabase from "../../../services/supabase";
 import { handleSignUp } from "../../../services/apiSignup";
 import { handleLogin } from "../../../services/apiLogin";
 import { handleGetUser } from "../../../services/apiGetUser";
@@ -19,79 +19,19 @@ import CtaButton from "../../small components/CtaButton/CtaButton";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser, signOutUser } from "../../../redux/action-operations";
 import { getUserData } from "../../../redux/selectors";
+import { Backdrop, CircularProgress } from "@mui/material";
+import handleInputsValidation from "../../../utils/handleInputsValidation";
 
 const Form = function ({ setSection, type }) {
-  // const supabase = createClient(
-  //   "https://bjdohmwiychliihmrkwf.supabase.co",
-  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJqZG9obXdpeWNobGlpaG1ya3dmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTg4MDI4MDEsImV4cCI6MjAxNDM3ODgwMX0.y2C60-Ac2j7q6gW7-sU_qt829e4_jl7an_jCpJOzSyI",
-  // );
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isValid, setIsValid] = useState(false);
+  // const [isValid, setIsValid] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const isLoggedIn = useSelector(getUserData) ? true : false;
-
-  const onSubmit = useCallback (async function onSubmit () {
-    // console.log(console.log('onSubmit in Form'));
-    const data = {
-      email: email,
-      password: password,
-    }
-    if (isValid) {
-      if (type === "signup") await handleSignUp(email, password, name);
-      else if (type === "login") {
-        await dispatch(loginUser(data))
-        console.log(isLoggedIn);
-        // if (isLoggedIn) navigate("/");
-      };
-      // handleGetUser().then(user => console.log(user))
-    }
-  }, []);
-  // const { user } = supabase.auth;
-  // useEffect(() => {
-  //   console.log(user);
-  // }, [user])
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault()
-  //   console.log('submitted')
-
-  //   const { error } = await supabase.auth.signUp({
-  //     email: email,
-  //     password: password,
-  //     data: {
-  //       name: name,
-  //       created_at: new Date().toISOString(),
-  //     },
-  //   })
-
-  //   if (error) {
-  //     alert(error.message)
-  //   }
-  // }
-
-  // supabase.auth.onAuthStateChange(async (event, session) => {
-  //   if (event === "SIGNED_IN" || event === "USER_UPDATED") {
-  //     const { data, error } = await supabase
-  //       .from("profiles")
-  //       .select("*")
-  //       .eq("user_uid", session.user.id);
-
-  //     if (error) {
-  //       console.error("Error fetching user profile:", error);
-  //     } else if (data.length === 0) {
-  //       await supabase
-  //         .from("profiles")
-  //         .insert([{ user_uid: session.user.id, email: session.user.email }]);
-  //     }
-
-  //     navigate("/");
-  //     console.log(data);
-  //   }
-  // });
 
   return (
     <div className={styles.container}>
@@ -105,18 +45,30 @@ const Form = function ({ setSection, type }) {
         setEmail={setEmail}
         password={password}
         setPassword={setPassword}
-        isValid={isValid}
-        setIsValid={setIsValid}
-        onSubmit={onSubmit}
+        // isValid={isValid}
+        // setIsValid={setIsValid}
+        // onSubmit={onSubmit}
+        setIsLoading={setIsLoading}
+        isLoggedIn={isLoggedIn}
       />
+      <Backdrop
+        sx={{
+          color: "#fff",
+          zIndex: (theme) => theme.zIndex.drawer + 10,
+          borderRadius: "2rem",
+          width: "100%",
+          zIndex: "9",
+        }}
+        open={isLoading}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       {/* TODO */}
       {/* TODO */}
       {/* TODO */}
       {/* TODO */}
       {/* TODO */}
-      <button onClick={() => dispatch(signOutUser())}>
-        signout
-      </button>
+      <button onClick={() => dispatch(signOutUser())}>signout</button>
       {/* TODO */}
       {/* TODO */}
       {/* TODO */}

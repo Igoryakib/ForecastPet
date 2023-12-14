@@ -148,7 +148,6 @@ const Header = () => {
   };
   return (
     <header className={styles.header}>
-
       {/* ////////////////////////////////////////// */}
       {/* conditional profile data. Depends on if user's logged in  */}
       {/* ////////////////////////////////////////// */}

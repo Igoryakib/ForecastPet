@@ -18,6 +18,7 @@ import {
   getIsLoadingDaily,
   getIsLoadingGeo,
   getIsLoadingAirQuality,
+  getUserData,
 } from "../redux/selectors";
 
 // home page
@@ -93,9 +94,6 @@ const App = () => {
   useEffect(() => {
     handleGetUser();
   }, []);
-
-  // console.log(store.getState().weatherData)
-
   return (
     <>
       <BrowserRouter>
@@ -129,9 +127,10 @@ const App = () => {
                 <>
                   <AuthPage />
                 </>
+    
               }
             >
-              <Route index element={<Navigate to={routes.loginContent} />} />
+              <Route index element={<Navigate to={routes.loginContent}  />} />
               <Route path={routes.loginContent} element={<LoginContent />} />
               <Route path={routes.signupContent} element={<SignupContent />} />
             </Route>

@@ -72,11 +72,11 @@ const getUser = createAsyncThunk(GET_USER, () => {
 
 const signOutUser = createAsyncThunk(SIGN_OUT_USER, () => {
   return handleSignout();
-})
+});
 
 const loginUser = createAsyncThunk(LOGIN_USER, (data) => {
-  return handleLogin(data.email, data.password)
-})
+  return handleLogin(data.email, data.password);
+});
 
 export {
   getDailyWeather,

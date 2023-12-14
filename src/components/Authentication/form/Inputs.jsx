@@ -2,9 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import CtaButton from "../../small components/CtaButton/CtaButton";
 import styles from "./Inputs.module.scss";
 import Input from "./Input";
-import { useSelector } from "react-redux";
-import { getLanguage } from "../../../redux/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import { getLanguage, getUserData } from "../../../redux/selectors";
 import handleInputsValidation from "../../../utils/handleInputsValidation";
+import { handleSignUp } from "../../../services/apiSignup";
+import { loginUser } from "../../../redux/action-operations";
+import { Navigate } from "react-router-dom";
 
 const Inputs = function ({
   type,
@@ -14,98 +17,50 @@ const Inputs = function ({
   setEmail,
   password,
   setPassword,
-  isValid,
-  setIsValid,
-  onSubmit,
+  setIsLoading,
+  isLoggedIn = false,
+  // isValid,
+  // setIsValid,
+  // onSubmit,
 }) {
   // state for checkbox in the bottom of the form
   const [isAgree, setIsAgree] = useState(false);
+  const [isValid, setIsValid] = useState(false);
   const language = useSelector(getLanguage);
+  const dispatch = useDispatch();
+  // const isLoggedIn = useSelector(getUserData) ? true : false;
 
   const inputs = useRef(new Set());
   const checkbox = useRef();
 
-  // ⭕️⭕️⭕️⭕️⭕️ Caution, to much unclear code below ⭕️⭕️⭕️⭕️⭕️⭕️
-  //////////////////////////////////////////
-  //////////// FORM VALIDATION /////////////
-  //////////////////////////////////////////
-  // function for validation UI change
-  // const handleInputsValidation = function () {
-  //   setIsValid(true);
-  //   inputs.current = [...inputs.current];
-  //   inputs.current.map((el) => {
-  //     const emailInput = inputs.current.filter((i) => i.type === "email")[0];
-
-  //     const isEmailGood =
-  //       emailInput?.value.split("@")[0].length !== 0 &&
-  //       emailInput?.value.split("@").length === 2 &&
-  //       emailInput?.value.split("@")[1].length >= 3 &&
-  //       emailInput?.value.split("@")[1].includes(".") &&
-  //       emailInput?.value.split("@")[1].at(-1) !== "." &&
-  //       emailInput?.value.split("@")[1].split(".")[0].length !== 0;
-
-  //     // some visual effect to any kind of validation
-  //     const errorUI = function () {
-  //       el.style.borderWidth = "1.6px";
-  //       el.style.borderColor = "#D92B2B";
-  //       el.classList.add("animated");
-  //       const removeAnim = setTimeout(
-  //         () => el.classList.remove("animated"),
-  //         500,
-  //         "",
-  //       );
-  //     };
-  //     // (initial/default) visual effect for only onMounted or value eligible input fields
-  //     const initUI = function () {
-  //       el.style.borderColor = "#777";
-  //       el.style.borderWidth = "1.2px";
-  //       el.parentElement.className = "";
-  //     };
-
-  //     if (el && el.value === "") {
-  //       errorUI();
-  //       setIsValid(false);
-  //       el.parentElement.classList.add("validate--empty");
-  //     } else if (el && el.value !== "") {
-  //       initUI();
-  //     }
-
-  //     if (el?.type === "password" && el.value !== "" && el.value.length < 7) {
-  //       errorUI();
-  //       setIsValid(false);
-  //       el.parentElement.classList.add("validate--short");
-  //     }
-  //     if (el?.type === "email" && el.value !== "" && !isEmailGood) {
-  //       errorUI();
-  //       setIsValid(false);
-  //       el.parentElement.classList.add("validate--email");
-  //     }
-  //   });
-  //   inputs.current = new Set([...inputs.current]);
-  //   console.log(isValid)
-  // };
-
-  //////////////////////////////////////////
-  //////////////////////////////////////////
-  //////////////////////////////////////////
-  //////////////////////////////////////////
-
-
-  let remountKey = 0;
+  useEffect(() => {
+    handleInputsValidation(isValid, setIsValid, inputs, name, password, email);
+  }, [name, email, password]);
 
   // first, onClick()
   const onClick = function (e) {
     e.preventDefault();
-    handleInputsValidation(isValid, setIsValid, inputs, name, password, email);
-    remountKey++;
+    handleInputsValidation(isValid, setIsValid, inputs, name, password, email, 'showError')
   };
 
-  // second, onSubmit in useEffect
-  useEffect(() => {
-    console.log('useEffect in inputs');
-    if (isValid) onSubmit();
-  }, [remountKey, isValid, onSubmit]);
-
+  const onSubmit = async function onSubmit() {
+    const timeout = setTimeout(5000);
+    setIsLoading(true);
+    const data = {
+      email: email,
+      password: password,
+    };
+    if (isValid) {
+      console.log(type);
+      if (type === "signup") await handleSignUp(email, password, name);
+      else if (type === "login") {
+        await dispatch(loginUser(data));
+        console.log("is logged in = " + isLoggedIn);
+      }
+    }
+    setIsLoading(false);
+    if (isLoggedIn) return <Navigate to="../profile" />
+  };
 
   return (
     <form className={styles.container}>
@@ -134,7 +89,7 @@ const Inputs = function ({
       <div className={`flex-justify-left ${styles.buttonBox}`}>
         <CtaButton
           onClick={onClick}
-          onSubmit={() => {}}
+          onSubmit={onSubmit}
           isValid={isValid}
           isDisabled={!isAgree}
           type={type}
