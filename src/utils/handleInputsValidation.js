@@ -5,10 +5,10 @@ const handleInputsValidation = function (
   name,
   password,
   email,
-  type
+  type,
 ) {
-  const doShowError = type === 'showError';
-  setIsValid(true);
+  const doShowError = type === "showError" || type === "wrongCredentials";
+
   inputs.current = [...inputs.current];
   inputs.current.map((el) => {
     const emailInput = email;
@@ -43,27 +43,34 @@ const handleInputsValidation = function (
       el.parentElement.className = "";
     };
 
-    if (el && el.value === "") {
-      if (doShowError) {
-        errorUI()
+    if (type === "wrongCredentials") {
+      errorUI();
+      inputs.current[0].parentElement.classList.add("validate--credentials");
+      return;
+    }
+    setIsValid(true);
+
+    if (doShowError) {
+      if (el && el.value === "") {
+        errorUI();
         el.parentElement.classList.add("validate--empty");
-      };
-      setIsValid(false);
-    } else if (el && el.value !== "") {
-      initUI();
+        setIsValid(false);
+      } else if (el && el.value !== "") {
+        initUI();
+      }
     }
     if (el?.type === "password" && password !== "" && password.length < 7) {
       if (doShowError) {
-        errorUI()
+        errorUI();
         el.parentElement.classList.add("validate--short");
-      };
-      setIsValid(false);
+        setIsValid(false);
+      }
     }
     if (el?.type === "email" && emailInput !== "" && !isEmailGood) {
       if (doShowError) {
-        errorUI()
+        errorUI();
         el.parentElement.classList.add("validate--email");
-      };
+      }
       setIsValid(false);
     }
   });

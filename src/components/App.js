@@ -127,10 +127,9 @@ const App = () => {
                 <>
                   <AuthPage />
                 </>
-    
               }
             >
-              <Route index element={<Navigate to={routes.loginContent}  />} />
+              <Route index element={<Navigate to={routes.loginContent} />} />
               <Route path={routes.loginContent} element={<LoginContent />} />
               <Route path={routes.signupContent} element={<SignupContent />} />
             </Route>

@@ -40,7 +40,15 @@ const Inputs = function ({
   // first, onClick()
   const onClick = function (e) {
     e.preventDefault();
-    handleInputsValidation(isValid, setIsValid, inputs, name, password, email, 'showError')
+    handleInputsValidation(
+      isValid,
+      setIsValid,
+      inputs,
+      name,
+      password,
+      email,
+      "showError",
+    );
   };
 
   const onSubmit = async function onSubmit() {
@@ -52,14 +60,27 @@ const Inputs = function ({
     };
     if (isValid) {
       console.log(type);
-      if (type === "signup") await handleSignUp(email, password, name);
+      if (type === "signup") await handleSignUp(email, password, name).then((response) => {
+
+      });
       else if (type === "login") {
-        await dispatch(loginUser(data));
+        await dispatch(loginUser(data)).then((response) => {
+          if (!response.payload)
+            handleInputsValidation(
+              isValid,
+              setIsValid,
+              inputs,
+              name,
+              password,
+              email,
+              "wrongCredentials",
+            );
+        });
         console.log("is logged in = " + isLoggedIn);
       }
     }
     setIsLoading(false);
-    if (isLoggedIn) return <Navigate to="../profile" />
+    if (isLoggedIn) return <Navigate to="../profile" />;
   };
 
   return (
@@ -86,7 +107,10 @@ const Inputs = function ({
         type="password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <div className={`flex-justify-left ${styles.buttonBox}`}>
+      <div
+        className={`flex-justify-left ${styles.buttonBox}`}
+        style={type === "login" ? { width: "80%" } : {}}
+      >
         <CtaButton
           onClick={onClick}
           onSubmit={onSubmit}

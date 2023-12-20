@@ -8,12 +8,13 @@ export async function handleSignUp(email, password, name) {
       options: {
         data: {
           first_name: name,
+          id_avatar: 1,
         },
       },
-    });
-    console.log("data = ");
-    console.log(data);
-    console.log(error);
+    }).then(res => {console.log(res)});
+    // console.log("data = ");
+    // console.log(data);
+    // console.log(error);
     if (data.id)
       await supabase
         .from("profiles")
@@ -25,7 +26,7 @@ export async function handleSignUp(email, password, name) {
           { id_avatar: 1 },
         ]);
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     throw Error("Couldn't sign up");
   }
   console.log("seems like signed up");

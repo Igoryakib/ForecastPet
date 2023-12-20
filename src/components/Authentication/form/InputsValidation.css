@@ -61,6 +61,24 @@
   }
 }
 
+.validate--credentials::before {
+  content: "⚠️ wrong user credentials ! ";
+  display: inline;
+  padding: 0.6rem 1.2rem;
+  background-color: rgba(233, 132, 64, 0.25);
+  border: solid 0.14rem #e98540;
+  border-radius: 0.6rem;
+
+  color: #000;
+  font-size: 1.2rem;
+
+  position: absolute;
+  left: 14rem;
+  top: -1rem;
+
+  animation: show-up 0.2s;
+}
+
 .animated {
   animation: quake 0.4s;
 }

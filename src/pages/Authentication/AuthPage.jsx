@@ -7,7 +7,7 @@ import { getUserData } from "../../redux/selectors";
 
 const AuthPage = () => {
   const isLoggedIn = useSelector(getUserData) ? true : false;
-  if (isLoggedIn) return <Navigate to="/auth/profile" />
+  // if (isLoggedIn) return <Navigate to="/auth/profile" />
   return (
     <>
       <div className={`grid ${styles.window}`}>
