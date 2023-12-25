@@ -77,3 +77,14 @@
   color: #fff;
   border-color: $mainColor;
 }
+
+.successBtn {
+  background-color: #50a94d !important;
+  color: #eafde9 !important;
+  border-radius: 0.8rem;
+}
+
+.successBtn:hover {
+  background-color: #378e34 !important;
+  transition: all 0.2s !important;
+}

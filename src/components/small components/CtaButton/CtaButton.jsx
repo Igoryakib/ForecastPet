@@ -6,7 +6,7 @@ const CtaButton = function ({
   isDisabled = false,
   type = "signup",
   isValid,
-  onSubmit,
+  onSubmit = function () {},
 }) {
   return (
     <button
@@ -14,10 +14,16 @@ const CtaButton = function ({
         // handleInputsValidation();
         // e.preventDefault();
         onClick(e);
-        // console.log(isValid)
         onSubmit(e);
       }}
-      className={`${styles.btn} ${type === "header" ? styles.headerBtn : ""}`}
+      style={
+        type === "login"
+          ? { width: "80%" }
+          : {}
+      }
+      className={`${styles.btn} ${type === "header" ? styles.headerBtn : ""} ${
+        type === "success" ? styles.successBtn : ""
+      }`}
       disabled={type === "signup" ? isDisabled : false}
     >
       {children}

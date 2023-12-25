@@ -97,3 +97,21 @@
     transform: translateX(0);
   }
 }
+
+.validate--exist::before {
+  content: "🚫 email is already taken !";
+  display: inline;
+  padding: 0.6rem 1.2rem;
+  background-color: rgba(217, 43, 43, 0.25);
+  border: solid 0.14rem #d92b2b;
+  border-radius: 0.6rem;
+
+  color: #000;
+  font-size: 1.2rem;
+
+  position: absolute;
+  left: 14rem;
+  top: -1rem;
+
+  animation: show-up 0.2s;
+}

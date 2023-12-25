@@ -1,33 +1,35 @@
+import handleSearchProfile from "./apiSearchProfile";
 import supabase from "./supabase";
 
 export async function handleSignUp(email, password, name) {
   try {
-    let { data, error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email: email,
       password: password,
       options: {
         data: {
           first_name: name,
-          id_avatar: 1,
         },
       },
-    }).then(res => {console.log(res)});
-    // console.log("data = ");
-    // console.log(data);
-    // console.log(error);
-    if (data.id)
-      await supabase
-        .from("profiles")
-        .insert([
-          { id: data.id },
-          { email: email },
-          { firstName: name },
-          { created_at: data.created_at },
-          { id_avatar: 1 },
-        ]);
+      // options: {},
+    });
+    const { data: profileData, error: profileError } = await supabase
+      .from("profiles")
+      .insert([
+        {
+          id: data.user.id,
+          first_name: name,
+          created_at: data.user.created_at,
+          id_avatar: 1,
+          email: data.user.email,
+        },
+      ])
+      .select();
+    return profileData;
   } catch (error) {
     // console.error(error);
-    throw Error("Couldn't sign up");
+    console.error(error.message);
+    throw Error("Couldn't sign up", error);
   }
   console.log("seems like signed up");
 }

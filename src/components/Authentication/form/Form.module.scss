@@ -9,4 +9,12 @@
   padding: 5.2rem;
 
   justify-content: center;
+
+  position: relative;
+}
+
+.tempo {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

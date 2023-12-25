@@ -3,11 +3,12 @@ import CtaButton from "../../small components/CtaButton/CtaButton";
 import styles from "./Inputs.module.scss";
 import Input from "./Input";
 import { useDispatch, useSelector } from "react-redux";
-import { getLanguage, getUserData } from "../../../redux/selectors";
+import { getLanguage } from "../../../redux/selectors";
 import handleInputsValidation from "../../../utils/handleInputsValidation";
 import { handleSignUp } from "../../../services/apiSignup";
 import { loginUser } from "../../../redux/action-operations";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import doesEmailExist from "../../../services/apiCheckEmail";
 
 const Inputs = function ({
   type,
@@ -19,9 +20,8 @@ const Inputs = function ({
   setPassword,
   setIsLoading,
   isLoggedIn = false,
-  // isValid,
-  // setIsValid,
-  // onSubmit,
+  signedUp,
+  setSignedUp,
 }) {
   // state for checkbox in the bottom of the form
   const [isAgree, setIsAgree] = useState(false);
@@ -32,9 +32,19 @@ const Inputs = function ({
 
   const inputs = useRef(new Set());
   const checkbox = useRef();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    handleInputsValidation(isValid, setIsValid, inputs, name, password, email);
+    handleInputsValidation(
+      isValid,
+      setIsValid,
+      inputs,
+      name,
+      password,
+      email,
+      (type = ""),
+    );
+    console.log("isValid = " + isValid);
   }, [name, email, password]);
 
   // first, onClick()
@@ -52,19 +62,34 @@ const Inputs = function ({
   };
 
   const onSubmit = async function onSubmit() {
-    const timeout = setTimeout(5000);
     setIsLoading(true);
+    const emailExists = await doesEmailExist(email);
     const data = {
       email: email,
       password: password,
+      first_name: name,
     };
     if (isValid) {
-      console.log(type);
-      if (type === "signup") await handleSignUp(email, password, name).then((response) => {
-
-      });
-      else if (type === "login") {
+      console.log("pre-entered handleSignUp");
+      if (type === "signup" && !emailExists) {
+        const data = await handleSignUp(email, password, name);
+        console.log(data);
+        if (data[0].id) {
+          setSignedUp(true);
+        }
+      } else if (type === "signup" && emailExists) {
+        handleInputsValidation(
+          isValid,
+          setIsValid,
+          inputs,
+          name,
+          password,
+          email,
+          "alreadyExists",
+        );
+      } else if (type === "login") {
         await dispatch(loginUser(data)).then((response) => {
+          console.log(response);
           if (!response.payload)
             handleInputsValidation(
               isValid,
@@ -80,7 +105,6 @@ const Inputs = function ({
       }
     }
     setIsLoading(false);
-    if (isLoggedIn) return <Navigate to="../profile" />;
   };
 
   return (

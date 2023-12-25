@@ -7,7 +7,10 @@ const handleInputsValidation = function (
   email,
   type,
 ) {
-  const doShowError = type === "showError" || type === "wrongCredentials";
+  const doShowError =
+    type === "showError" ||
+    type === "wrongCredentials" ||
+    type === "alreadyExists";
 
   inputs.current = [...inputs.current];
   inputs.current.map((el) => {
@@ -23,8 +26,15 @@ const handleInputsValidation = function (
 
     // some visual effect to any kind of validation if the type of validation is submission, otherwise, no UI error until user submits the form
     const errorUI = function () {
-      console.log(doShowError);
       if (doShowError) {
+        if (type === "alreadyExists") {
+          if (el.type === "email") {
+            el.style.borderWidth = "1.6px";
+            el.style.borderColor = "#D92B2B";
+            el.classList.add("animated");
+          }
+          return;
+        }
         el.style.borderWidth = "1.6px";
         el.style.borderColor = "#D92B2B";
         el.classList.add("animated");
@@ -48,23 +58,28 @@ const handleInputsValidation = function (
       inputs.current[0].parentElement.classList.add("validate--credentials");
       return;
     }
+    if (type === "alreadyExists") {
+      errorUI();
+      inputs.current[0].parentElement.classList.add("validate--exist");
+      return;
+    }
     setIsValid(true);
 
-    if (doShowError) {
-      if (el && el.value === "") {
+    if (el && el.value === "") {
+      if (doShowError) {
         errorUI();
         el.parentElement.classList.add("validate--empty");
-        setIsValid(false);
-      } else if (el && el.value !== "") {
-        initUI();
       }
+      setIsValid(false);
+    } else if (el && el.value !== "") {
+      initUI();
     }
     if (el?.type === "password" && password !== "" && password.length < 7) {
       if (doShowError) {
         errorUI();
         el.parentElement.classList.add("validate--short");
-        setIsValid(false);
       }
+      setIsValid(false);
     }
     if (el?.type === "email" && emailInput !== "" && !isEmailGood) {
       if (doShowError) {

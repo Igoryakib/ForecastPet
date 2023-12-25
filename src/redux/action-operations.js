@@ -75,7 +75,7 @@ const signOutUser = createAsyncThunk(SIGN_OUT_USER, () => {
 });
 
 const loginUser = createAsyncThunk(LOGIN_USER, (data) => {
-  return handleLogin(data.email, data.password);
+  return handleLogin(data.email, data.password, data.first_name);
 });
 
 export {

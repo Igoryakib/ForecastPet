@@ -1,0 +1,48 @@
+@import "src/scss/variables.scss";
+
+.successAlert {
+  display: flex;
+  align-items: center;
+}
+
+.successContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  align-items: center;
+}
+
+.successWindow {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  position: relative;
+  background-color: #50a94d;
+  border-radius: 1rem;
+  padding: 2rem 3.2rem 3.6rem 2rem;
+}
+
+.successTextContainer * {
+  font-family: $montserrat;
+  color: #eafde9;
+  display: flex;
+}
+
+.successTextContainer h3 {
+  font-size: 3.2rem;
+  font-weight: 500;
+}
+.successTextContainer p {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.successLinear {
+  position: absolute !important;
+  background-color: rgba(131, 212, 128, 0.5) !important;
+  color: #eafde9 !important;
+  height: 1.2rem;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
