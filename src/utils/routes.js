@@ -17,6 +17,9 @@ const routes = {
 
   // team page
   teamPage: "/team",
+
+  // tech stack page
+  techPage: "/tech"
 };
 
 export default routes;

@@ -48,6 +48,7 @@ import Message from "./Message/Message";
 import { store } from "../redux/store";
 import TeamPage from "../pages/Team/TeamPage";
 import { handleGetUser } from "../services/apiGetUser.js";
+import TechPage from "../pages/TechPage/TechPage.jsx";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -135,6 +136,7 @@ const App = () => {
             </Route>
           </Route>
           <Route path={routes.teamPage} element={<TeamPage />} />
+          <Route path={routes.techPage} element={<TechPage />} />
           <Route path={routes.notFoundPage} element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
