@@ -12,8 +12,8 @@ import background45 from "../../static/windBackground/4-5.svg";
 const WeatherWind = () => {
   const language = useSelector(getLanguage);
   const airQualityData = useSelector(getAir);
-  const { o3: levelO3, co: levelCo } = airQualityData.list[0].components;
-  const AQIIndex = airQualityData.list[0].main.aqi;
+  const { o3: levelO3, co: levelCo } = airQualityData?.list[0]?.components;
+  const AQIIndex = airQualityData?.list[0]?.main?.aqi;
 
   // selectors for color change
   const texts = useRef([]);

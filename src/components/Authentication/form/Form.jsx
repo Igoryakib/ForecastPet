@@ -73,9 +73,9 @@ const Form = function ({ setSection, type }) {
       {/* TODO */}
       {/* TODO */}
       {/* button to sign out */}
-      {/* <button onClick={() => dispatch(signOutUser())} className={styles.tempo}>
+      <button onClick={() => dispatch(signOutUser())} className={styles.tempo}>
         signout
-      </button> */}
+      </button>
       {/* TODO */}
       {/* TODO */}
       {/* TODO */}
