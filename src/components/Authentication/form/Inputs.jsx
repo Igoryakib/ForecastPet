@@ -42,9 +42,8 @@ const Inputs = function ({
       name,
       password,
       email,
-      (type = ""),
+      null,
     );
-    console.log("isValid = " + isValid);
   }, [name, email, password]);
 
   // first, onClick()
@@ -70,10 +69,8 @@ const Inputs = function ({
       first_name: name,
     };
     if (isValid) {
-      console.log("pre-entered handleSignUp");
       if (type === "signup" && !emailExists) {
         const data = await handleSignUp(email, password, name);
-        console.log(data);
         if (data[0].id) {
           setSignedUp(true);
         }
@@ -86,10 +83,9 @@ const Inputs = function ({
           password,
           email,
           "alreadyExists",
-        );
-      } else if (type === "login") {
+          );
+        } else if (type === "login") {
         await dispatch(loginUser(data)).then((response) => {
-          console.log(response);
           if (!response.payload)
             handleInputsValidation(
               isValid,
@@ -101,7 +97,6 @@ const Inputs = function ({
               "wrongCredentials",
             );
         });
-        console.log("is logged in = " + isLoggedIn);
       }
     }
     setIsLoading(false);

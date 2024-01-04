@@ -5,12 +5,12 @@ const handleInputsValidation = function (
   name,
   password,
   email,
-  type,
+  validationType,
 ) {
   const doShowError =
-    type === "showError" ||
-    type === "wrongCredentials" ||
-    type === "alreadyExists";
+    validationType === "showError" ||
+    validationType === "wrongCredentials" ||
+    validationType === "alreadyExists";
 
   inputs.current = [...inputs.current];
   inputs.current.map((el) => {
@@ -27,7 +27,7 @@ const handleInputsValidation = function (
     // some visual effect to any kind of validation if the type of validation is submission, otherwise, no UI error until user submits the form
     const errorUI = function () {
       if (doShowError) {
-        if (type === "alreadyExists") {
+        if (validationType === "alreadyExists") {
           if (el.type === "email") {
             el.style.borderWidth = "1.6px";
             el.style.borderColor = "#D92B2B";
@@ -53,12 +53,12 @@ const handleInputsValidation = function (
       el.parentElement.className = "";
     };
 
-    if (type === "wrongCredentials") {
+    if (validationType === "wrongCredentials") {
       errorUI();
       inputs.current[0].parentElement.classList.add("validate--credentials");
       return;
     }
-    if (type === "alreadyExists") {
+    if (validationType === "alreadyExists") {
       errorUI();
       inputs.current[0].parentElement.classList.add("validate--exist");
       return;

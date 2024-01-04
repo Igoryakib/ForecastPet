@@ -2,6 +2,7 @@ import handleSearchProfile from "./apiSearchProfile";
 import supabase from "./supabase";
 
 export async function handleSignUp(email, password, name) {
+  console.log("entered signup")
   try {
     const { data, error } = await supabase.auth.signUp({
       email: email,
@@ -13,6 +14,8 @@ export async function handleSignUp(email, password, name) {
       },
       // options: {},
     });
+    console.log("data", data);
+    console.log("error", error);
     const { data: profileData, error: profileError } = await supabase
       .from("profiles")
       .insert([
