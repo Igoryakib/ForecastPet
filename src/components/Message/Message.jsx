@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import styles from "./Message.module.scss";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import {
   getIsLoadingAirQuality,

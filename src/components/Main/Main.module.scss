@@ -1,4 +1,4 @@
-@import "src/scss/variables.scss";
+@use 'src/scss/variables.scss' as *;
 
 main {
   margin: 0 auto 0 auto;

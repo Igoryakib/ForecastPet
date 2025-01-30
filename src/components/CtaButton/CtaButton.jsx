@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from "./CtaButton.module.scss";
 
 const CtaButton = function ({ children, onClick, isDisabled = false }) {

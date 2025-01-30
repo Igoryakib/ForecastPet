@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from "./1.module.scss";
 
 const Photo = function () {

@@ -1,4 +1,5 @@
-import { useLocation, NavLink } from "react-router-dom";
+import React from 'react';
+import { useLocation, NavLink } from "react-router";
 import styles from "./Nav.module.scss";
 import routes from "../../utils/routes";
 import { useState } from "react";

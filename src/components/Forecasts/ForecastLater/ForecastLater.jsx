@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Switcher from "../../small components/ForecastSwitcher/ForecastSwitcher";
 import styles from "./ForecastLater.module.scss";
 import Time from "./Time";

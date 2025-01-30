@@ -1,4 +1,4 @@
-@import "reset.scss";
+@use "reset.scss" as *;
 
 .App {
   text-align: center;

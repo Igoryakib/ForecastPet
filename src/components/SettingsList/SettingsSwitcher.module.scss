@@ -1,4 +1,4 @@
-@import "src/scss/variables.scss";
+@use 'src/scss/variables.scss' as *;
 
 $wrapper-padding: 0.32rem;
 $switcher-width: 13.2rem;

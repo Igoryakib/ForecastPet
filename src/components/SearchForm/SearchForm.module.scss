@@ -1,4 +1,4 @@
-@import "../../scss/variables.scss";
+@use 'src/scss/variables.scss' as *;
 
 .searchFormInput {
   padding: 0.8rem 4.8rem;

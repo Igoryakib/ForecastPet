@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from "./Heading.module.scss";
 
 const Heading = function ({ children, size = "2.4rem" }) {

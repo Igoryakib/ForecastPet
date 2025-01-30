@@ -1,4 +1,4 @@
-@import "../../scss/variables.scss";
+@use 'src/scss/variables.scss' as *;
 
 .header {
   width: auto;

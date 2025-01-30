@@ -1,4 +1,4 @@
-@import "src/scss/variables.scss";
+@use 'src/scss/variables.scss' as *;
 
 .window {
   font-family: $montserrat;

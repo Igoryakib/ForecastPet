@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-expressions
 import React, { useState, useEffect } from "react";
 import styles from "./LangSwitcher.module.scss";
 import classnames from "classnames";
@@ -12,25 +13,25 @@ const LangSwitcher = ({ setLang }) => {
   const [vectorEllipse, setVectorEllipse] = useState();
   const [langUk, setLangUk] = useState();
   useEffect(() => {
-    setVector(document?.querySelector(`.${styles.vector}`));
-    setLangContainer(document?.querySelector(`.${styles.changeLangContainer}`));
-    setWrapperLang(document?.querySelector(`.${styles.wrapperLangUk}`));
-    setLangEn(document?.querySelector(`.${styles.langEn}`));
-    setVectorEllipse(document?.querySelector(`.${styles.vectorEllipse}`));
+    setVector(document.querySelector(`.${styles.vector}`));
+    setLangContainer(document.querySelector(`.${styles.changeLangContainer}`));
+    setWrapperLang(document.querySelector(`.${styles.wrapperLangUk}`));
+    setLangEn(document.querySelector(`.${styles.langEn}`));
+    setVectorEllipse(document.querySelector(`.${styles.vectorEllipse}`));
     setLangUk(document.querySelector(`.${styles.ukLang}`));
   }, []);
   const onClickVector = () => {
-    langContainer?.classList.toggle(styles.heightContainer);
-    wrapperLang?.classList.toggle(styles.borderUkLang);
-    langEn?.classList.toggle(styles.opacityEn);
-    vector?.classList.toggle(styles.vectorOpacity);
-    vectorEllipse?.classList.toggle(styles.vectorEllipseOpacity);
+    langContainer.classList.toggle(styles.heightContainer);
+    wrapperLang.classList.toggle(styles.borderUkLang);
+    langEn.classList.toggle(styles.opacityEn);
+    vector.classList.toggle(styles.vectorOpacity);
+    vectorEllipse.classList.toggle(styles.vectorEllipseOpacity);
   };
   const onClickLang = (event) => {
     if (event.target.alt === "icon") {
       onClickVector();
     } else {
-      setLang(event.target.textContent === "укр" ? "uk" : "en");
+      setLang(event.target.textContent === "укр" ? "uk-UA" : "en-US");
       if (event.target.textContent === "укр") {
         langUk.textContent = "укр";
         langEn.textContent = "eng";
@@ -38,11 +39,11 @@ const LangSwitcher = ({ setLang }) => {
         langUk.textContent = "eng";
         langEn.textContent = "укр";
       }
-      langContainer?.classList.toggle(styles.heightContainer);
-      wrapperLang?.classList.toggle(styles.borderUkLang);
-      langEn?.classList.toggle(styles.opacityEn);
-      vector?.classList.toggle(styles.vectorOpacity);
-      vectorEllipse?.classList.toggle(styles.vectorEllipseOpacity);
+      langContainer.classList.toggle(styles.heightContainer);
+      wrapperLang.classList.toggle(styles.borderUkLang);
+      langEn.classList.toggle(styles.opacityEn);
+      vector.classList.toggle(styles.vectorOpacity);
+      vectorEllipse.classList.toggle(styles.vectorEllipseOpacity);
     }
   };
   return (
@@ -54,7 +55,7 @@ const LangSwitcher = ({ setLang }) => {
         <div className={styles.wrapperLangUk}>
           <h4
             className={classnames(styles.selectOption, styles.ukLang)}
-            type="uk"
+            type="uk-UA"
           >
             укр
           </h4>
@@ -62,7 +63,7 @@ const LangSwitcher = ({ setLang }) => {
         </div>
         <h4
           className={classnames(styles.selectOption, styles.langEn)}
-          type="en"
+          type="en-US"
         >
           eng
         </h4>

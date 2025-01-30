@@ -1,4 +1,4 @@
-@import "src/scss/variables.scss";
+@use 'src/scss/variables.scss' as *;
 
 .labelSwitcher {
   width: 13.6rem;

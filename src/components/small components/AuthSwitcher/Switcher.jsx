@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useLocation, useNavigate } from "react-router-dom";
 import styles from "./Switcher.module.scss";
 import classnames from "classnames";
 import { useState } from "react";

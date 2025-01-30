@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from "./ForecastTomorrow.module.scss";
 
 import cloudyIcon from "../../../static/tomorrow/cloudy.svg";

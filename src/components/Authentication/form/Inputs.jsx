@@ -1,3 +1,4 @@
+import React from 'react';
 import { useRef, useState } from "react";
 import CtaButton from "../../small components/CtaButton/CtaButton";
 import styles from "./Inputs.module.scss";

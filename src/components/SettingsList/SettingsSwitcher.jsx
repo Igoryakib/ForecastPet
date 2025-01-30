@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./SettingsSwitcher.module.scss";
 import classnames from "classnames";
 import { useDispatch } from "react-redux";

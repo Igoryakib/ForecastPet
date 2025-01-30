@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useNavigate } from "react-router";
 import styles from "./WindowOverlay.module.scss";
 import { useEffect } from "react";
 

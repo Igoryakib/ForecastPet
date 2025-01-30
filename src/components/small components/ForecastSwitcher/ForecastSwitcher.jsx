@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from "./ForecastSwitcher.module.scss";
 import classnames from "classnames";
 import { useState } from "react";

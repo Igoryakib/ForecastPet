@@ -7,7 +7,7 @@ import Spinner from "../../Spinner/Spinner";
 
 import styles from "./Sidebar.module.scss";
 import Heading from "../../small components/Heading/Heading";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Photo from "../../../static/photos/1";
 import { useSelector } from "react-redux";

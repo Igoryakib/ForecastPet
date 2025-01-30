@@ -42,7 +42,7 @@ const TEMPRORARY_NAME_EN = "Anton";
 
 const Header = () => {
   const [temperature, setTemperature] = useState(false);
-  const [lang, setLang] = useState("uk");
+  const [lang, setLang] = useState("uk-UA");
   const [searchValue, setSearchValue] = useState("");
   const [cords, setCords] = useState("");
   const dispatch = useDispatch();
@@ -87,9 +87,9 @@ const Header = () => {
   };
   useEffect(() => {
     if (lang === "uk") {
-      dispatch(weatherLanguage("uk"));
+      dispatch(weatherLanguage("uk-UA"));
     } else {
-      dispatch(weatherLanguage("en"));
+      dispatch(weatherLanguage("en-US"));
     }
   }, [language, lang, dispatch]);
   const options = {
@@ -98,7 +98,7 @@ const Header = () => {
     month: "long",
     year: "numeric",
   };
-
+  console.log(language)
   const day = Intl.DateTimeFormat(language, options).format(new Date());
 
   const reloadWeather = () => {

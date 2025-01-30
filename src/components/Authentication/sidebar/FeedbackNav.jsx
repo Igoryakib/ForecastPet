@@ -1,4 +1,5 @@
 /* eslint-disable no-array-constructor */
+import React from 'react';
 import styles from "./FeedbackNav.module.scss";
 
 const FeedbackNav = function ({ number, activeFeedback, setActiveFeedback }) {

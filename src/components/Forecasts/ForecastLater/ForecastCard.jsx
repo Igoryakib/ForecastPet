@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from "./ForecastCard.module.scss";
 
 import icon_cloudyRainy from "../../../static/cardIcons/cardIcon__cloudy_rainy.svg";

@@ -1,3 +1,4 @@
+import React from 'react';
 import SettingsSwitcher from "./SettingsSwitcher";
 import styles from "../SettingsList/SettingsList.module.scss";
 import { useSelector } from "react-redux";

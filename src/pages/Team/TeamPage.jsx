@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from "./TeamPage.module.scss";
 import instLogo from "../../static/socials/inst.svg";
 import githubLogo from "../../static/socials/github.svg";
