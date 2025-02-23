@@ -36,7 +36,7 @@ export const getWeatherData = async (type, data) => {
         case "hourly":
           console.log("requested hourly");
           const hourlyWeather = await axios.get(
-            `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${lat}&lon=${lon}&lang=${lang}&appid=${API_KEY}`,
+          `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${lat}&lon=${lon}&units=metric&lang=${lang}&appid=${API_KEY}`,
           );
           console.log(hourlyWeather);
           return hourlyWeather.data;
