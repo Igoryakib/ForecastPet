@@ -21,6 +21,7 @@ const getDailyWeather = createAsyncThunk(
 const getHourlyWeather = createAsyncThunk(
   WEATHER_HOURLY,
   (data, { rejectWithValue }) => {
+    console.log("requeste hourly");
     return getWeatherData("hourly", data)
       .then((data) => data)
       .catch((error) => rejectWithValue(error));

@@ -24,6 +24,7 @@ const WeatherSection = () => {
   const geo = useSelector(getGeo);
   const unit = useSelector(getUnit);
   const hasNecessaryLocalname = useRef();
+  console.log(weatherData);
 
   const currentTemp = Math.round(weatherData.currentlyWeather.main.temp);
   useEffect(() => {

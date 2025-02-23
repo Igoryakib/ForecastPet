@@ -1,8 +1,8 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://api.openweathermap.org/data/2.5";
+// axios.defaults.baseURL = "https://api.openweathermap.org/data/2.5";
 
-const API_KEY = "9ea4891c8392d9c904174b8d758cb626";
+const API_KEY = "833553fa43b95b5633a37013d03d025f";
 
 export const getWeatherData = async (type, data) => {
   const { regionData, lang } = data;
@@ -34,18 +34,20 @@ export const getWeatherData = async (type, data) => {
           };
           return fetcher();
         case "hourly":
+          console.log("requested hourly");
           const hourlyWeather = await axios.get(
-            `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${lat}&units=metric&lon=${lon}&lang=${lang}&appid=${API_KEY}`,
+            `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${lat}&lon=${lon}&lang=${lang}&appid=${API_KEY}`,
           );
+          console.log(hourlyWeather);
           return hourlyWeather.data;
         case "currently":
           const currentlyWeather = await axios.get(
-            `/weather?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&appid=${API_KEY}`,
+            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&appid=${API_KEY}`,
           );
           return currentlyWeather.data;
         case "daily":
           const dailyWeather = await axios.get(
-            `/forecast/daily?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&cnt=8&appid=${API_KEY}`,
+            `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&cnt=8&appid=${API_KEY}`,
           );
           return dailyWeather.data;
         case "geo":
@@ -94,13 +96,15 @@ export const getWeatherData = async (type, data) => {
           };
           return fetcher();
         case "hourly":
+          console.log("requested hourly");
           const hourlyWeather = await axios.get(
             `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&appid=${API_KEY}`,
           );
+          console.log(hourlyWeather);
           return hourlyWeather.data;
         case "currently":
           const currentlyWeather = await axios.get(
-            `/weather?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&appid=${API_KEY}`,
+            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=${lang}&units=metric&appid=${API_KEY}`,
           );
           return currentlyWeather.data;
         case "daily":

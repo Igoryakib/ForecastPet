@@ -38,7 +38,11 @@ const dailyWeather = createReducer("", (builder) => {
 // });
 
 const hourlyWeather = createReducer("", (builder) => {
-  builder.addCase(getHourlyWeather.fulfilled, (_, action) => action.payload)
+  console.log("requeste hourly");
+  builder.addCase(getHourlyWeather.fulfilled, (_, action) => {
+    console.log("da");
+    return action.payload
+  })
 });
 
 // const currentlyWeather = createReducer("", {
