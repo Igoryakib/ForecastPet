@@ -99,7 +99,7 @@ const Header = () => {
     year: "numeric",
   };
   console.log(language)
-  const day = Intl.DateTimeFormat(language, options).format(new Date());
+  const day = Intl.DateTimeFormat(language ? language : 'uk-UA', options).format(new Date());
 
   const reloadWeather = () => {
     const data = {
