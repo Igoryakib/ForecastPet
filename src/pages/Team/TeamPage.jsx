@@ -68,12 +68,12 @@ const TeamPage = function () {
             src={teamMember1}
           />
           <div className={styles.figureInfo}>
-            <h3 className={styles.figureName}>Anton Solianyk</h3>
-            <p className={styles.figureSkills}>Frontend, Design</p>
+            <h3 className={styles.figureName}>Ihor Yakibiuk</h3>
+            <p className={styles.figureSkills}>Frontend developer</p>
           </div>
           <div className={styles.figureSocials}>
             <a
-              href="https://www.linkedin.com/in/anton-solianyk-906453221/"
+              href="https://www.linkedin.com/in/ihor-yakibiuk-bb751522b/"
               target="_blank"
               rel="noreferrer"
             >
@@ -84,55 +84,14 @@ const TeamPage = function () {
               />
             </a>
             <a
-              href="https://github.com/antonio-backnotfront"
+              href="https://github.com/Igoryakib"
               target="_blank"
               rel="noreferrer"
             >
               <img src={githubLogo} alt="github logo" />
             </a>
             <a
-              href="https://www.instagram.com/anton_solyanik/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src={instLogo} alt="inst logo" />
-            </a>
-            <a href="mailto: solyanicks@gmail.com">
-              <img src={emailLogo} alt="email logo" />
-            </a>
-          </div>
-        </figure>
-        <figure className={styles.figure}>
-          <img
-            alt="team member"
-            className={styles.figurePhoto}
-            src={teamMember1}
-          />
-          <div className={styles.figureInfo}>
-            <h3 className={styles.figureName}>Anton Solianyk</h3>
-            <p className={styles.figureSkills}>Frontend, Design</p>
-          </div>
-          <div className={styles.figureSocials}>
-            <a
-              href="https://www.linkedin.com/in/anton-solianyk-906453221/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img
-                src={linkedinLogo}
-                className={styles.linkedinLogo}
-                alt="linkedin logo"
-              />
-            </a>
-            <a
-              href="https://github.com/antonio-backnotfront"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src={githubLogo} alt="github logo" />
-            </a>
-            <a
-              href="https://www.instagram.com/anton_solyanik/"
+              href="https://www.instagram.com/ihoryakib/"
               target="_blank"
               rel="noreferrer"
             >
